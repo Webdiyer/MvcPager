@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-xs-3">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseDemo"><span class="fa fa-laptop fa-lg">&nbsp;</span>MvcPager分页示例</a>
+                    </h4>
+                </div>
+                <div id="collapseDemo" class="panel-body collapse in">
+                    @Html.Partial("_DemoMenu")
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-9">
+        <h1 class="page-header">@ViewBag.Title</h1>
+        @if (ViewBag.Description != null)
+        {
+            <div class="alert alert-info content">
+                @Html.Raw(ViewBag.Description)
+                <p>
+                    @RenderSection("Description", false)
+                </p>
+        </div>
+        }
+                    @RenderBody()
+    </div>
+</div>
+@section Scripts{
+    @RenderSection("scripts", false)
+    <script type="text/javascript">
+        $(function () {
+            $("ul.nav-tabs li a").click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        })
+    </script>
+}

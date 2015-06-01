@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Apply CSS styles";
+    ViewBag.Description = "This sample demonstrates how to apply css styles to MvcPager.";
+}
+@model PagedList<string>
+<link rel="stylesheet" type="text/css" href="/Content/pagerstyles.css" />
+
+<h5>Bootstrap style:</h5>
+<div class="text-center">
+        @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", Id = "bootstrappager" })
+</div>
+
+<h5>Bootstrap with page index box:</h5>
+    <div class="row">
+        <div class="col-md-9">
+            @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id",NumericPagerItemCount = 5,ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", Id = "bootstrappager2", PageIndexBoxId = "pageIndexBox",GoToButtonId = "goToBtn"})
+        </div>
+        <div class="col-md-3">
+            <div class="input-group" style="margin:20px 0">
+                <select id="pageIndexBox" class="form-control input-sm" ></select>
+                <span class="input-group-btn"><button class="btn btn-primary btn-sm" id="goToBtn">Go</button></span>
+            </div>
+        </div>
+    </div>
+<h5>Digg style:</h5>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", CurrentPagerItemTemplate = "<span class=\"current\">{0}</span>", DisabledPagerItemTemplate = "<span class=\"disabled\">{0}</span>", Id = "diggpager" })
+<h5>meneame style:</h5>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", CurrentPagerItemTemplate = "<span class=\"current\">{0}</span>", DisabledPagerItemTemplate = "<span class=\"disabled\">{0}</span>", Id = "menepager" })
+<h5>Flickr style:</h5>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", CurrentPagerItemTemplate = "<span class=\"current\">{0}</span>", DisabledPagerItemTemplate = "<span class=\"disabled\">{0}</span>", Id = "flickrpager" })
+<h5>Black style:</h5>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", CurrentPagerItemTemplate = "<span class=\"current\">{0}</span>", DisabledPagerItemTemplate = "<span class=\"disabled\">{0}</span>", Id = "blackpager" })
+<h5>Gray style:</h5>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", CurrentPagerItemTemplate = "<span class=\"current\">{0}</span>", DisabledPagerItemTemplate = "<span class=\"disabled\">{0}</span>", Id = "graypager" })
+<h5>badoo style:</h5>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", CurrentPagerItemTemplate = "<span class=\"current\">{0}</span>", DisabledPagerItemTemplate = "<span class=\"disabled\">{0}</span>", Id = "badoopager" })
+
+@section scripts{@{ Html.RegisterMvcPagerScriptResource();}}

@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "显示分页信息";
+    ViewBag.Description = "本示例演示如何显示分页相关信息，如总页数、总记录数及当前页数等。";
+}
+@model PagedList<Article>
+@Html.Partial("_ArticleTable", Model)
+<div><div style="float:left;width:50%">共 @Model.TotalPageCount 页 @Model.TotalItemCount 条记录，当前为第 @Model.CurrentPageIndex 页</div>
+    @Html.Pager(Model).Options(o=>o.SetPageIndexParameterName("id").SetPagerItemTemplate("&nbsp;{0}").AddHtmlAttribute("style","float:right"))</div>
+
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}

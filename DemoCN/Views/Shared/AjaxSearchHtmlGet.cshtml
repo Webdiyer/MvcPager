@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Ajax HtmlForm搜索（Get）";
+    ViewBag.Description = "该示例演示如何在Ajax分页模式下，在分页时通过GET方式提交查询数据，从而实现按条件搜索显示数据的功能。";
+}
+@model PagedList<Article>
+
+<fieldset>
+    <legend>查询</legend>
+    @using (Html.BeginForm("AjaxSearchHtmlGet", ViewContext.RouteData.GetRequiredString("controller"), new { id = "" }, FormMethod.Get, new { id = "searchForm", @class = "form-inline well well-sm" }))
+    {
+        <span>标题：</span>
+    <input type="text" name="title" placeholder="如：吴起" data-toggle="tooltip" title="如：吴起" id="title" style="width: 100px" class="form-control" />
+        <span>作者：</span>
+        <input type="text" name="author" placeholder="如：Webdiyer" data-toggle="tooltip" title="如：Webdiyer" id="author" style="width: 120px" class="form-control" />
+        <span>来源：</span>
+        <input type="text" name="source" id="source" data-toggle="tooltip" title="如：吴起热线" placeholder="如：吴起热线" style="width: 120px" class="form-control" />
+        <input type="submit" value="搜索(S)" accesskey="S" class="btn btn-default" />
+    }
+    </fieldset>
+    <div id="articles">
+        @Html.Partial("_AjaxSearchGet", Model)
+    </div>
+    @section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+    @section Description{
+        本示例使用Html Form。
+    <p>
+        MvcPager在Ajax分页模式下，默认使用GET方式向服务器端提交数据，因此无需设置MvcAjaxOptions的HttpMethod属性，只需要设置DataFormId为要提交的表单的ID即可。
+        用户点击提交按钮进行查询时，MvcPager会将查询条件保存在客户端脚本变量中，每次分页时自动将该查询条件发送回服务器端，开发人员只需实现服务器端查询功能，无需编写任何客户端代码。
+    </p>
+}

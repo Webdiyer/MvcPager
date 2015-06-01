@@ -1,0 +1,6 @@
+﻿@model PagedList<Article>
+        
+@{ Html.RenderPartial("_ArticleTable"); }
+<div class="text-center">
+    @Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "id", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>" }).AjaxOptions(a => a.SetUpdateTargetId("articles"))
+</div>

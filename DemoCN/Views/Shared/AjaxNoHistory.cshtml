@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Ajax局部加载";
+    ViewBag.Description = "本示例演示MvcPager Ajax分页时禁用浏览器历史记录支持功能，禁用浏览器历史记录支持功能在分页时将不会在url中添加hash（#）。";
+}
+@model PagedList<Article>
+
+<div id="articles">
+@Html.Partial("_ArticleTable", Model)
+@Ajax.Pager(Model,new PagerOptions{PageIndexParameterName = "id",PagerItemTemplate = "{0}&nbsp;"},new MvcAjaxOptions{UpdateTargetId = "articles",EnablePartialLoading = true,EnableHistorySupport = false})
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description
+{
+    如果不希望Ajax分页时页面被收入浏览器历史记录中，可以通过设置MvcAjaxOptions.EnableHistorySupport为false来禁用浏览器历史记录支持功能，该功能默认是启用的（默认值为true）。
+}

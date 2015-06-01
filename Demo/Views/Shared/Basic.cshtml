@@ -1,0 +1,7 @@
+﻿@{
+    ViewBag.Title = "Standard url route paging";
+    ViewBag.Description = "This sample demonstrates the standard url route paging functionality of MvcPager.";
+}
+@model PagedList<Order>
+@Html.Partial("_DataTable", Model)
+@Html.Pager(Model).Options(o=>o.SetPageIndexParameterName("id").SetHorizontalAlign("right").SetPagerItemTemplate("&nbsp;{0}"))

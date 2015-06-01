@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Ajax degradation";
+    ViewBag.Description = "This sample demonstrates how MvcPager can be degradated gracefully from Ajax paging mode to standard url paging mode if Javascript support is disabled by client browser or there's Javascript error on the page.";
+}
+
+@model PagedList<Order>
+<div id="orders">
+    @Html.Partial("_Degradation",Model)
+</div>
+
+@section Description{
+    Ajax paging mode is used in this sample, but since MvcPager jQuery plugin is not registered, so it degradated to standdard url paging mode without error.
+   }

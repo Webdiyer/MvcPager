@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Combined mode";
+    ViewBag.Description = "This sample demonstrates how to use AjaxPager and HtmlPager on a single page to add paging functionality for the same data.";
+}
+@model PagedList<Order>
+
+<div id="orders">
+ @Html.Partial("_DataTable", Model)
+<h5>Standard url paging:</h5>
+@Html.Pager(Model,new PagerOptions { PageIndexParameterName = "id", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>"})
+    <h5>Ajax partial loading:</h5>
+@Ajax.Pager(Model,new PagerOptions{PageIndexParameterName = "id",ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>"},new MvcAjaxOptions{EnablePartialLoading = true,UpdateTargetId="orders"})
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description{
+    MvcPager's Ajax partial loading feature makes it easy to switch between Ajax paging mode and url paging mode. The first MvcPager in this sample is using standard url paging, while the second MvcPager is in Ajax paging mode with Ajax partial loading feature enabled.
+}

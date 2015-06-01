@@ -1,0 +1,14 @@
+﻿@model PagedList<Order>
+   @{ Html.RenderPartial("_DataTable"); }
+<div class="row">
+    <div class="col-xs-8">
+        @Ajax.Pager(Model, new PagerOptions { FirstPageText = "<<", LastPageText = ">>", NextPageText = ">", PrevPageText = "<", ContainerTagName = "ul", NumericPagerItemCount = 5, CssClass = "pagination",  CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", PageIndexBoxId = "pageIndexBox2", GoToButtonId = "goToBtn2" }).Options(o => o.AddRouteValue("target", "orders2")).AjaxOptions(a => a.SetUpdateTargetId("orders2"))
+    </div>
+    <div class="col-xs-4">
+        <div class="input-group" style="margin:20px 0">
+            <span class="input-group-addon">Go to page</span>
+            <input type="text" id="pageIndexBox2" class="form-control input-sm"/>
+            <span class="input-group-btn"><button class="btn btn-primary btn-sm" id="goToBtn2">Go</button></span>
+        </div>
+    </div>
+</div>

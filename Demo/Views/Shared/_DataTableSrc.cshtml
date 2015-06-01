@@ -1,0 +1,54 @@
+﻿<h3>_DataTable.cshtml:</h3>
+<pre>
+@@model PagedList&lt;order&gt;
+&lt;table class=&quot;table table-striped table-bordered&quot;&gt;
+    &lt;tr&gt;
+    &lt;th class=&quot;nowrap&quot;&gt;
+            @@Html.DisplayNameFor(model =&gt; model.OrderId)
+        &lt;/th&gt;
+    &lt;th class=&quot;nowrap&quot;&gt;
+            @@Html.DisplayNameFor(model =&gt; model.CustomerId)
+        &lt;/th&gt;
+    &lt;th class=&quot;nowrap&quot;&gt;
+            @@Html.DisplayNameFor(model =&gt; model.CompanyName)
+        &lt;/th&gt;
+    &lt;th class=&quot;nowrap&quot;&gt;
+            @@Html.DisplayNameFor(model =&gt; model.EmployeeName)
+        &lt;/th&gt;
+    &lt;/tr&gt;
+    @@foreach (var item in Model)
+    {
+    &lt;tr&gt;
+    &lt;td&gt;
+                @@Html.DisplayFor(modelItem =&gt; item.OrderId)
+            &lt;/td&gt;
+    &lt;td&gt;
+                @@Html.DisplayFor(modelItem =&gt; item.CustomerId)
+            &lt;/td&gt;
+    &lt;td&gt;
+                @@Html.DisplayFor(modelItem =&gt; item.CompanyName)
+            &lt;/td&gt;
+    &lt;td&gt;
+                @@Html.DisplayFor(modelItem =&gt; item.EmployeeName)
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    }
+&lt;/table&gt;
+</pre>
+
+<h3>Model:</h3>
+<pre>
+    public class Order
+    {
+        [Display(Name = "Order ID")]
+        public int OrderId { get; set; }
+        [Display(Name = "Customer ID"),StringLength(20)]
+        public string CustomerId { get; set; }
+        [Display(Name = "Order Date")]
+        public DateTime OrderDate { get; set; }
+        [Display(Name = "Company Name"), StringLength(20)]
+        public string CompanyName { get; set; }
+        [Display(Name = "Employee Name"), StringLength(20)]
+        public string EmployeeName { get; set; }
+    }
+</pre>

@@ -1,0 +1,13 @@
+﻿@model PagedList<Order>
+@Html.Partial("_DataTable", Model)
+<div class="row">
+    <div class="col-md-9">
+        @Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "id",NumericPagerItemCount = 6,ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", PageIndexBoxId = "pageIndexBox", GoToButtonId = "goToBtn" }).AjaxOptions(a => a.SetUpdateTargetId("orders"))
+    </div>
+    <div class="col-md-3">
+        <div class="input-group" style="margin:20px 0">
+            <select id="pageIndexBox" class="form-control input-sm"></select>
+            <span class="input-group-btn"><button class="btn btn-primary btn-sm" id="goToBtn">Go</button></span>
+        </div>
+    </div>
+</div>

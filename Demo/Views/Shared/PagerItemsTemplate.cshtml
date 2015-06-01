@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Pager items templates";
+    ViewBag.Description = "This sample demonstrates how to apply html template to pager items.";
+}
+@model PagedList<string>
+<pre>NumericPagerItemTemplate = "&lt;strong&gt;{0}&lt;/strong&gt;",CurrentPagerItemTemplate = "&lt;span class=\"text-danger\"&gt;{0}&lt;/span&gt;"</pre>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", NumericPagerItemTemplate = "<strong>{0}</strong>",CurrentPagerItemTemplate = "<span class=\"text-danger\">{0}</span>",DisabledPagerItemTemplate = "<span style=\"color:gray\">{0}</span>"})
+<hr/>
+<pre>PagerItemTemplate = &quot;{0}&amp;nbsp;&quot;</pre>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", PagerItemTemplate = "{0}&nbsp;" })
+<hr />
+<pre>CurrentPagerItemTemplate = "&lt;li class=\"active\"&gt;&lt;a href=\"#\"&gt;{0}&lt;/a&gt;&lt;/li&gt;", DisabledPagerItemTemplate = "&lt;li class=\"disabled\"&gt;&lt;a&gt;{0}&lt;/a&gt;&lt;/li&gt;", PagerItemTemplate = "&lt;li&gt;{0}&lt;/li&gt;"</pre>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>"})

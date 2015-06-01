@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Ajax初始化数据";
+    ViewBag.Description = "该示例演示Ajax分页模式下，MvcPager根据当前url中的页索引hash值在页面加载时，通过Ajax自动跳转并加载当前页数据的功能。";
+}
+@model PagedList<Article>
+
+<div id="articles">
+@Html.Partial("_ArticleList",Model)
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description
+{
+    本页面初始url的hash值中包含MvcPager页索引参数(#id=3），因此打开页面时MvcPager会自动跳转到第三页并加载显示第三页数据。
+}

@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "实现IPagedList接口";
+    ViewBag.Description = "该示例演示如何通过实现IPagedList&lt;T&gt;接口而不是使用内建的PagedList&lt;T&gt;来自下定义分页数据对象。";
+}
+@model MyPagedList<int>
+<table class="table table-bordered table-striped">
+    @foreach (var itm in Model.PagedItems)
+    {
+        <tr><td>@itm</td></tr>
+    }
+</table>
+@Html.Pager(Model,new PagerOptions{PageIndexParameterName = "id",PagerItemTemplate = "{0}&nbsp;"})
+@section Description{
+
+}

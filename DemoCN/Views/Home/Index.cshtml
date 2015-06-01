@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "MvcPager 示例";
+}
+<div class="content">
+      <h1>MvcPager 3.0 for ASP.NET MVC 4.0+ 简介</h1>
+    <p> MvcPager分页控件是在<a href="http://www.asp.net/mvc/" target="_blank">ASP.NET MVC</a> Web应用程序中实现分页功能的一系列扩展方法，该分页控件的最初的实现方法借鉴了网上流行的部分源代码，
+        尤其是<a href="http://weblogs.asp.net/scottgu" target="_blank">ScottGu</a>的PagedList&lt;T&gt;类和相关方法，经过作者不断完善和改进后推出的比较成熟而且功能强大的ASP.NET MVC分页解决方案。</p>
+    <p>MvcPager分为HtmlPager和AjaxPager，前者通过HtmlHelper的Pager()扩展方法来创建并使用标准的url跳转的方式分页，后者通过AjaxHelper的Pager()扩展方法创建并通过Ajax方式进行分页，在不支持javascript或javascript被禁用的浏览器中，AjaxPager可以安全降级为使用标准的url跳转的方式进行分页。</p>
+ <h3>MvcPager主要功能：</h3>
+    <ol>
+        <li>实现最基本的url route分页；</li>
+        <li>支持手工输入或选择页索引并对输入的页索引进行有效性验证；</li>
+        <li>支持使用jQuery实现Ajax分页，生成的Html代码更精简；</li>
+        <li>Ajax分页模式下支持在分页过程中通过GET或POST方法提交表单数据，实现查询功能；</li>
+        <li>Ajax分页模式下支持浏览器历史记录功能（暂不支持IE7及早期版本和Opera浏览器）；</li>
+        <li>Ajax分页模式下，若客户端浏览器不支持或禁用Javascript时优雅降级为普通url分页</li>
+        <li>搜索引擎友好，无论是普通url分页还是Ajax分页，搜索引擎都可以直接搜索到所有页面。</li>
+        <li>支持ASP.NET MVC 4.0及以上版本；</li>
+        <li>支持IE、Firefox、Opera、Chrome及Safari等常用浏览器；</li>
+        <li>支持调用客户端Javascript API跳转到指定页（3.0版新增）；</li>
+        <li>多语言支持（简体中文、繁体中文和英文）（3.0版新增）；</li>
+    </ol>
+    <h3>更新说明<small class="text-danger">（深红色字体中的内容为对上一版本的重大变更，从上一版本升级时请务必注意。）</small></h3>
+    <h4>MvcPager 3.0：</h4>
+    <ul>
+        <li>修正了路由定义中对页索引参数使用约束而导致无法为页索引文本或下拉框生成跳链接的bug；</li>
+        <li>修正了Ajax分页模式下，如果首次加载时数据只有一页且未设置AutoHide=false，则控件不呈现任何有效html标签，导致MvcPager初始化失败以及后续Ajax分页功能失效的bug；</li>
+        <li>修正了Ajax分页模式下，同一PartialView中包含两个或更多MvcPager且PagerOptions.PageIndexParameterName属性值相同的情况下多次发送相同http请求的问题；</li>
+        <li>MvcAjaxOptions新增EnableHistorySupport属性，用于Ajax分页时启用或禁用浏览器历史记录功能，默认值为true；</li>
+        <li>MvcAjaxOptions新增AllowCache属性，用于Ajax分页时是否允许缓存（默认值为true，禁用缓存仅在GET提交时有效，详情参见jQuery文档）；</li>
+        <li>PagerOptions新增DisabledPagerItemTemplate属性，用于设置被禁用的分页元素的html模板；</li>
+        <li>PagerOptions新增OnPageIndexError属性，用于设置页索引出错时要调用的Javascript函数，若未设置则默认用alert弹出错误信息；</li>
+        <li>PagerOptions新增HidePagerItems属性，用于设置是否隐藏所有分页元素，开发者可通过客户端Javascript API自己创建分页元素并用goToPage()方法实现分页跳转；</li>
+        <li class="text-danger">PagerOptions新增ActionName、ControllerName、RouteName、RouteValues和HtmlAttributes属性，即将原HtmlHelper.Pager及AjaxHelper.Pager扩展方法中的actionName，controllerName，routeName，routeValues及htmlAttributes参数并入PagerOptions属性中，相应调整了HtmlHelper.Pager和AjaxHelper.Pager扩展方法重载；</li>
+        <li class="text-danger">PagerOptions的属性PagerItemWrapperFormatString，NumericPagerItemWrapperFormatString，CurrentPagerItemWrapperFormatString，NavigationPagerItemWrapperFormatString，MorePagerItemWrapperFormatString，分别改名为PagerItemTemplate，NumericPagerItemTemplate，CurrentPagerItemTemplate，NavigationPagerItemTemplate，MorePagerItemTemplate</li>
+        <li class="text-danger">PagerOptions.MaxPageIndex属性更名为PagerOptions.MaximumPageNumber；</li>
+        <li class="text-danger">去除PagerOptions的属性PageIndexBoxWrapperFormatString，GoToPageSectionWrapperFormatString；</li>
+        <li class="text-danger">去除PagerOptions中页索引框的相关属性ShowPageIndexBox、ShowGoButton、PageIndexBoxType和GoButtonText，新增PageIndexBoxId和GoToButtonId属性，用于指定页索引框和跳转按钮；</li>
+        <li class="text-danger">去除PagerOptions属性的PagerItemsSeperator，分页按钮之间若需使用空格分隔可以用PagerOptions.PagerItemTemplate="&amp;nbsp;{0}&amp;nbsp;"模板来实现；</li>
+        <li class="text-danger">PagedList.StartRecordIndex 重命名为 PagedList.StartItemIndex;</li>
+        <li class="text-danger">PagedList.EndRecordIndex 重命名为 PagedList.EndItemIndex;</li>
+        <li class="text-danger">被禁用的分页按钮不再使用超链接（&lt;a disabled="disabled"&gt;&lt;/a&gt;）；</li>
+        <li>HtmlHelper.Pager新增Options方法，AjaxHelper.Pager新增Options和AjaxOptions方法；</li>
+        <li>新增HtmlHelper.LoadMvcPagerScript方法，用于动态加载MvcPager的客户端脚本库（用该方法注册的脚本必须包含在&lt;script&gt;与&lt;/script&gt;标签内），支持通过Ajax加载和初始化MvcPager；</li>
+        <li>对MvcPager客户端jQuery插件进行重构，添加新功能并做了大量代码优化和完善；</li>
+        <li>同时支持简体中文、繁体中文和英文等多种语言，不再单独发布中文版和英文版；</li>
+        <li>新增客户端Javascript API，用于获取分页控件属性及跳转到指定页；</li>
+        <li>添加更多示例项目，覆盖MvcPager所有功能；</li>
+        <li>重新制作的全新的在线帮助文档；</li>
+        <li>添加更多服务器端及客户端Javascript单元测试；</li>
+        <li class="text-danger">仅支持ASP.NET MVC 4.0及更高版本；</li>
+    </ul>
+    <h5 class="text-danger">已知问题：</h5>
+        <ol class="text-danger">
+            <li>Ajax分页模式下，如果用于返回数据的PartialView中包含多个MvcPager且PagerOptions.PageIndexParameterName属性值相同时，只有第一个MvcPager会发起Ajax请求且触发Ajax事件，其后的MvcPager将不再发起请求，因此OnSuccess、OnComplete和OnFailure等ajax事件不会被触发，对应的页索引输入或选择框在分页后也无法绑定事件及填充页索引；</li>
+            <li>Ajax分页模式下浏览器历史记录支持功能暂不支持IE7以下及Opera浏览器；</li>
+            <li>Url中值为空的参数在分页后将被从Url中去除；如：/articles/show/2?cls=news&type= 在分页后type参数将丢失，Url变为：/articles/show/3?cls=news</li>
+            <li>为AjaxForm使用Ajax分页查询功能时，web.config中的UnobtrusiveJavaScriptEnabled必须设为true（默认），否则会导致分页时数据被加载两次；</li>
+        </ol>
+    <h5>升级说明：</h5>
+    <p>
+        <strong>从MvcPager 2.0升级到3.0时，需注意以下事项：</strong>
+        <ol>
+            <li>PagerOptions的属性PagerItemWrapperFormatString，NumericPagerItemWrapperFormatString，CurrentPagerItemWrapperFormatString，NavigationPagerItemWrapperFormatString，MorePagerItemWrapperFormatString，分别改名为PagerItemTemplate，NumericPagerItemTemplate，CurrentPagerItemTemplate，NavigationPagerItemTemplate，MorePagerItemTemplate；</li>
+            <li>PagerOptions.MaxPageIndex属性改名为PagerOptions.MaximumPageNumber；</li>
+            <li>Pager()方法中原actionName、controllerName、routeName、routeValues和htmlAttributes等参数被并入PagerOptions属性中，设置时请设置PagerOptions属性；</li>
+            <li>Html.Pager()扩展方法重载从原来十个减为四个，升级时请注意使用合适的重载方法；</li>
+            <li>Ajax.Pager()扩展方法重载从原来十个减为四个，升级时请注意使用合适的重载方法；</li>
+            <li>PagerOptions中页索引框的相关属性ShowPageIndexBox、ShowGoButton、PageIndexBoxType和GoButtonText已被去除，启用页索引框时请使用PagerOptions.PageIndexBoxId和PagerOptions.GoToButtonId属性；</li>
+            <li>被禁用的分页按钮不再使用超链接，若需使用，请通过新增的PagerOptions.DisabledPagerItemTemplate属性来设置；</li>
+            <li>PagerOptions.MaxPageIndex属性更名为PagerOptions.MaximumPageNumber；</li>
+            <li>PagerOptions.PagerItemsSeperator已去除，分页按钮之间若需使用空格分隔可以用PagerOptions.PagerItemTemplate="&amp;nbsp;{0}&amp;nbsp;"模板来实现；</li>
+            <li>支持多语言，默认为英文，若需使用简体中文版，请在网站根目录的web.config中system.web配置节下添加如下设置：globalization culture="zh-CN" uiCulture="zh-CN"</li>
+        </ol>
+    </p>
+    <h3>运行最低需求：</h3>
+    <ol><li>jQuery 1.7及以上版本；（当启用页索引输入或选择框、调用Javascript API以及使用Ajax分页模式时必需）</li>
+        <li>ASP.NET MVC 4.0及以上版本；</li>
+    </ol>
+    <p>若需获得帮助或提交意见反馈，请访问<a href="http://www.webdiyer.com/mvcpager/" target="_blank">MvcPager官方网站</a></p>
+</div>

@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Disable history support";
+    ViewBag.Description = "This sample demonstrates how to disable browser history support in Ajax paging mode.";
+}
+@model PagedList<Order>
+
+<div id="orders">
+@Html.Partial("_DataTable", Model)
+@Ajax.Pager(Model,new PagerOptions{PageIndexParameterName = "id"},new MvcAjaxOptions{UpdateTargetId = "orders",EnablePartialLoading = true,EnableHistorySupport = false})
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description
+{
+    When browser history support is disabled, MvcPager will not add hash value to url.
+}

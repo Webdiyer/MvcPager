@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Using custom routes";
+    ViewBag.Description = "This sample demonstrates how MvcPager can generate different paging urls using different routes.";
+}
+
+@model PagedList<Order>
+@Html.Partial("_DataTable", Model)
+<h6>Using route MvcPager_Pager1, url pattern: {controller}/{action}/page_{pageindex}</h6>
+    @Html.Pager(Model).Options(o => o.SetFirstPageRouteName("MvcPager_Default").SetRouteName("MvcPager_Pager1").SetPagerItemTemplate("{0}&nbsp;"))
+<hr/>
+<h6>Using route MvcPager_Pager2, url pattern: {controller}/{action}/pageindex-{pageindex}</h6>
+@Html.Pager(Model).Options(o => o.SetFirstPageRouteName("MvcPager_Default").SetRouteName("MvcPager_Pager2").SetPagerItemTemplate("{0}&nbsp;"))
+<hr/>
+<h6>Using route MvcPager_Pager3, url pattern: {controller}/{action}/p-{pageindex}</h6>
+@Html.Pager(Model).Options(o => o.SetRouteName("MvcPager_Pager3").SetFirstPageRouteName("MvcPager_Default").SetPagerItemTemplate("{0}&nbsp;"))
+
+
+@section Description{
+    This demo uses three MvcPagers with different routes, each MvcPager generate different paging url except for the first page because the first page url SEO is enabled.
+}

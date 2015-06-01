@@ -1,0 +1,4 @@
+﻿@model PagedList<Order>
+
+@Html.Partial("_DataTable", Model)
+@Ajax.Pager(Model,new PagerOptions{PageIndexParameterName = "id"},new MvcAjaxOptions{UpdateTargetId = "orders",LoadingElementId = "loadingDiv",OnBegin="$('#orders').fadeOut('slow')",OnComplete="$('#orders').fadeIn('slow')"})

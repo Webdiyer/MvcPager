@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Ajax partial loading";
+    ViewBag.Description = "This sample demonstrates the partial loading feature of MvcPager in Ajax paging mode.";
+}
+
+@model PagedList<Order>
+<div id="orders">
+@Html.Partial("_DataTable", Model)
+    <div style="width:100%;overflow:auto;">
+        <div style="float:right">Go to page<select id="pib"></select></div>
+        @Ajax.Pager(Model).Options(o => o.SetId("mypager").SetPageIndexParameterName("id").SetPageIndexBoxId("pib").SetPagerItemTemplate("{0}&nbsp;")).AjaxOptions(a => a.SetUpdateTargetId("orders").EnablePartialLoading())
+    </div>
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description{
+    Before version 2.0, the MvcPager and data must be inside a separate partial view in order to load them asynchronously in Ajax paging mode. 
+    MvcPager 2.0 added a new feature called Ajax partial loading which does not need to use partial view and can load a whole page and update the only part that UpdateTargetId property refers to.
+    
+    <div class="text-danger">MvcPager's Ajax partial loading feature is very simple to use, it can be easyly switched to standard url paging by chnaging a few settings, but enable this feature will need to load the whole page every time page is changed, if the page contains a large amount of data, use partial view instead of partial loading to load only required data is recommended.</div>
+}

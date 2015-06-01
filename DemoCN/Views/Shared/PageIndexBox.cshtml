@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "输入或选择页索引";
+    ViewBag.Description = "该示例演示如何为MvcPager添加页索引输入或选择功能。";
+}
+@model PagedList<Article>
+<style type="text/css">
+    .pibarea {float: left;margin-left: 2em;}
+    .pagerdiv {width: 100%;overflow: auto;}
+</style>
+@Html.Partial("_ArticleTable", Model)
+<h6><strong>页索引文本框（修改后失去焦点自动提交）：</strong></h6>
+<div class="pagerdiv">
+    @Html.Pager(Model).Options(o => o.SetId("pager1").SetPageIndexParameterName("id").SetPageIndexBoxId("pib1").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;"))
+    <div class="pibarea"><input type="text" id="pib1" style="width:28px" /></div>
+</div>
+<div class="pagerdiv">
+    <h6><strong>页索引下拉框（选项改变后自动提交）：</strong></h6>
+    @Html.Pager(Model).Options(o => o.SetId("pager2").SetPageIndexParameterName("id").SetPageIndexBoxId("pib2").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;"))
+    <div class="pibarea">
+        <select id="pib2"></select>
+    </div>
+</div>
+<div class="pagerdiv">
+    <h6><strong>页索引文本框（手动提交）：</strong></h6>
+    @Html.Pager(Model).Options(o => o.SetId("pager3").SetPageIndexParameterName("id").SetPageIndexBoxId("pib3").SetGoToButtonId("gtb1").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;"))
+    <div class="pibarea">
+        <input type="text" id="pib3" style="width:28px" /><button id="gtb1">跳转</button>
+    </div>
+</div>
+<div class="pagerdiv">
+    <h6><strong>页索引下拉框（手动提交）：</strong></h6>
+    @Html.Pager(Model).Options(o => o.SetId("pager4").SetPageIndexParameterName("id").SetPageIndexBoxId("pib4").SetGoToButtonId("gtb2").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;"))
+    <div class="pibarea">
+        <select id="pib4"></select><button id="gtb2">跳转</button>
+    </div>
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description{
+    <div class="text-danger">
+    与2.0版不同，MvcPager 3.0版将页索引输入或选择框及跳转按钮完全与MvcPager分离，即页索引输入或选择框及跳转按钮不再是MvcPager自身的一部分，而由用户单独指定和设置，您可以将页面上任何文本框或下拉框指定为MvcPager的页索引输入或选择框，也可以将任何按钮指定为MvcPager的页索引跳转按钮。
+    要为MvcPager指定页索引输入或选择框，请将PagerOptions.PageIndexBoxId设置为该文本框或下拉框的客户端id，将PagerOptions.GoToButtonId设置为跳转按钮的客户端id，若未设置PagerOptions.GoToButtonId，则页索引文本或下拉框中的值改变时即自动实现分页跳转，否则需要点击跳转按钮进行跳转。
+</div>
+}

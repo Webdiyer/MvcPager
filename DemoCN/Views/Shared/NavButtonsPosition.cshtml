@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "导航按钮位置";
+    ViewBag.Description = "该示例演示如何设置MvcPager的导航按钮（上页、下页、首页和尾页）的位置。";
+}
+@model PagedList<string>
+<h6><strong>默认（NavigationPagerItemsPosition = PagerItemsPosition.BothSide）:</strong></h6>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", Id = "pager1" })
+  
+<h6><strong>左侧（NavigationPagerItemsPosition = PagerItemsPosition.Left）：</strong></h6>
+<div class="row" style="height:80px">
+    <div class="col-xs-8">
+        @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id",NumericPagerItemCount = 5, ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", Id = "pager2", PageIndexBoxId = "pageIndexBox", GoToButtonId = "goToBtn",NavigationPagerItemsPosition = PagerItemsPosition.Left})
+    </div>
+    <div class="col-xs-4">
+        <div class="input-group" style="width:120px;margin:20px 0">
+            <select id="pageIndexBox" class="form-control input-sm"></select>
+            <span class="input-group-btn"><button class="btn btn-primary btn-sm" id="goToBtn">跳转</button></span>
+        </div>
+    </div>
+</div>
+
+<h6><strong>右侧（NavigationPagerItemsPosition = PagerItemsPosition.Right）：</strong></h6>
+<div class="row" style="height:80px">
+    <div class="col-xs-8">
+        @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id",NumericPagerItemCount = 5,ContainerTagName = "ul", CssClass = "pagination",CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", Id = "pager3", PageIndexBoxId = "pageIndexBox2", GoToButtonId = "goToBtn2", NavigationPagerItemsPosition = PagerItemsPosition.Right })
+    </div>
+    <div class="col-xs-4">
+        <div class="input-group" style="width:120px;margin:20px 0">
+            <input type="text" id="pageIndexBox2" class="form-control input-sm"/>
+            <span class="input-group-btn"><button class="btn btn-primary btn-sm" id="goToBtn2">跳转</button></span>
+        </div>
+    </div>
+</div>
+
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}

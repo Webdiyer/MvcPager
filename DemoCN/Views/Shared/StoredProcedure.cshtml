@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "使用存储过程";
+    ViewBag.Description = "本示例演示如何使用SQL Server存储过程获取数据配合PagedList来实现分页。";
+}
+@model PagedList<Article>
+@Html.Partial("_ArticleTable")
+@Html.Pager(Model,new PagerOptions{PageIndexParameterName = "id",PagerItemTemplate = "{0}&nbsp;"})
+
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description
+{
+    该示例演示使用传统的ADO.NET数据访问技术调用sql server存储过程，使用DataAdapter填充DataTable，并调用PagedList构造函数生成PagedList&lt;DataRow&gt;的分页数据对象从面实现分页。
+}

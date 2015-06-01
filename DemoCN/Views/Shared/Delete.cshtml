@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "删除数据";
+    ViewBag.Description = "本示例演示ToPagedList扩展方法的如下功能：当前页索引超出总页数时改变当前页索引为最后一页的页索引，同时获取最后一页的数据。";
+}
+@model PagedList<int>
+@using (Html.BeginForm())
+{
+    <table class="table table-bordered table-striped">
+        <tr><th>值</th><th>删除</th></tr>
+        @foreach (var itm in Model)
+        {
+            <tr><td>@itm</td><td><input type="checkbox" name="val" value="@itm" /></td></tr>
+        }
+    </table>
+    <div>
+        <span class="pull-right">
+            <input type="submit" value="删除选中项(D)" accesskey="D" class="btn btn-primary" />&nbsp;&nbsp;
+            <input type="submit" value="重置测试(R)" name="resetList" class="btn btn-success" />
+        </span>
+        当前页索引为：@Model.CurrentPageIndex
+    </div>
+}
+@Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetFirstPageRouteName("MvcPager_Default").SetContainerTagName("ul").SetCssClass("pagination").SetCurrentPagerItemTemplate("<li class=\"active\"><a href=\"#\">{0}</a></li>").SetDisabledPagerItemTemplate("<li class=\"disabled\"><a>{0}</a></li>").SetPagerItemTemplate("<li>{0}</li>"))
+@section Description{
+    <p class="text-primary">操作说明：请跳转到最后一页，选中最后一页上所有项的复选框，然后点击“删除选中项”按钮，此时最后一页的所有数据都会被删除，虽然url中的当前页索引未改变，但Model中PagedList对象的CurrentPageIndex已自动变为最后一页的页索引2，同时显示的数据也是最后一页的数据，不会出现空数据或页索引超出范围的错误。</p>
+}

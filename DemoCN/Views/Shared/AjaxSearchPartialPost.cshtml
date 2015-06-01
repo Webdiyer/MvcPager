@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "AjaxForm搜索（Post）局部加载";
+    ViewBag.Description = "该示例演示在Ajax分页模式下，不使用PartialView，而是通过局部加载实现Post查询和分页的功能。";
+}
+@model PagedList<Article>
+<fieldset><legend>查询</legend>
+@using (Ajax.BeginForm("AjaxSearchPartialPost", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "articles", InsertionMode = InsertionMode.Replace, OnSuccess = "loadPartial" }, new RouteValueDictionary { { "id", "searchForm" }, { "class", "form-inline well well-sm" } }))
+{
+    <span>标题：</span>
+    <input type="text" name="title" placeholder="如：吴起" data-toggle="tooltip" title="如：吴起" id="title" style="width: 100px" class="form-control" />
+    <span>作者：</span>
+    <input type="text" name="author" placeholder="如：Webdiyer" data-toggle="tooltip" title="如：Webdiyer" id="author" style="width: 120px" class="form-control" />
+    <span>来源：</span>
+    <input type="text" name="source" id="source" data-toggle="tooltip" title="如：吴起热线" placeholder="如：吴起热线" style="width: 120px" class="form-control" />
+    <input type="submit" value="搜索(S)" accesskey="S" class="btn btn-default" id="subbtn"/>
+}</fieldset>
+<div id="articles">
+  @Html.Partial("_ArticleTable", Model)
+    <div>
+        <div style="float:left;width:50%">共 @Model.TotalPageCount 页 @Model.TotalItemCount 条记录，当前为第 @Model.CurrentPageIndex 页</div>
+        @Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "id", HtmlAttributes = new Dictionary<string, object> { { "style", "float:right" } } }, new MvcAjaxOptions { UpdateTargetId = "articles", HttpMethod = "Post", DataFormId = "searchForm", EnablePartialLoading = true})
+    </div>
+</div>
+@section Scripts
+{
+    @if (Request.HttpMethod.ToLower()=="get")
+    {
+        {
+            Html.RegisterMvcPagerScriptResource();
+        }
+    }
+    <script type="text/javascript" src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+        function loadPartial(data) { $("#articles").html($(data).find("#articles").html()); }
+    </script>
+}
+
+@section Description{
+本示例只使用一个视图，通过局部加载实现Ajax搜索和分页后只加载分页的数据部分，对于内容较多的页面，建议使用效率更高的PartialView方式来实现查询分页。
+<div class="text-danger">需要判断当前http请求方法是否为get时才注册MvcPager脚本插件，否则会导致分页按钮click事件被多次绑定，分页时触发多次请求！</div>
+}

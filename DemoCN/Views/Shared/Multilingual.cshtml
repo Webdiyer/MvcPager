@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "多语言支持";
+    ViewBag.Description = "该示例演示MvcPager的多语言支持功能。";
+}
+@model PagedList<string>
+       <div class="row">
+<div class="col-xs-8">
+    @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", ContainerTagName = "ul", NumericPagerItemCount = 5, CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", PageIndexBoxId = "pageIndexBox2", GoToButtonId = "goToBtn2" })
+</div>
+<div class="col-xs-4">
+    <div class="input-group" style="margin:20px 0">
+        <span class="input-group-addon">转到第</span>
+        <input type="text" id="pageIndexBox2" class="form-control input-sm" />
+        <span class="input-group-addon">页</span>
+        <span class="input-group-btn"><button class="btn btn-primary btn-sm" id="goToBtn2">跳转</button></span>
+    </div>
+</div>
+</div>
+@using (Html.BeginForm("Multilingual",ViewContext.RouteData.GetRequiredString("controller"),FormMethod.Get))
+{
+    <div>请选择语言：@Html.DropDownList("Languages")<input type="submit" value="切换语言"/></div>
+}
+
+@section scripts
+{
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+
+@section Description{
+    本示例通过设置Threading.Thread.CurrentThread.CurrentCulture来动态改变当前线程的区域性，MvcPager会根据当前线程区域性自动显示相应的语言的导航及提示信息。
+    <p class="text-danger">注意：页索引输入或选择框及跳转按钮不是MvcPager界面的一部分，因此显示的相关文字需要开发人员自己处理，不会随MvcPager自动改变。</p>
+}

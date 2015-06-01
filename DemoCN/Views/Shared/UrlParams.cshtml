@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "保持Url参数";
+    ViewBag.Description = "该示例演示MvcPager在分页过程中原样保持Url参数的功能。";
+}
+@model PagedList<Article>
+<div class="well well-sm">当前Url参数值：Year=@Request.QueryString["year"] ，Author=@Request.QueryString["author"] ，City=@Request.QueryString["city"]。</div>
+@Html.Partial("_ArticleTable", Model)
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", PagerItemTemplate = "{0}&nbsp;" })
+
+
+
+@section Description{
+    MvcPager在分页过程中会保持分页前url中的全部参数，并在分页之后传递到新页面的url中。
+    <div class="text-danger">注意：url中的原有参数名不能与MvcPager的PagerOptions.PageIndexParameterName属性值相同，否则该参数会被理解为MvcPager的页索引参数。</div>
+}

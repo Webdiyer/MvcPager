@@ -1,0 +1,1011 @@
+﻿<MvcPagerDocs>
+  <Classes>
+  <Class name="HtmlPager">
+    <summary>
+      Returns an HTML container element with data attributes that contains a list of hyperlinks and text for providing paging functionality to the giver data.
+    </summary>
+  </Class> 
+  <Class name="AjaxPager">
+    <summary>
+      Returns an HTML container element with Ajax data attributes that contains a list of hyperlinks and text for providing paging functionality to the giver data.
+    </summary>
+  </Class>
+  <Class name="PagerOptions">
+    <summary>
+      Represents option settings for MvcPager.
+    </summary>
+  </Class>
+  <Class name="MvcAjaxOptions">
+    <summary>
+      Represents option settings for running Ajax scripts for the MvcPager control, this class inherits from AjaxOptions.
+    </summary>
+  </Class>
+  <Class name="PagedList">
+    <summary>
+      Represents a strongly typed list of objects that can be accessed by index and contains metadata for paging.
+    </summary>
+  </Class>
+  <Class name="PageLinqExtensions">
+    <summary>
+      This class contains two ToPagedList extension methods which return a strongly typed PagedList&lt;T&gt; object, one for IQueryable&lt;T&gt; and one for IEnumerable&lt;T&gt;
+    </summary>
+  </Class>
+  <Class name="PagerOptionsBuilder">
+    <summary>
+      Represents a PagerOptions builder that is used to create the PagerOptions object.
+    </summary>
+  </Class>  
+  <Class name="ScriptResourceExtensions">
+    <summary>
+      This class contains two extension methods: HtmlHelper.RegisterMvcPagerScriptResource method is used to register the MvcPager jQuery plugin, and AjaxHelper.LoadMvcPagerScript method is used to dynamically load the MvcPager jQuery plugin, two methods can not be used at the same time.
+    </summary>
+  </Class>
+  <Class name="PagerExtensions">
+    <summary>
+      Represents support for HtmlPager and AjaxPager in an application.
+    </summary>
+  </Class>
+  <Class name="MvcAjaxOptionsBuilder">
+      <summary>
+        Represents a MvcAjaxOptions builder that is used to create the MvcAjaxOptions object.
+      </summary>
+    </Class>
+    <Class name="DisplayNameExtensions">
+      <summary>
+        Provides a mechanism to get display names for the generic IPagedList&lt;T&gt; and PagedList&lt;T&gt; models.
+      </summary>
+    </Class>
+  </Classes>
+  <Interfaces>
+    <Interface name="IPagedList">
+      <summary>
+        Defines members that an object must implement in order to have paging functionality provided by the MvcPager control.
+      </summary>
+    </Interface>
+    <Interface name="IPagedList2">
+      <summary>
+        Defines members that an object must implement in order to have paging functionality provided by the MvcPager control.
+      </summary>
+    </Interface>
+  </Interfaces>
+  <HtmlPager>
+    <Constructor name="HtmlPager1">
+      <summary>
+        Initializes a new instance of HtmlPager class with the specified HtmlHelper instance, total item count, page size, current page index and the PagerOptions instance.
+      </summary>
+      <param name="helper">The HTML helper instance that this method extends.</param>
+      <param name="totalItemCount">Total number of data items.</param>
+      <param name="pageSize">Page size.</param>
+      <param name="pageIndex">Current page index.</param>
+      <param name="pagerOptions">A PagerOptions object that provides options for the pagination settings.</param>
+    </Constructor>
+    <Constructor name="HtmlPager2">
+      <summary>
+        Initializes a new instance of HtmlPager class with the specified HtmlHelper instance, total item count, page size and current page index.
+      </summary>
+      <param name="helper">The HTML helper instance that this method extends.</param>
+      <param name="totalItemCount">Total number of data items.</param>
+      <param name="pageSize">Current page index.</param>
+      <param name="pageIndex">Current page index.</param>
+    </Constructor>
+    <Constructor name="HtmlPager3">
+      <summary>
+        Initializes a new instance of HtmlPager class with the specified HtmlHelper instance, data object that implements the IPagedList interface and the PagerOptions instance.
+      </summary>
+      <param name="helper">The HTML helper instance that this method extends.</param>
+      <param name="pagedList">Data object that implements the IPagedList interface.</param>
+      <param name="pagerOptions">A PagerOptions object that provides options for the pagination settings.</param>
+    </Constructor>
+    <Constructor name="HtmlPager4">
+      <summary>
+        Initializes a new instance of HtmlPager class with the specified HtmlHelper instance and data object that implements the IPagedList interface.
+      </summary>
+      <param name="helper">The HTML helper instance that this method extends.</param>
+      <param name="pagedList">Data object that implements the IPagedList interface.</param>
+    </Constructor>
+
+
+    <Method name="Options">
+      <summary>
+
+      </summary>
+    </Method>
+  </HtmlPager>
+  <AjaxPager>
+    <Constructor name="AjaxPager1">
+      <summary>
+        Initializes a new instance of AjaxPager class with the specified AjaxHelper instance, total item count, page size, current page index, PagerOptions and MvcAjaxOptions instances.
+      </summary>
+      <param name="ajax">The AJAX helper instance that this method extends.</param>
+      <param name="totalItemCount">Total number of data items.</param>
+      <param name="pageSize">Page size.</param>
+      <param name="pageIndex">Current page index.</param>
+      <param name="pagerOptions">A PagerOptions object that provides options for the pagination settings.</param>
+      <param name="ajaxOptions">A MvcAjaxOptions object that provides options for the asynchronous request.</param>
+    </Constructor>
+    <Constructor name="AjaxPager2">
+      <summary>
+        Initializes a new instance of AjaxPager class with the specified AjaxHelper instance, data object that implements the IPagedList interface, PagerOptions and MvcAjaxOptions instances.
+      </summary>
+      <param name="ajax">The AJAX helper instance that this method extends.</param>
+      <param name="pagedList">Data object that implements the IPagedList interface.</param>
+      <param name="pagerOptions">A PagerOptions object that provides options for the pagination settings.</param>
+      <param name="ajaxOptions">A MvcAjaxOptions object that provides options for the asynchronous request.</param>
+    </Constructor>
+    <Method name="Options">
+      <summary>
+        Method used to create PagerOptions object.
+      </summary>
+      <param name="builder">
+        <summary>
+          
+        </summary>
+      </param>
+    </Method>
+    <Method name="AjaxOptions">
+      <summary>
+        Method used to create MvcAjaxOptions object.
+      </summary>
+      <param name="builder">
+        <summary>
+
+        </summary>
+      </param>
+    </Method>
+    <Method name="ToHtmlString">
+      <summary>
+        Renders AjaxPager to HTML encoded string for display on the page.
+      </summary>
+    </Method>
+  </AjaxPager>
+  <PagerOptions>
+    <Constructor name="PagerOptions">
+      <summary>
+        Initializes a new instance of the PagerOptions class with default property values.
+      </summary>
+    </Constructor>
+      <Property name="ActionName">
+        <summary>
+          Gets or sets the name of the action method.
+        </summary>
+      </Property>
+      <Property name="ControllerName">
+        <summary>
+          The name of the controller class.
+        </summary>
+      </Property>
+      <Property name="RouteName">
+        <summary>
+          Gets or sets the name of the route that is used to generate paging urls.
+        </summary>
+      </Property>
+      <Property name="RouteValues">
+        <summary>
+          Gets or sets the object that contains the parameters for the route used by MvcPager.
+        </summary>
+      </Property>
+      <Property name="HtmlAttributes">
+        <summary>
+          Gets or sets the object that contains the HTML attributes to set for the MvcPager.
+        </summary>
+      </Property>
+    <Property name="FirstPageRouteName">
+      <summary>
+        Gets or sets the route name for the generation of the first page url.
+      </summary>
+    </Property>
+    <Property name="AutoHide">
+      <summary>
+        Gets or sets a value indicating whether MvcPager should be hidden if there's only one page of data.
+      </summary>
+    </Property>
+    <Property name="PageIndexOutOfRangeErrorMessage">
+      <summary>
+        Gets or sets the error message to be displayed when page index is oute of range (less than 1 or larger than total pages count).
+      </summary>
+    </Property>
+    <Property name="InvalidPageIndexErrorMessage">
+      <summary>
+        Gets or sets the error message to be displayed when page index is invalid (not a valid integer).
+      </summary>
+    </Property>
+    <Property name="PageIndexParameterName">
+      <summary>
+        Gets or sets the page index parameter name in the current route.
+      </summary>
+    </Property>
+    <Property name="PageIndexBoxId">
+      <summary>
+        Gets or sets the ID of the page index box (must be textbox or dropdownlist).
+      </summary>
+    </Property>
+    <Property name="MaximumPageIndexItems">
+      <summary>
+Gets or sets the maximum number of page indices to be displayed within page index dropdownlist, this property value has no effect if page index box is a textbox,
+      </summary>
+    </Property>
+    <Property name="GoToButtonId">
+      <summary>
+        Gets or sets the id value of the go to button for the page index box, if this property value is not set, pagechanged event will be fired after value of the pager index box is changed(fired by javascript onchange event).
+      </summary>
+    </Property>
+    <Property name="PageNumberFormatString">
+      <summary>
+Gets or sets the format string for all numeric pager items.
+      </summary>
+    </Property>
+    <Property name="CurrentPageNumberFormatString">
+      <summary>
+Gets or sets the format string for the current page number.
+      </summary>
+    </Property>
+    <Property name="ContainerTagName">
+      <summary>
+        Gets or sets the HTML tag name for the container element of the pager.
+      </summary>
+    </Property>
+    <Property name="PagerItemTemplate">
+      <summary>
+Gets or sets the html template to be applied to all pager items.
+      </summary>
+    </Property>
+    <Property name="OnPageIndexError">
+      <summary>
+        Gets or sets the Javascript function to call when page index errors occured.
+      </summary>
+    </Property>
+    <Property name="NumericPagerItemTemplate">
+      <summary>
+Gets or sets the html template for the numeric pager items.
+      </summary>
+    </Property>
+    <Property name="CurrentPagerItemTemplate">
+      <summary>
+Gets or sets the html template to be applied to the current page pager item.
+      </summary>
+    </Property>
+    <Property name="NavigationPagerItemTemplate">
+      <summary>
+Gets or sets the html template to be applied to the first, previous, next and last page pager items.
+      </summary>
+    </Property>
+    <Property name="MorePagerItemTemplate">
+      <summary>
+Gets or sets the html template to be applied to the more pager items.
+      </summary>
+    </Property>
+    <Property name="DisabledPagerItemTemplate">
+      <summary>
+Gets or sets the html template to be applied to the disabled pager items.
+      </summary>
+    </Property>
+    <Property name="AlwaysShowFirstLastPageNumber">
+      <summary>
+        Gets or sets a value indicating whether the first and the last numeric pager items should be displayed.
+      </summary>
+    </Property>
+    <Property name="NumericPagerItemCount">
+      <summary>
+Gets or sets the maximum number of the numeric pager items to be displayed.
+      </summary>
+    </Property>
+    <Property name="ShowPrevNext">
+      <summary>
+        Gets or sets a value indicating whether the previous page and the next page pager items should be displayed.
+      </summary>
+    </Property>
+    <Property name="PrevPageText">
+      <summary>
+Gets or sets the text displayed for the previous page pager item.
+      </summary>
+    </Property>
+    <Property name="ShowFirstLast">
+      <summary>
+        Gets or sets a value indicating whether the first and last paging buttons are displayed.
+      </summary>
+    </Property>
+    <Property name="NextPageText">
+      <summary>
+Gets or sets the text displayed for the next page pager item.
+      </summary>
+    </Property>
+    <Property name="ShowNumericPagerItems">
+      <summary>
+Gets or sets a value indicating whether the numeric pager items should be displayed.
+      </summary>
+    </Property>
+    <Property name="ShowFirstLast">
+      <summary>
+        Gets or sets a value indicating whether the first page and the last page pager items should be displayed.
+      </summary>
+    </Property>
+    <Property name="FirstPageText">
+      <summary>
+        Gets or sets the text displayed for the first page button.
+      </summary>
+    </Property>
+    <Property name="LastPageText">
+      <summary>
+Gets or sets the text displayed for the last page pager item.
+      </summary>
+    </Property>
+    <Property name="ShowMorePagerItems">
+      <summary>
+       Gets or sets a value indicating whether the more pager items should be displayed.
+      </summary>
+    </Property>
+    <Property name="MorePageText">
+      <summary>
+Gets or sets the text displayed for the more pager items.
+      </summary>
+    </Property>
+    <Property name="Id">
+      <summary>
+Gets or sets the ID of the top DOM element that is the container of all pager items.
+      </summary>
+    </Property>
+    <Property name="HorizontalAlign">
+      <summary>
+Gets or sets the horizontal alignment of a MvcPager on the page.
+      </summary>
+    </Property>
+    <Property name="CssClass">
+      <summary>
+Gets or sets the css class to be applied to container element of the pager.
+      </summary>
+    </Property>
+    <Property name="ShowDisabledPagerItems">
+      <summary>
+Gets or sets a value indicating whether the disabled pager items should be displayed.
+      </summary>
+    </Property>
+    <Property name="MaximumPageNumber">
+      <summary>
+Gets or sets the maximum page number limitation, default value is 0, which means maximum page number is calculated from the data to be paged.
+      </summary>
+    </Property>
+    <Property name="HidePagerItems">
+      <summary>
+        Gets or sets a value indicating whether MvcPager should be hidden (in case you need to create your own pager UI).
+      </summary>
+    </Property>
+    <Property name="NavigationPagerItemsPosition">
+      <summary>
+        Gets or sets the position of the first, previous, next and last pager items.
+      </summary>
+    </Property>
+  </PagerOptions>
+  <MvcAjaxOptions>
+    <Property name="EnablePartialLoading">
+      <summary>
+        Gets or sets a value indicating whether partial page loading is enabled.
+      </summary>
+    </Property>
+    <Property name="DataFormId">
+      <summary>
+        Gets or sets the ID of the form element that values of fields should be passed to server by MvcPager every time page changed.
+      </summary>
+    </Property>
+    <Property name="AllowCache">
+      <summary>
+        Gets or sets a value indicating whether client cache is allowed.
+      </summary>
+    </Property>
+    <Property name="EnableHistorySupport">
+      <summary>
+        Gets or sets a value indicating browser history support is enabled by adding hash(#) to url.
+      </summary>
+    </Property>
+  </MvcAjaxOptions>
+  <Enums>
+  <Enum name="PagerItemsPosition">
+    <summary>
+      Specifies the position of the first, previous, next and last navigation buttons within MvcPager.
+    </summary>
+  </Enum>
+  </Enums>
+  <PagerItemsPosition>
+  <EnumValue name="BothSide">
+    <summary>Both side</summary>
+  </EnumValue>
+  <EnumValue name="Left">
+    <summary>Left side</summary>
+  </EnumValue>
+  <EnumValue name="Right">
+    <summary>Right side</summary>
+  </EnumValue>
+  </PagerItemsPosition>
+  <PagerExtensions>
+  <Method name="HtmlPager1">
+    <summary>Returns an HtmlPager object with total item count, page size, current page index and the PagerOptions instance.</summary>
+    <param name="helper">The HTML helper instance that this method extends.</param>
+    <param name="totalItemCount">Total number of data items.</param>
+    <param name="pageSize">Page size.</param>
+    <param name="pageIndex">Current page index.</param>
+    <param name="pagerOptions">A PagerOptions object that provides options for the pagination settings.</param>
+    <returns>HtmlPager</returns>
+  </Method>
+  <Method name="HtmlPager2">
+    <summary>Returns an HtmlPager object with total item count, page size and current page index.</summary>
+    <param name="helper">The HTML helper instance that this method extends.</param>
+    <param name="totalItemCount">Total number of data items.</param>
+    <param name="pageSize">Page size.</param>
+    <param name="pageIndex">Current page index.</param>
+    <returns>HtmlPager</returns>
+  </Method>
+  <Method name="HtmlPager3">
+    <summary>Returns an HtmlPager object with the data object that implements the IPagedList interface.</summary>
+    <param name="helper">The HTML helper instance that this method extends.</param>
+    <param name="pagedList">Data object that implements the IPagedList interface.</param>
+    <returns>HtmlPager</returns>
+  </Method>
+  <Method name="HtmlPager4">
+    <summary>
+      Returns an HtmlPager object with the data object that implements the IPagedList interface and the PagerOptions instance.
+    </summary>
+    <param name="helper">The HTML helper instance that this method extends.</param>
+    <param name="pagedList">Data object that implements the IPagedList interface.</param>
+    <param name="pagerOptions">A PagerOptions object that provides options for the pagination settings.</param>
+    <returns>HtmlPager</returns>
+  </Method>
+  <Method name="AjaxPager1">
+    <summary>
+      Returns an AjaxPager object with total item count, page size, current page index, PagerOptions and MvcAjaxOptions instances.
+    </summary>
+    <param name="ajax">The AJAX helper instance that this method extends.</param>
+    <param name="totalItemCount">Total number of data items.</param>
+    <param name="pageSize">Page size.</param>
+    <param name="pageIndex">Current page index.</param>
+    <param name="pagerOptions">A PagerOptions object that provides options for the pagination settings.</param>
+    <param name="ajaxOptions">A MvcAjaxOptions object that provides options for the asynchronous request.</param>
+    <returns>AjaxPager</returns>
+  </Method>
+  <Method name="AjaxPager2">
+    <summary>
+      Returns an AjaxPager object with the data object that implements the IPagedList interface.
+    </summary>
+    <param name="ajax">The AJAX helper instance that this method extends.</param>
+    <param name="pagedList">Data object that implements the IPagedList interface.</param>
+    <returns>AjaxPager</returns>
+  </Method>
+  <Method name="AjaxPager3">
+    <summary>
+      Returns an AjaxPager object with the data object that implements the IPagedList interface and the PagerOptions instance.
+    </summary>
+    <param name="ajax">The AJAX helper instance that this method extends.</param>
+    <param name="pagedList">Data object that implements the IPagedList interface.</param>
+    <param name="pagerOptions">A PagerOptions object that provides options for the pagination settings.</param>
+    <returns>AjaxPager</returns>
+  </Method>
+  <Method name="AjaxPager4">
+    <summary>
+      Returns an AjaxPager object with the data object that implements the IPagedList interface, PagerOptions and MvcAjaxOptions instances.
+    </summary>
+    <param name="ajax">The AJAX helper instance that this method extends.</param>
+    <param name="pagedList">Data object that implements the IPagedList interface.</param>
+    <param name="pagerOptions">A PagerOptions object that provides options for the pagination settings.</param>
+    <param name="ajaxOptions">A MvcAjaxOptions object that provides options for the asynchronous request.</param>
+    <returns>AjaxPager</returns>
+  </Method>
+  </PagerExtensions>
+
+  <ScriptResourceExtensions>
+  <Method name="LoadMvcPagerScript">
+    <summary>
+      通过Ajax动态加载并运行MvcPager客户端jQuery插件
+    </summary>
+    <param name="ajax">此方法扩展的 AjaxHelper 实例</param>
+  </Method>
+  <Method name="RegisterMvcPagerScriptResource">
+    <summary>
+      注册MvcPager客户端jQuery插件
+    </summary>
+    <param name="html">此方法扩展的 HtmlHelper 实例</param>
+  </Method>
+  </ScriptResourceExtensions>
+  
+  <PagedList>
+  <Constructor name="PagedList1">
+    <summary>
+      Initializes a new instance of the PagedList class using the data to be paged, current page index and page size.
+    </summary>
+    <param name="allItems">All items to be paged</param>
+    <param name="pageIndex">Current page index</param>
+    <param name="pageSize">Page size</param>
+  </Constructor>
+  <Constructor name="PagedList2">
+    <summary>
+     Initializes a new instance of the PagedList class using current page items, current page index, page size and the total item count.
+    </summary>
+    <param name="currentPageItems">Object that contains data to be displayed on page, should implements IEnumerable&lt;T&gt; interface;</param>
+    <param name="pageIndex">Current page index</param>
+    <param name="pageSize">Page size</param>
+    <param name="totalItemCount">The total number of records that are available for paging</param>
+  </Constructor>
+  <Constructor name="PagedList3">
+    <summary>
+      Initializes a new instance of the PagedList class using the data to be paged, current page index and page size.
+    </summary>
+    <param name="allItems">All items to be paged</param>
+    <param name="pageIndex">Current page index</param>
+    <param name="pageSize">Page size</param>
+  </Constructor>
+  <Constructor name="PagedList4">
+    <summary>
+      Initializes a new instance of the PagedList class using current page items, current page index, page size and the total item count.
+    </summary>
+    <param name="currentPageItems">Object that contains data to be displayed on page, should implements IQueryable&lt;T&gt; interface</param>
+    <param name="pageIndex">Current page index</param>
+    <param name="pageSize">Page size</param>
+    <param name="totalItemCount">The total number of records that are available for paging</param>
+  </Constructor>
+    <Property name="CurrentPageIndex">
+      <summary>Gets or sets the current page index.</summary>
+    </Property>
+    <Property name="PageSize">
+      <summary>Gets or sets the number of data items that are displayed for each page of data.</summary>
+    </Property>
+    <Property name="TotalItemCount">
+      <summary>Gets or sets the total number of records that are available for paging.</summary>
+    </Property>
+    <Property name="TotalPageCount">
+      <summary>Gets or sets the total number of data items that are available for paging.</summary>
+    </Property>
+    <Property name="StartItemIndex">
+      <summary>Gets the index of the first data item that is displayed on a page of data.</summary>
+    </Property>
+    <Property name="EndItemIndex">
+      <summary>Gets the index of the last data item that is displayed on a page of data.</summary>
+    </Property>
+  </PagedList>
+
+  <IPagedList>
+    <Property name="CurrentPageIndex">
+      <summary>Gets or sets the current page index.</summary>
+    </Property>
+    <Property name="PageSize">
+      <summary>Gets or sets the number of data items that are displayed for each page of data.</summary>
+    </Property>
+    <Property name="TotalItemCount">
+      <summary>Gets or sets the total number of data items that are available for paging.</summary>
+    </Property>
+  </IPagedList>
+
+  <PageLinqExtensions>
+    <Method name="ToPagedList1">
+      <summary>
+        Gets a strongly typed PagedList object using all items, current page index and page size.
+      </summary>
+      <param name="allItems">A sequence of data items that implemented IQueryable interface.</param>
+      <param name="pageIndex">Current page index.</param>
+      <param name="pageSize">The number of data items that are displayed for each page of data.</param>
+    </Method>
+    <Method name="ToPagedList2">
+      <summary>
+        Gets a strongly typed PagedList object using all items, current page index and page size.
+      </summary>
+      <param name="allItems">A sequence of data items that implemented IEnumerable interface.</param>
+      <param name="pageIndex">Current page index.</param>
+      <param name="pageSize">The number of data items that are displayed for each page of data.</param>
+    </Method>
+  </PageLinqExtensions>
+
+  <PagerOptionsBuilder>
+  <Constrctor name="PagerOptionsBuilder">
+    <summary>
+      Initializes a new instance of the PagerOptionsBuilder class with a PagerOptions instance.
+    </summary>
+    <param name="pagerOptions">
+      An PagerOptions instance contains option settings for the MvcPager control.
+    </param>
+  </Constrctor>
+  <Method name="AddHtmlAttribute">
+    <summary>
+      Adds an item to HtmlAttributes property of PagerOptions
+    </summary>
+    <param name="key">The name of the html attribute to add.
+    </param>
+    <param name="value">The value of the html attribute to add.
+    </param>
+  </Method>
+  <Method name="AddRouteValue">
+    <summary>
+      Adds an item to RouteValues property of PagerOptions.
+    </summary>
+    <param name="key">
+      The key of the element to add.
+    </param>
+    <param name="value">
+      The value of the element to add.
+    </param>
+  </Method>
+  <Method name="AlwaysShowFirstLastPageNumber">
+    <summary>
+      Sets the AlwaysShowFirstLastPageNumber property of PagerOptions value to true.
+    </summary>
+  </Method>
+  <Method name="DisableAutoHide">
+    <summary>
+      Sets the AutoHide property of PagerOptions value to false.
+    </summary>
+  </Method>
+  <Method name="HideDisabledPagerItems">
+    <summary>
+      Sets the ShowDisabledPagerItems property of PagerOptions value to false.
+    </summary>
+  </Method>
+  <Method name="HideFirstLast">
+    <summary>
+      Sets the ShowFirstLast property of PagerOptions value to false.
+    </summary>
+  </Method>
+  <Method name="HideMorePagerItems">
+    <summary>
+      Sets the ShowMorePagerItems property of PagerOptions value to false.
+    </summary>
+  </Method>
+  <Method name="HideNumericPagerItems">
+    <summary>
+      Sets the ShowNumericPagerItems property of PagerOptions value to false.
+    </summary>
+  </Method>
+  <Method name="HidePagerItems">
+    <summary>
+      Sets the ShowPagerItems property of PagerOptions value to false.
+    </summary>
+  </Method>
+  <Method name="HidePrevNext">
+    <summary>
+      Sets the ShowPrevNext property of PagerOptions value to false.
+    </summary>
+  </Method>
+  <Method name="SetActionName">
+    <summary>
+      Sets the ActionName property of PagerOptions with a given value.
+    </summary>
+    <param name="actionName">
+      The name of the action method.
+    </param>
+  </Method>
+  <Method name="SetContainerTagName">
+    <summary>
+      Sets the ContainerTagName property of PagerOptions with a given value
+    </summary>
+    <param name="tagName">Html tag name.
+    </param>
+  </Method>
+  <Method name="SetControllerName">
+    <summary>
+      Sets the ControllerName property of PagerOptions with a given value
+    </summary>
+    <param name="controllerName">
+      The name of the controller class.
+    </param>
+  </Method>
+  <Method name="SetCssClass">
+    <summary>
+      Sets the CssClass property of PagerOptions with a given value.
+    </summary>
+    <param name="cssClass">Css class name.
+    </param>
+  </Method>
+  <Method name="SetCurrentPageNumberFormatString">
+    <summary>
+      Sets the CurrentPageNumberFormatString property of PagerOptions with a given value.
+    </summary>
+    <param name="format">
+      The format string for the current page number.
+    </param>
+  </Method>
+  <Method name="SetCurrentPagerItemTemplate">
+    <summary>
+      Sets the CurrentPagerItemTemplate property of PagerOptions with a given value.
+    </summary>
+    <param name="template">
+      The html template to be applied to the current page pager item.
+    </param>
+  </Method>
+  <Method name="SetDisabledPagerItemTemplate">
+    <summary>
+      Sets the DisabledPagerItemTemplate property of PagerOptions with a given value.
+    </summary>
+    <param name="template">
+      The html template to be applied to the disabled pager item.
+    </param>
+  </Method>
+  <Method name="SetFirstPageRouteName">
+    <summary>
+      Sets the FirstPageRouteName property of PagerOptions with a given value.
+    </summary>
+    <param name="routeName">
+      The route name for the generation of the first page url.
+    </param>
+  </Method>
+  <Method name="SetFirstPageText">
+    <summary>
+      Sets the FirstPageText property of PagerOptions with a given value.
+    </summary>
+    <param name="text">
+      The text displayed for the first page button.
+    </param>
+  </Method>
+  <Method name="SetGoToButtonId">
+    <summary>
+      Sets the GoToButtonId property of PagerOptions with a given value.
+    </summary>
+    <param name="id">
+      The ID of the go-to-page button.
+    </param>
+  </Method>
+  <Method name="SetHorizontalAlign">
+    <summary>
+      Sets the HorizontalAlign property of PagerOptions with a given value.
+    </summary>
+    <param name="alignment">
+    </param>
+  </Method>
+  <Method name="SetHtmlAttributes">
+    <summary>
+      Sets the HtmlAttributes property of PagerOptions with a given value.
+    </summary>
+    <param name="attributes">
+    </param>
+  </Method>
+  <Method name="SetId">
+    <summary>
+      Sets the Id property of PagerOptions with a given value.
+    </summary>
+    <param name="id">
+    </param>
+  </Method>
+  <Method name="SetInvalidPageIndexErrorMessage">
+    <summary>
+      Sets the InvalidPageIndexErrorMessage property of PagerOptions with a given value.
+    </summary>
+    <param name="msg">
+    </param>
+  </Method>
+  <Method name="SetLastPageText">
+    <summary>
+      Sets the LastPageText property of PagerOptions with a given value.
+    </summary>
+    <param name="text">
+    </param>
+  </Method>
+  <Method name="SetMaximumPageIndexItems">
+    <summary>
+      Sets the MaximumPageIndexItems property of PagerOptions with a given value.
+    </summary>
+    <param name="itmes">
+    </param>
+  </Method>
+  <Method name="SetMaximumPageNumber">
+    <summary>
+      Sets the MaximumPageNumber property of PagerOptions with a given value.
+    </summary>
+    <param name="number">
+    </param>
+  </Method>
+  <Method name="SetMorePagerItemTemplate">
+    <summary>
+      Sets the MorePagerItemTemplate property of PagerOptions with a given value.
+    </summary>
+    <param name="template">
+    </param>
+  </Method>
+  <Method name="SetMorePageText">
+    <summary>
+      Sets the MorePageText property of PagerOptions with a given value.
+    </summary>
+    <param name="text">
+    </param>
+  </Method>
+  <Method name="SetNavigationPagerItemsPosition">
+    <summary>
+      Sets the NavigationPagerItemsPosition property of PagerOptions with a given value.
+    </summary>
+    <param name="position">
+    </param>
+  </Method>
+  <Method name="SetNavigationPagerItemTemplate">
+    <summary>
+      Sets the NavigationPagerItemTemplate property of PagerOptions with a given value.
+    </summary>
+    <param name="template">
+    </param>
+  </Method>
+  <Method name="SetNextPageText">
+    <summary>
+      Sets the NextPageText property of PagerOptions with a given value.
+    </summary>
+    <param name="text">
+    </param>
+  </Method>
+  <Method name="SetNumericPagerItemCount">
+    <summary>
+      Sets the NumericPagerItemCount property of PagerOptions with a given value.
+    </summary>
+    <param name="itemCount">
+    </param>
+  </Method>
+  <Method name="SetNumericPagerItemTemplate">
+    <summary>
+      Sets the NumericPagerItemTemplate property of PagerOptions with a given value.
+    </summary>
+    <param name="template">
+    </param>
+  </Method>
+  <Method name="SetOnPageIndexError">
+    <summary>
+      Sets the OnPageIndexError property of PagerOptions with a given value.
+    </summary>
+    <param name="handler">
+    </param>
+  </Method>
+  <Method name="SetPageIndexBoxId">
+    <summary>
+      Sets the PageIndexBoxId property of PagerOptions with a given value.
+    </summary>
+    <param name="id">
+    </param>
+  </Method>
+  <Method name="SetPageIndexOutOfRangeErrorMessage">
+    <summary>
+      Sets the PageIndexOutOfRangeErrorMessage property of PagerOptions with a given value.
+    </summary>
+    <param name="msg">
+    </param>
+  </Method>
+  <Method name="SetPageIndexParameterName">
+    <summary>
+      Sets the PageIndexParameterName property of PagerOptions with a given value.
+    </summary>
+    <param name="prmName">
+    </param>
+  </Method>
+  <Method name="SetPageNumberFormatString">
+    <summary>
+      Sets the PageNumberFormatString property of PagerOptions with a given value.
+    </summary>
+    <param name="format">
+    </param>
+  </Method>
+  <Method name="SetPagerItemTemplate">
+    <summary>
+      Sets the PagerItemTemplate property of PagerOptions with a given value.
+    </summary>
+    <param name="template">
+    </param>
+  </Method>
+  <Method name="SetPrevPageText">
+    <summary>
+      Sets the PrevPageText property of PagerOptions with a given value.
+    </summary>
+    <param name="text">
+    </param>
+  </Method>
+  <Method name="SetRouteName">
+    <summary>
+      Sets the RouteName property of PagerOptions with a given value.
+    </summary>
+    <param name="routeName">
+      The name of the route that is used to generate paging urls.
+    </param>
+  </Method>
+  <Method name="SetRouteValues">
+    <summary>
+      Sets the RouteValues property of <see cref="PagerOptions"/> with a given value.
+    </summary>
+    <param name="values">
+    </param>
+  </Method>
+</PagerOptionsBuilder>
+
+  <MvcAjaxOptionsBuilder>
+    <Constructor name="MvcAjaxOptionsBuilder">
+      <summary>
+        Initializes a new instance of the MvcAjaxOptionsBuilder class with a MvcAjaxOptions instance.
+      </summary>
+      <param name="ajaxOptions">
+        A MvcAjaxOptions instance contains option settings for running Ajax scripts for the MvcPager control.
+      </param>
+    </Constructor>
+    <Method name="DisableHistorySupport">
+      <summary>
+        Disables the browser history support, it's equivalent of setting MvcAjaxOptions.EnableHistorySupport to false.
+      </summary>
+    </Method>
+    <Method name="DisallowCache">
+      <summary>
+        Disables the client cache, it's equivalent of setting MvcAjaxOptions.AllowCache to false.
+      </summary>
+    </Method>
+    <Method name="EnablePartialLoading">
+      <summary>
+        Sets a value indicating whether partial page loading is enabled, it's equivalent of setting MvcAjaxOptions.EnablePartialLoading to true.
+      </summary>
+    </Method>
+    <Method name="SetConfirm">
+      <summary>
+        Sets the message to display in a confirmation window before a request is submitted, it's equivalent of setting MvcAjaxOptions.Confirm to the given value.
+      </summary>
+      <param name="confirm">
+      </param>
+    </Method>
+    <Method name="SetDataFormId">
+      <summary>
+        Sets the ID of the form element that values of fields should be passed to server by MvcPager every time page changed, it's equivalent of setting MvcAjaxOptions.DataFormId to the given value.
+      </summary>
+      <param name="id">
+      </param>
+    </Method>
+    <Method name="SetHttpMethod">
+      <summary>
+        Sets the HTTP request method ("Get" or "Post"), it's equivalent of setting MvcAjaxOptions.HttpMethod to the given value.
+      </summary>
+      <param name="method">
+      </param>
+    </Method>
+    <Method name="SetLoadingElementDuration">
+      <summary>
+        Sets a value, in milliseconds, that controls the duration of the animation when showing or hiding the loading element, it's equivalent of setting MvcAjaxOptions.LoadingElementDuration to the given value.
+      </summary>
+      <param name="duration">
+      </param>
+    </Method>
+    <Method name="SetLoadingElementId">
+      <summary>
+        Sets the id attribute of an HTML element that is displayed while the Ajax function is loading, it's equivalent of setting MvcAjaxOptions.LoadingElementId to the given value.
+      </summary>
+      <param name="id">
+      </param>
+    </Method>
+    <Method name="SetOnBegin">
+      <summary>
+        Sets the name of the JavaScript function to call immediately before the page is updated, it's equivalent of setting MvcAjaxOptions.OnBegin to the given value.
+      </summary>
+      <param name="name">
+      </param>
+    </Method>
+    <Method name="SetOnComplete">
+      <summary>
+        Sets the JavaScript function to call when response data has been instantiated but before the page is updated, it's equivalent of setting MvcAjaxOptions.OnComplete to the given value.
+      </summary>
+      <param name="name">
+      </param>
+    </Method>
+    <Method name="SetOnFailure">
+      <summary>
+        Sets the JavaScript function to call if the page update fails, it's equivalent of setting MvcAjaxOptions.OnFailure to the given value.
+      </summary>
+      <param name="name">
+      </param>
+    </Method>
+    <Method name="SetOnSuccess">
+      <summary>
+        Sets the JavaScript function to call after the page is successfully updated, it's equivalent of setting MvcAjaxOptions.OnSuccess to the given value.
+      </summary>
+      <param name="name">
+      </param>
+    </Method>
+    <Method name="SetUpdateTargetId">
+      <summary>
+        Sets sets the ID of the DOM element to update by using the response from the server, it's equivalent of setting MvcAjaxOptions.UpdateTargetId to the given value.
+      </summary>
+      <param name="targetId">
+      </param>
+    </Method>
+  </MvcAjaxOptionsBuilder>
+  <DisplayNameExtensions>
+    <Method name="DisplayNameFor1">
+      <summary>
+        Gets the display name for the model of type IPagedList&lt;T&gt;.
+      </summary>
+    </Method>
+    <Method name="DisplayNameFor2">
+      <summary>
+        Gets the display name for the model of type PagedList&lt;T&gt;.
+      </summary>
+    </Method>
+  </DisplayNameExtensions>
+</MvcPagerDocs>

@@ -1,0 +1,5 @@
+﻿@model PagedList<Order>
+           
+
+@{ Html.RenderPartial("_DataTable"); }
+@Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "id",HidePagerItems = true,PageIndexBoxId = "pageIndexBox"}).AjaxOptions(a => a.SetUpdateTargetId("orders").SetOnComplete("bindPagerItems"))

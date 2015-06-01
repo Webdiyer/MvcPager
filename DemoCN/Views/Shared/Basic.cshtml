@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "标准Url路由分页";
+    ViewBag.Description = "该示例演示最基本的MvcPager路由分页功能。";
+}
+@model PagedList<Article>
+@Html.Partial("_ArticleTable", Model)
+
+    @Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetHorizontalAlign("right").SetPagerItemTemplate("&nbsp;{0}"))
+@section Description{
+    使用HmtlHelper的Pager扩展方法来实现标准Url路由分页。Html.Pager()方法返回HtmlPager对象，您可以通过Html.Pager()方法的重载来传递PagerOptions参数，也可以通过新的HtmlPager的Options()方法来设置参数值。
+    <div class="text-info">使用HtmlPager时，若没有使用页索引输入或选择框，也没有调用客户端Javascript API，则不需要用Html.RegisterMvcPagerScriptResource()方法注册客户端脚本库。</div>
+}

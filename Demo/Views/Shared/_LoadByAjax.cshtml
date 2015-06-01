@@ -1,0 +1,8 @@
+﻿@model PagedList<Order>
+@{ Html.RenderPartial("_DataTable"); }
+    @Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "id", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>",DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>",PagerItemTemplate = "<li>{0}</li>" }, new MvcAjaxOptions { UpdateTargetId = "orders" })
+<script type="text/javascript">
+    $(function () {
+        @{ Ajax.LoadMvcPagerScript(); }
+    });
+</script>

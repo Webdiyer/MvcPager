@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "DataRow collection paging";
+    ViewBag.Description = "This sample demonstrates how to page for DataRow collection filled with ADO.NET DataAdapter.";
+}
+@model PagedList<System.Data.DataRow>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>Order Id</th>
+        <th>Customer Id</th>
+        <th>Company Name</th>
+        <th>Employee Name</th>
+    </tr>
+    @foreach (var dr in Model)
+    {
+        <tr><td>@dr["OrderId"]</td><td>@dr["CustomerId"]</td><td>@dr["CompanyName"]</td>
+    <td>@dr["EmployeeName"]</td></tr>
+    }
+</table>
+@Html.Pager(Model,new PagerOptions{PageIndexParameterName = "id",PagerItemTemplate ="{0}&nbsp;"})

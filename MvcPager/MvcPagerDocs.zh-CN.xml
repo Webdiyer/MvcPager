@@ -1,0 +1,934 @@
+﻿<MvcPagerDocs>
+  <Classes>
+  <Class name="HtmlPager">
+    <summary>
+      表示已Html编码的Html分页控件。
+    </summary>
+  </Class>
+  <Class name="AjaxPager">
+    <summary>
+      表示已Html编码的Ajax分页控件。
+    </summary>
+  </Class>
+  <Class name="PagerOptions">
+    <summary>
+      表示包含MvcPager分页控件相关选项和设置的对象。
+    </summary>
+  </Class>
+  <Class name="MvcAjaxOptions">
+    <summary>
+      表示用于 MvcPager 在 Ajax 分页模式下的选项设置，该类继承自 AjaxOptions。
+    </summary>
+  </Class>
+  <Class name="PagedList">
+    <summary>
+      表示包含分页数据对象的强类型列表。
+    </summary>
+  </Class>
+  <Class name="PageLinqExtensions">
+    <summary>
+      该类包含两个ToPagedList扩展方法，用于将泛型IQueryable&lt;T&gt;或泛型IEnumerable&lt;T&gt;对象转换为泛型PagedList&lt;T&gt;对象；
+    </summary>
+  </Class>
+  <Class name="PagerOptionsBuilder">
+    <summary>
+      表示用于构建PagerOptions对象的辅助对象。
+    </summary>
+  </Class>
+    <Class name="ScriptResourceExtensions">
+    <summary>
+      表示包含MvcPager客户端脚本相关方法的对象。
+    </summary>
+  </Class>
+    <Class name="PagerExtensions">
+    <summary>
+      表示在应用程序中支持 HtmlPager 和 AjaxPager。 
+    </summary>
+  </Class>
+  <Class name="MvcAjaxOptionsBuilder">
+    <summary>
+      表示用于构建MvcAjaxOptions对象的辅助对象。
+    </summary>
+  </Class>
+    <Class name="DisplayNameExtensions">
+      <summary>
+        提供一种从IPagedList&lt;T&gt; 和 PagedList&lt;T&gt;模型中获取显示名称的机制.
+      </summary>
+    </Class>
+  </Classes>
+  <Interfaces>
+    <Interface name="IPagedList">
+      <summary>
+        表示包含分页数据对象的非泛型集合。
+      </summary>
+    </Interface>
+    <Interface name="IPagedList2">
+      <summary>
+表示包含分页数据对象的泛型集合。
+      </summary>
+    </Interface>
+  </Interfaces>
+  <HtmlPager>
+    <Constructor name="HtmlPager1">
+      <summary>
+        根据HtmlHelper、总记录数、每页显示记录数、当前页索引和PagerOptions创建HtmlPager。
+      </summary>
+    <param name="helper">此方法扩展的 HTMLHelper 实例</param>
+<param name="totalItemCount"></param>
+<param name="pageSize"></param>
+<param name="pageIndex"></param>
+<param name="pagerOptions"></param>
+    </Constructor>
+    <Constructor name="HtmlPager2">
+      <summary>
+根据HtmlHelper、总记录数、每页显示记录数和当前页索引创建HtmlPager。
+      </summary>
+    <param name="helper">此方法扩展的 HTMLHelper 实例</param>
+<param name="totalItemCount"></param>
+<param name="pageSize"></param>
+<param name="pageIndex"></param>
+    </Constructor>
+    <Constructor name="HtmlPager3">
+      <summary>
+根据HtmlHelper、包含分页数据的IPagedList对象和PagerOptions创建HtmlPager。
+      </summary>
+    <param name="helper">此方法扩展的 HTMLHelper 实例</param>
+<param name="pagedList"></param>
+<param name="pagerOptions"></param>
+    </Constructor>
+    <Constructor name="HtmlPager4">
+      <summary>
+根据HtmlHelper和包含分页数据的IPagedList对象创建HtmlPager。
+      </summary>
+    <param name="helper">此方法扩展的 HTMLHelper 实例</param>
+<param name="pagedList"></param>
+    </Constructor>
+
+    <Method name="Options">
+      <summary>
+
+      </summary>
+    </Method>
+  </HtmlPager>
+  <AjaxPager>
+    <Constructor name="AjaxPager1">
+      <summary>
+根据AjaxHelper、总记录数、每页显示记录数、当前页索引、PagerOptions和MvcAjaxOptions属性值生成创建AjaxPager对象。
+      </summary>
+    <param name="ajax">此方法扩展的 AjaxHelper 实例</param>
+      <param name="totalItemCount">要分页的总记录数</param>
+<param name="pageSize">每页显示的记录数</param>
+<param name="pageIndex">当前页索引</param>
+<param name="pagerOptions">包含分页控件设置的PagerOptions对象。</param>
+<param name="ajaxOptions">包含Ajax设置的MvcAjaxOptions对象。</param>
+    </Constructor>
+    <Constructor name="AjaxPager2">
+      <summary>
+根据AjaxHelper、包含分页数据的IPagedList对象、PagerOptions和MvcAjaxOptions属性值生成创建AjaxPager对象。
+      </summary>
+    <param name="ajax">此方法扩展的 AjaxHelper 实例。</param>
+<param name="pagedList">包含分页数据的IPagedList对象。</param>
+<param name="pagerOptions">包含分页控件设置的PagerOptions对象。</param>
+<param name="ajaxOptions">包含Ajax设置的MvcAjaxOptions对象。</param>
+    </Constructor>
+    <Method name="Options">
+      <summary>
+用于构建PagerOptions对象的方法。
+      </summary>
+      <param name="builder">
+        <summary>
+
+        </summary>
+      </param>
+    </Method>
+    <Method name="AjaxOptions">
+      <summary>
+用于构建MvcAjaxOptions对象的方法。
+      </summary>
+      <param name="builder">
+        <summary>
+
+        </summary>
+      </param>
+    </Method>
+    <Method name="ToHtmlString">
+      <summary>
+将AjaxPager对象生成用于在网页上显示的 HTML 编码字符串。
+      </summary>
+    </Method>
+  </AjaxPager>
+  <PagerOptions>
+    <Constructor name="PagerOptions">
+      <summary>
+        用默认属性值初始化PagerOptions对象。
+      </summary>
+    </Constructor>
+    <Property name="ActionName">
+      <summary>
+        用于MvcPager生成分页链接的控制器的Action名称
+      </summary>
+    </Property>
+    <Property name="ControllerName">
+      <summary>
+        用于MvcPager生成分页链接的控制器名称
+      </summary>
+    </Property>
+    <Property name="RouteName">
+      <summary>
+        用于MvcPager生成分页链接的路由名称
+      </summary>
+    </Property>
+    <Property name="RouteValues">
+      <summary>
+        用于MvcPager生成分页链接的路由的值
+      </summary>
+    </Property>
+    <Property name="HtmlAttributes">
+      <summary>
+        要应用到MvcPager的容器元素上的Html属性
+      </summary>
+    </Property>
+    <Property name="FirstPageRouteName">
+      <summary>
+        第一页使用的路由名称（路由定义中应不包含页索引参数，或页索引参数默认值为UrlParameter.Optional）
+      </summary>
+    </Property>
+    <Property name="AutoHide">
+      <summary>
+        指定总页数只有一页时，MvcPager是否自动隐藏
+      </summary>
+    </Property>
+    <Property name="PageIndexOutOfRangeErrorMessage">
+      <summary>
+        页索引超出范围时显示的错误消息
+      </summary>
+    </Property>
+    <Property name="InvalidPageIndexErrorMessage">
+      <summary>
+        页索引无效（不是有效的数值，如字符串或其它字符）时显示的错误消息
+      </summary>
+    </Property>
+    <Property name="PageIndexParameterName">
+      <summary>
+        路由Url中页索引参数的名称
+      </summary>
+    </Property>
+    <Property name="PageIndexBoxId">
+      <summary>
+        页索引输入或选择框的客户端ID
+      </summary>
+    </Property>
+    <Property name="MaximumPageIndexItems">
+      <summary>
+        页索引下拉框中显示的最大页索引条数，该属性仅当页索引框为下拉框时有效，为文本输入框时被忽略
+      </summary>
+    </Property>
+    <Property name="GoToButtonId">
+      <summary>
+        页索引输入或下拉框跳转按钮的客户端ID，若不设置此属性，则在改变页索引输入或下拉框的值后立即自动跳转
+      </summary>
+    </Property>
+    <Property name="PageNumberFormatString">
+      <summary>
+        数字页索引格式化字符串
+      </summary>
+    </Property>
+    <Property name="CurrentPageNumberFormatString">
+      <summary>
+        当前页索引格式字符串
+      </summary>
+    </Property>
+    <Property name="ContainerTagName">
+      <summary>
+        分页控件html容器标签名，默认为div
+      </summary>
+    </Property>
+    <Property name="PagerItemTemplate">
+      <summary>
+        包含数字页、当前页及上、下、前、后分页元素的html模板
+      </summary>
+    </Property>
+    <Property name="OnPageIndexError">
+      <summary>
+        页索引出错时要调用的Javascript函数
+      </summary>
+    </Property>
+    <Property name="NumericPagerItemTemplate">
+      <summary>
+        数字页索引分页元素的html模板
+      </summary>
+    </Property>
+    <Property name="CurrentPagerItemTemplate">
+      <summary>
+        当前页分页元素的html模板
+      </summary>
+    </Property>
+    <Property name="NavigationPagerItemTemplate">
+      <summary>
+        上页、下页、首页和尾首四个分页元素的html模板
+      </summary>
+    </Property>
+    <Property name="MorePagerItemTemplate">
+      <summary>
+        更多页分页元素的html模板
+      </summary>
+    </Property>
+    <Property name="DisabledPagerItemTemplate">
+      <summary>
+        已禁用的分页元素的html模板
+      </summary>
+    </Property>
+    <Property name="AlwaysShowFirstLastPageNumber">
+      <summary>
+        是否总是显示第一页和最后一页两个数字页索引按钮
+      </summary>
+    </Property>
+    <Property name="NumericPagerItemCount">
+      <summary>
+        数字页索引分页按钮数目
+      </summary>
+    </Property>
+    <Property name="ShowPrevNext">
+      <summary>
+        是否显示上一页和下一页分页导航按钮
+      </summary>
+    </Property>
+    <Property name="PrevPageText">
+      <summary>
+        上一页按钮上显示的文本
+      </summary>
+    </Property>
+    <Property name="ShowFirstLast">
+      <summary>
+        是否显示第一页和最后一页分页导航按钮
+      </summary>
+    </Property>
+    <Property name="NextPageText">
+      <summary>
+        下一页按钮上显示的文本
+      </summary>
+    </Property>
+    <Property name="ShowNumericPagerItems">
+      <summary>
+        是否显示数字页索引按钮及更多页按钮
+      </summary>
+    </Property>
+    <Property name="ShowFirstLast">
+      <summary>
+        是否显示第一页和最后一页分页导航按钮
+      </summary>
+    </Property>
+    <Property name="FirstPageText">
+      <summary>
+        第一页按钮上显示的文本
+      </summary>
+    </Property>
+    <Property name="LastPageText">
+      <summary>
+        最后一页按钮上显示的文本
+      </summary>
+    </Property>
+    <Property name="ShowMorePagerItems">
+      <summary>
+        是否显示更多页按钮
+      </summary>
+    </Property>
+    <Property name="MorePageText">
+      <summary>
+        更多页按钮上显示的文本
+      </summary>
+    </Property>
+    <Property name="Id">
+      <summary>
+        分页控件的父容器标签的ID
+      </summary>
+    </Property>
+    <Property name="HorizontalAlign">
+      <summary>
+        分页控件水平对齐方式
+      </summary>
+    </Property>
+    <Property name="CssClass">
+      <summary>
+        应用于分页控件的CSS样式类
+      </summary>
+    </Property>
+    <Property name="ShowDisabledPagerItems">
+      <summary>
+        是否显示已禁用的分页按钮
+      </summary>
+    </Property>
+    <Property name="MaximumPageNumber">
+      <summary>
+        限制显示的最大页数，默认值为0，即根据总记录数算出的总页数
+      </summary>
+    </Property>
+    <Property name="HidePagerItems">
+      <summary>
+        是否隐藏分页元素。如该值设为true，MvcPager将被隐藏而不显示任何分页元素，您可以通过客户端Javascript API来创建自己的分页用户界面
+      </summary>
+    </Property>
+    <Property name="NavigationPagerItemsPosition">
+      <summary>
+        首页、下页、下页和尾页四个导航按钮的位置
+      </summary>
+    </Property>
+  </PagerOptions>
+  <MvcAjaxOptions>
+    <Property name="EnablePartialLoading">
+      <summary>
+        获取或设置一个值，该值指示是否在Ajax分页模式下启用局部加载功能。
+      </summary>
+    </Property>
+    <Property name="DataFormId">
+      <summary>
+获取或设置在Ajax分页模式下，分页时向服务器端通过Ajax提交的数据所在的Form ID，用于实现Ajax分页模式下的查询功能。
+      </summary>
+    </Property>
+    <Property name="AllowCache">
+      <summary>
+获取或设置一个值，该值指示是否在Ajax分页模式下启用缓存。
+      </summary>
+    </Property>
+    <Property name="EnableHistorySupport">
+      <summary>
+获取或设置一个值，该值指示是否在Ajax分页模式下是否启用浏览器历史记录支持功能。
+      </summary>
+    </Property>
+  </MvcAjaxOptions>
+  <Enums>
+    <Enum name="PagerItemsPosition">
+      <summary>
+        导航按钮（首页、下页、下页和尾页）的位置
+      </summary>
+    </Enum>
+  </Enums>
+  <PagerItemsPosition>
+<EnumValue name="BothSide">
+  <summary>两侧</summary>
+</EnumValue>
+<EnumValue name="Left">
+  <summary>左侧</summary>
+</EnumValue>
+  <EnumValue name="Right">
+    <summary>右侧</summary>
+  </EnumValue>
+    </PagerItemsPosition>
+  <PagerExtensions>
+  <Method name="HtmlPager1">
+    <summary>使用要分页的总记录数、每页显示记录数、当前页索引和PagerOptions设置构建HtmlPager</summary>
+    <param name="helper">此方法扩展的 HTMLHelper 实例</param>
+    <param name="totalItemCount">要分页的总记录数</param>
+    <param name="pageSize">每页显示的记录数</param>
+    <param name="pageIndex">当前页索引</param>
+    <param name="pagerOptions">提供 MvcPager 选项的对象</param>
+    <returns>HtmlPager对象</returns>
+  </Method>
+  <Method name="HtmlPager2">
+    <summary>使用要分页的总记录数、每页显示记录数、当前页索引构建HtmlPager</summary>
+    <param name="helper">此方法扩展的 HTMLHelper 实例</param>
+    <param name="totalItemCount">要分页的总记录数</param>
+    <param name="pageSize">每页显示记录数</param>
+    <param name="pageIndex">当前页索引</param>
+    <returns>HtmlPager对象</returns>
+  </Method>
+  <Method name="HtmlPager3">
+    <summary>使用包含分页数据的IPagedList对象构建HtmlPager</summary>
+    <param name="helper">此方法扩展的 HTMLHelper 实例</param>
+    <param name="pagedList">包含要分页数据的IPagedList对象</param>
+    <returns>HtmlPager对象</returns>
+  </Method>
+  <Method name="HtmlPager4">
+    <summary>
+      使用包含分页数据的IPagedList对象和PagerOptions设置构建HtmlPager
+    </summary>
+    <param name="helper">此方法扩展的 HTMLHelper 实例</param>
+    <param name="pagedList">包含要分页数据的IPagedList对象</param>
+    <param name="pagerOptions">提供 MvcPager 选项的对象</param>
+    <returns>HtmlPager对象</returns>
+  </Method>
+  <Method name="AjaxPager1">
+    <summary>
+      根据总记录数、每页显示记录数、当前页索引、PagerOptions设置项和MvcPagerOptions设置项构建AjaxPager。
+    </summary>
+    <param name="ajax">此方法扩展的 AjaxHelper 实例</param>
+    <param name="totalItemCount">总记录数</param>
+    <param name="pageSize">每页显示记录数</param>
+    <param name="pageIndex">当前页索引</param>
+    <param name="pagerOptions">提供 MvcPager 选项的对象</param>
+    <param name="ajaxOptions">提供 MvcPager 异步请求选项的对象</param>
+    <returns>AjaxPager</returns>
+  </Method>
+  <Method name="AjaxPager2">
+    <summary>
+      根据包含分页数据的IPagedList对象构建AjaxPager。
+    </summary>
+    <param name="ajax">此方法扩展的 AjaxHelper 实例</param>
+    <param name="pagedList">包含分页数据的IPagedList对象</param>
+    <returns>AjaxPager</returns>
+  </Method>
+  <Method name="AjaxPager3">
+    <summary>
+      根据包含分页数据的IPagedList对象和PagerOptions属性构建AjaxPager。
+    </summary>
+    <param name="ajax">此方法扩展的 AjaxHelper 实例</param>
+    <param name="pagedList">包含分页数据的IPagedList对象</param>
+    <param name="pagerOptions">提供 MvcPager 选项的对象</param>
+    <returns>AjaxPager</returns>
+  </Method>
+  <Method name="AjaxPager4">
+    <summary>
+      根据包含分页数据的IPagedList对象、PagerOptions和MvcAjaxOptions构建AjaxPager。
+    </summary>
+    <param name="ajax">此方法扩展的 AjaxHelper 实例</param>
+    <param name="pagedList">包含分页数据的IPagedList对象</param>
+    <param name="pagerOptions">提供 MvcPager 选项的对象</param>
+    <param name="ajaxOptions">提供 MvcPager 异步请求选项的对象</param>
+    <returns>AjaxPager</returns>
+  </Method>
+  </PagerExtensions>
+  <ScriptResourceExtensions>
+    <Method name="LoadMvcPagerScript">
+      <summary>
+        通过Ajax动态加载并运行MvcPager客户端jQuery插件
+      </summary>
+      <param name="ajax">此方法扩展的 AjaxHelper 实例</param>
+    </Method>
+    <Method name="RegisterMvcPagerScriptResource">
+      <summary>
+        注册MvcPager客户端jQuery插件
+      </summary>
+      <param name="html">此方法扩展的 HtmlHelper 实例</param>
+    </Method>
+  </ScriptResourceExtensions>
+
+  <PagedList>
+  <Constructor name="PagedList1">
+    <summary>
+      使用要分页的所有数据项、当前页索引和每页显示的记录数初始化PagedList对象
+    </summary>
+    <param name="allItems">要分页的所有数据项d</param>
+    <param name="pageIndex">当前页索引</param>
+    <param name="pageSize">每页显示的记录数</param>
+  </Constructor>
+  <Constructor name="PagedList2">
+    <summary>
+      使用当前页数据项、当前页索引、每页显示的记录数和要分页的总记录数初始化PagedList对象
+    </summary>
+    <param name="currentPageItems">当前页数据项</param>
+    <param name="pageIndex">当前页索引</param>
+    <param name="pageSize">每页显示的记录数</param>
+    <param name="totalItemCount">要分页数据的总记录数</param>
+  </Constructor>
+  <Constructor name="PagedList3">
+    <summary>
+      使用要分页的所有数据项、当前页索引和每页显示的记录数初始化PagedList对象
+    </summary>
+    <param name="allItems">要分页的所有数据项</param>
+    <param name="pageIndex">当前页索引</param>
+    <param name="pageSize">每页显示的记录数</param>
+  </Constructor>
+  <Constructor name="PagedList4">
+    <summary>
+      使用当前页数据项、当前页索引、每页显示的记录数和要分页的总记录数初始化PagedList对象
+    </summary>
+    <param name="currentPageItems">当前页数据项</param>
+    <param name="pageIndex">当前页索引</param>
+    <param name="pageSize">每页显示的记录数</param>
+    <param name="totalItemCount">要分页数据的总记录数</param>
+  </Constructor>
+    <Property name="CurrentPageIndex">
+      <summary>当前页索引</summary>
+    </Property>
+    <Property name="PageSize">
+      <summary>每页显示的记录数</summary>
+    </Property>
+    <Property name="TotalItemCount">
+      <summary>要分页的数据总数</summary>
+    </Property>
+    <Property name="TotalPageCount">
+      <summary>总页数</summary>
+    </Property>
+    <Property name="StartItemIndex">
+      <summary>开始记录索引</summary>
+    </Property>
+    <Property name="EndItemIndex">
+      <summary>结束记录索引</summary>
+    </Property>
+  </PagedList>
+  <IPagedList>
+    <Property name="CurrentPageIndex">
+      <summary>当前页索引</summary>
+    </Property>
+    <Property name="PageSize">
+      <summary>每页显示的记录数</summary>
+    </Property>
+    <Property name="TotalItemCount">
+      <summary>要分页的数据总数</summary>
+    </Property>
+  </IPagedList>
+  <PageLinqExtensions>
+  <Method name="ToPagedList1">
+    <summary>
+      根据当前页索引pageIndex及每页记录数pageSize获取要分页的数据对象。
+    </summary>
+    <param name="allItems">包含所有要分页数据的IQueryable对象。</param>
+<param name="pageIndex">当前页索引。</param>
+<param name="pageSize">每页显示的记录数。</param>
+  </Method>
+  <Method name="ToPagedList2">
+    <summary>
+      根据当前页索引pageIndex及每页记录数pageSize获取要分页的数据对象。
+    </summary>
+    <param name="allItems">包含所有要分页数据的IEnumerable对象。</param>
+<param name="pageIndex">当前页索引。</param>
+<param name="pageSize">每页显示的记录数。</param>
+  </Method>
+</PageLinqExtensions>
+
+  <PagerOptionsBuilder>
+    <Constrctor name="PagerOptionsBuilder">
+      <summary>
+
+      </summary>
+    </Constrctor>
+  <Method name="AddHtmlAttribute">
+<summary>向 PagerOptions 的 HtmlAttributes 属性添加项。
+</summary>
+<param name="key">
+</param>
+<param name="value">
+</param>
+</Method>
+<Method name="AddRouteValue">
+<summary>向 PagerOptions 的 RouteValues 属性添加项
+</summary>
+<param name="key">
+</param>
+<param name="value">
+</param>
+</Method>
+<Method name="AlwaysShowFirstLastPageNumber">
+<summary>设置 PagerOptions 的 AlwaysShowFirstLastPageNumber 属性值为true
+</summary>
+</Method>
+<Method name="DisableAutoHide">
+<summary>设置 PagerOptions 的 AutoHide 属性值为false
+</summary>
+</Method>
+<Method name="HideDisabledPagerItems">
+<summary>设置 PagerOptions 的 ShowDisabledPagerItems 属性值为false
+</summary>
+</Method>
+<Method name="HideFirstLast">
+<summary>设置 PagerOptions 的 ShowFirstLast 属性值为false
+</summary>
+</Method>
+<Method name="HideMorePagerItems">
+<summary>设置 PagerOptions 的 ShowMorePagerItems 属性值为false
+</summary>
+</Method>
+<Method name="HideNumericPagerItems">
+<summary>设置 PagerOptions 的 ShowNumericPagerItems 属性值为false
+</summary>
+</Method>
+<Method name="HidePagerItems">
+<summary>设置 PagerOptions 的 ShowPagerItems 属性值为false
+</summary>
+</Method>
+<Method name="HidePrevNext">
+<summary>设置 PagerOptions 的 ShowPrevNext 属性值为false
+</summary>
+</Method>
+<Method name="SetActionName">
+<summary>设置 PagerOptions 的 ActionName 属性
+</summary>
+<param name="actionName">
+</param>
+</Method>
+<Method name="SetContainerTagName">
+<summary>设置 PagerOptions 的 ContainerTagName 属性
+</summary>
+<param name="tagName">
+</param>
+</Method>
+<Method name="SetControllerName">
+<summary>设置 PagerOptions 的 ControllerName 属性
+</summary>
+<param name="controllerName">
+</param>
+</Method>
+<Method name="SetCssClass">
+<summary>设置 PagerOptions 的 CssClass 属性
+</summary>
+<param name="cssClass">
+</param>
+</Method>
+<Method name="SetCurrentPageNumberFormatString">
+<summary>设置 PagerOptions 的 CurrentPageNumberFormatString 属性
+</summary>
+<param name="format">
+</param>
+</Method>
+<Method name="SetCurrentPagerItemTemplate">
+<summary>设置 PagerOptions 的 CurrentPagerItemTemplate 属性
+</summary>
+<param name="template">
+</param>
+</Method>
+<Method name="SetDisabledPagerItemTemplate">
+<summary>设置 PagerOptions 的 DisabledPagerItemTemplate 属性
+</summary>
+<param name="template">
+</param>
+</Method>
+<Method name="SetFirstPageRouteName">
+<summary>设置 PagerOptions 的 FirstPageRouteName 属性
+</summary>
+<param name="routeName">
+</param>
+</Method>
+<Method name="SetFirstPageText">
+<summary>设置 PagerOptions 的 FirstPageText 属性
+</summary>
+<param name="text">
+</param>
+</Method>
+<Method name="SetGoToButtonId">
+<summary>设置 PagerOptions 的 GoToButtonId 属性
+</summary>
+<param name="id">
+</param>
+</Method>
+<Method name="SetHorizontalAlign">
+<summary>设置 PagerOptions 的 HorizontalAlign 属性
+</summary>
+<param name="alignment">
+</param>
+</Method>
+<Method name="SetHtmlAttributes">
+<summary>设置 PagerOptions 的 HtmlAttributes 属性
+</summary>
+<param name="attributes">
+</param>
+</Method>
+<Method name="SetId">
+<summary>设置 PagerOptions 的 Id 属性
+</summary>
+<param name="id">
+</param>
+</Method>
+<Method name="SetInvalidPageIndexErrorMessage">
+<summary>设置 PagerOptions 的 InvalidPageIndexErrorMessage 属性
+</summary>
+<param name="msg">
+</param>
+</Method>
+<Method name="SetLastPageText">
+<summary>设置 PagerOptions 的 LastPageText 属性
+</summary>
+<param name="text">
+</param>
+</Method>
+<Method name="SetMaximumPageIndexItems">
+<summary>设置 PagerOptions 的 MaximumPageIndexItems 属性
+</summary>
+<param name="itmes">
+</param>
+</Method>
+<Method name="SetMaximumPageNumber">
+<summary>设置 PagerOptions 的 MaximumPageNumber 属性
+</summary>
+<param name="number">
+</param>
+</Method>
+<Method name="SetMorePagerItemTemplate">
+<summary>设置 PagerOptions 的 MorePagerItemTemplate 属性
+</summary>
+<param name="template">
+</param>
+</Method>
+<Method name="SetMorePageText">
+<summary>设置 PagerOptions 的 MorePageText 属性
+</summary>
+<param name="text">
+</param>
+</Method>
+<Method name="SetNavigationPagerItemsPosition">
+<summary>设置 PagerOptions 的 NavigationPagerItemsPosition 属性
+</summary>
+<param name="position">
+</param>
+</Method>
+<Method name="SetNavigationPagerItemTemplate">
+<summary>设置 PagerOptions 的 NavigationPagerItemTemplate 属性
+</summary>
+<param name="template">
+</param>
+</Method>
+<Method name="SetNextPageText">
+<summary>设置 PagerOptions 的 NextPageText 属性
+</summary>
+<param name="text">
+</param>
+</Method>
+<Method name="SetNumericPagerItemCount">
+<summary>设置 PagerOptions 的 NumericPagerItemCount 属性
+</summary>
+<param name="itemCount">
+</param>
+</Method>
+<Method name="SetNumericPagerItemTemplate">
+<summary>设置 PagerOptions 的 NumericPagerItemTemplate 属性
+</summary>
+<param name="template">
+</param>
+</Method>
+<Method name="SetOnPageIndexError">
+<summary>设置 PagerOptions 的 OnPageIndexError 属性
+</summary>
+<param name="handler">
+</param>
+</Method>
+<Method name="SetPageIndexBoxId">
+<summary>设置 PagerOptions 的 PageIndexBoxId 属性
+</summary>
+<param name="id">
+</param>
+</Method>
+<Method name="SetPageIndexOutOfRangeErrorMessage">
+<summary>设置 PagerOptions 的 PageIndexOutOfRangeErrorMessage 属性
+</summary>
+<param name="msg">
+</param>
+</Method>
+<Method name="SetPageIndexParameterName">
+<summary>设置 PagerOptions 的 PageIndexParameterName 属性
+</summary>
+<param name="prmName">
+</param>
+</Method>
+<Method name="SetPageNumberFormatString">
+<summary>设置 PagerOptions 的 PageNumberFormatString 属性
+</summary>
+<param name="format">
+</param>
+</Method>
+<Method name="SetPagerItemTemplate">
+<summary>设置 PagerOptions 的 PagerItemTemplate 属性
+</summary>
+<param name="template">
+</param>
+</Method>
+<Method name="SetPrevPageText">
+<summary>设置 PagerOptions 的 PrevPageText 属性
+</summary>
+<param name="text">
+</param>
+</Method>
+<Method name="SetRouteName">
+<summary>设置 PagerOptions 的 RouteName 属性
+</summary>
+<param name="routeName">
+</param>
+</Method>
+<Method name="SetRouteValues">
+<summary>设置 PagerOptions 的 RouteValues 属性
+</summary>
+<param name="values">
+</param>
+</Method>
+  </PagerOptionsBuilder>
+  <MvcAjaxOptionsBuilder>
+  <Constructor name="MvcAjaxOptionsBuilder">
+    <summary>
+      
+    </summary>
+  </Constructor>
+<Method name="DisableHistorySupport">
+<summary>设置 MvcAjaxOptions 的EnableHistorySupport属性值为false
+</summary>
+</Method>
+<Method name="DisallowCache">
+<summary>设置 MvcAjaxOptions 的AllowCache属性值为false
+</summary>
+</Method>
+<Method name="EnablePartialLoading">
+<summary>设置 MvcAjaxOptions 的EnablePartialLoading属性值为true
+</summary>
+</Method>
+<Method name="SetConfirm">
+<summary>设置 MvcAjaxOptions 的Confirm属性
+</summary>
+<param name="confirm">
+</param>
+</Method>
+<Method name="SetDataFormId">
+<summary>设置 MvcAjaxOptions 的DataFormId属性
+</summary>
+<param name="id">
+</param>
+</Method>
+<Method name="SetHttpMethod">
+<summary>设置 MvcAjaxOptions 的HttpMethod属性
+</summary>
+<param name="method">
+</param>
+</Method>
+<Method name="SetLoadingElementDuration">
+<summary>设置 MvcAjaxOptions 的LoadingElementDuration属性
+</summary>
+<param name="duration">
+</param>
+</Method>
+<Method name="SetLoadingElementId">
+<summary>设置 MvcAjaxOptions 的LoadingElementId属性
+</summary>
+<param name="id">
+</param>
+</Method>
+<Method name="SetOnBegin">
+<summary>设置 MvcAjaxOptions 的OnBegin属性
+</summary>
+<param name="name">
+</param>
+</Method>
+<Method name="SetOnComplete">
+<summary>设置 MvcAjaxOptions 的OnComplete属性
+</summary>
+<param name="name">
+</param>
+</Method>
+<Method name="SetOnFailure">
+<summary>设置 MvcAjaxOptions 的OnFailure属性
+</summary>
+<param name="name">
+</param>
+</Method>
+<Method name="SetOnSuccess">
+<summary>设置 MvcAjaxOptions 的OnSuccess属性
+</summary>
+<param name="name">
+</param>
+</Method>
+<Method name="SetUpdateTargetId">
+<summary>设置 MvcAjaxOptions 的UpdateTargetId属性
+</summary>
+<param name="targetId">
+</param>
+</Method>
+</MvcAjaxOptionsBuilder>
+
+  <DisplayNameExtensions>
+    <Method name="DisplayNameFor1">
+      <summary>
+        获取 IPagedList&lt;T&gt; 泛型模型的显示名称;
+      </summary>
+    </Method>
+    <Method name="DisplayNameFor2">
+      <summary>
+        获取 PagedList&lt;T&gt; 泛型模型的显示名称;
+      </summary>
+    </Method>
+  </DisplayNameExtensions>
+</MvcPagerDocs>

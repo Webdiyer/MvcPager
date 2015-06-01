@@ -1,0 +1,61 @@
+﻿<h3>_ArticleTable.cshtml:</h3>
+<pre>
+@@model PagedList&lt;Article&gt;
+&lt;table class=&quot;table table-bordered table-striped&quot;&gt;
+    &lt;tr&gt;
+        &lt;th class=&quot;nowrap&quot;&gt;序号&lt;/th&gt;
+        &lt;th&gt;
+            @@Html.DisplayNameFor(model =&gt; model.Title)
+        &lt;/th&gt;
+        &lt;th&gt;
+            @@Html.DisplayNameFor(model =&gt; model.PubDate)
+        &lt;/th&gt;
+        &lt;th&gt;
+            @@Html.DisplayNameFor(model =&gt; model.Author)
+        &lt;/th&gt;
+        &lt;th&gt;
+            @@Html.DisplayNameFor(model =&gt; model.Source)
+        &lt;/th&gt;
+    &lt;/tr&gt;
+    @@{ int i = 0;}
+    @@foreach (var item in Model)
+    {
+        &lt;tr&gt;
+            &lt;td&gt;@@(Model.StartItemIndex + i++)&lt;/td&gt;
+            &lt;td&gt;
+                @@Html.DisplayFor(modelItem =&gt; item.Title)
+            &lt;/td&gt;
+            &lt;td&gt;
+                @@Html.DisplayFor(modelItem =&gt; item.PubDate)
+            &lt;/td&gt;
+            &lt;td&gt;
+                @@Html.DisplayFor(modelItem =&gt; item.Author)
+            &lt;/td&gt;
+            &lt;td&gt;
+                @@Html.DisplayFor(modelItem =&gt; item.Source)
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    }
+&lt;/table&gt;</pre>
+
+<h3>Model:</h3>
+<pre>
+    public class Article
+    {
+        [Display(Name=&quot;文章编号&quot;)]
+        public int ID { get; set; }
+        [Display(Name=&quot;文章标题&quot;)]
+        [MaxLength(200)]
+        public string Title { get; set; }
+        [Display(Name = &quot;文章内容&quot;)]
+        public string Content { get; set; }
+        [Display(Name = &quot;发布日期&quot;)]
+        public DateTime PubDate { get; set; }
+        [Display(Name = &quot;作者&quot;)]
+        [MaxLength(20)]
+        public string Author { get; set; }
+        [Display(Name = &quot;文章来源&quot;)]
+        [MaxLength(20)]
+        public string Source { get; set; }
+    }
+</pre>

@@ -1,0 +1,8 @@
+﻿@model PagedList<Article>
+@{ Html.RenderPartial("_ArticleTable"); }
+    @Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "id", ContainerTagName = "ul", PrevPageText = "上页", NextPageText = "下页", FirstPageText = "首页", LastPageText = "尾页", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>",DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>",PagerItemTemplate = "<li>{0}</li>" }, new MvcAjaxOptions { UpdateTargetId = "articles" })
+<script type="text/javascript">
+    $(function () {
+        @{ Ajax.LoadMvcPagerScript(); }
+    });
+</script>

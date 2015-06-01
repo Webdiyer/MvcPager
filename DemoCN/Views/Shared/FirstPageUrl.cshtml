@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "首页Url SEO";
+    ViewBag.Description = "该示例演示MvcPager的首页SEO搜索引擎优化功能，请点击分页按钮跳转到其它页面时注意两个MvcPager首页Url的区别。";
+}
+
+@model PagedList<Article>
+@Html.Partial("_ArticleTable", Model)
+<h6><strong>未启用首页Url SEO：</strong></h6>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", RouteName = "MvcPager_SEO", PagerItemTemplate = "{0}&nbsp;" })
+<h6><strong>启用首页Url SEO（FirstPageRouteName = "MvcPager_Default"）：</strong></h6>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", RouteName = "MvcPager_SEO", FirstPageRouteName = "MvcPager_Default", PagerItemTemplate = "{0}&nbsp;" })
+@section Description{
+    MvcPager 2.0以前版本生成分页导航链接时首页的url中也会加上页索引参数，导致与默认的首页url不一致，影响SEO体验。MvcPager 2.0版中新增了自动与手动两种优化首页url的功能，当当前路由定义中页索引参数默认值为UrlParameter.Optional或未定义页索引参数（页索引参数被附加到url中以querystring的方式传递）时，MvcPager在生成首页链接时会自动去除页索引参数，生成与默认首页一致的url。当首页url使用的路由与其它页面不同或页索引参数默认值不是UrlParameter.Optional时，可以通过设置PagerOptions.FirstPageRouteName属性来实现生成与其它页面不同的首页url。
+    <p>本示例中两个MvcPager均使用相同的路由，生成的分页Url除第一页外完全一样，但第二个MvcPager设置了PagerOptions.FirstPageRouteName = "MvcPager_Default"，因此生成的首页Url中没有页索引参数，与首次打开该页面时的Url相同，而第一个MvcPager生成的首页Url中包含页索引参数，导致与默认首页的Url完全不同。</p>
+}

@@ -1,0 +1,4 @@
+﻿@model PagedList<Article>
+
+@Html.Partial("_ArticleTable", Model)
+@Ajax.Pager(Model,new PagerOptions{PageIndexParameterName = "id",PagerItemTemplate = "{0}&nbsp;"},new MvcAjaxOptions{UpdateTargetId = "articles",OnBegin = "alert('onbegin事件引发')",OnSuccess = "handleSuccess",OnComplete = "function(xhr,status){alert('oncomplete事件引发，Http响应代码：'+xhr.status+'，响应内容：'+xhr.statusText+'，状态代码：'+status)}",OnFailure = "handleFailure"})

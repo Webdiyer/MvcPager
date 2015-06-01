@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Implementing IPagedList interface";
+    ViewBag.Description = "This sample demonstrates how to inplement IPagedList interface that makes custom object pageable.";
+}
+@model MyPagedList<int>
+<table class="table table-bordered table-striped">
+    @foreach (var itm in Model.PagedItems)
+    {
+        <tr><td>@itm</td></tr>
+    }
+</table>
+@Html.Pager(Model,new PagerOptions{PageIndexParameterName = "id",PagerItemTemplate = "{0}&nbsp;"})
+@section Description{
+
+}

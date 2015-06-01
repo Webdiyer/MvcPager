@@ -1,0 +1,4 @@
+﻿@model PagedList<Order>
+
+@Html.Partial("_DataTable", Model)
+@Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "id", PagerItemTemplate = "{0}&nbsp;" }, new MvcAjaxOptions { UpdateTargetId = "orders", OnBegin = "alert('onbegin event fired')", OnSuccess = "handleSuccess", OnComplete = "function(xhr,status){alert('oncomplete event fired, Http response code is: '+xhr.status+', response content: '+xhr.statusText+', status code is: '+status)}", OnFailure = "handleFailure" })

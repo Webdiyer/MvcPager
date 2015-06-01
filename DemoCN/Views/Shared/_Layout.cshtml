@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="Webdiyer (http://www.webdiyer.com)" />
+    <meta name="description" content="@ViewBag.Description" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+</head>
+    <body>
+        <div class="container">
+            <div id="header">
+                <div class="superHeader">
+                    <div class="right">
+                        <a href="http://www.webdiyer.com" target="_blank">作者主页</a> |
+                        <a href="http://www.webdiyer.com/mvcpager" target="_blank">在线文档</a>
+                    </div>
+                </div>
+                <div class="midHeader">
+                    <h1 class="headerTitle">MvcPager 3.0 For ASP.NET MVC 4.0+</h1>
+                </div>
+                <div class="subHeader">
+                    <a href="/">MvcPager简介</a> |
+                    <a href="/home/demoselector/" class="highlight">示例</a>
+                </div>
+            </div>
+                                @RenderBody()
+        <div id="footer">
+            &copy;2010-2015 陕西省延安市吴起县 <a href="http://www.webdiyer.com/about/">Webdiyer</a>
+        </div>
+            </div>
+            @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+
+            @RenderSection("scripts", false)
+</body>
+</html>

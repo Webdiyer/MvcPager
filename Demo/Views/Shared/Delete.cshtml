@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Deleting paged items";
+    ViewBag.Description = "This sample demonstrates one of the features of ToPagedList extension method that resets the current page index to the total page count and returns the data of the last page when page index is larger than total page count.";
+}
+@model PagedList<int>
+@using (Html.BeginForm())
+{
+    <table class="table table-bordered table-striped">
+        <tr><th>Value</th><th>Delete</th></tr>
+        @foreach (var itm in Model)
+        {
+            <tr><td>@itm</td><td><input type="checkbox" name="val" value="@itm" /></td></tr>
+        }
+    </table>
+    <div>
+        <span class="pull-right">
+            <input type="submit" value="Delete selected(D)" accesskey="D" class="btn btn-primary" />&nbsp;&nbsp;
+            <input type="submit" value="Reset test data(R)" name="resetList" class="btn btn-success" />
+        </span>
+        Current page index is: @Model.CurrentPageIndex
+    </div>
+}
+@Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetFirstPageRouteName("MvcPager_Default").SetContainerTagName("ul").SetCssClass("pagination").SetCurrentPagerItemTemplate("<li class=\"active\"><a href=\"#\">{0}</a></li>").SetDisabledPagerItemTemplate("<li class=\"disabled\"><a>{0}</a></li>").SetPagerItemTemplate("<li>{0}</li>"))
+@section Description{
+    <p class="text-primary">Go to the last page and select all items, then click "Delete Selected" button, after all items on the last page are deleted, the current page index and total page count of the underlying IPageList object have been changed to 2 though page index parameter in url is still 3.</p>
+}

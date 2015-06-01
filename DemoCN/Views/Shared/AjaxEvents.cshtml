@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Ajax事件";
+    ViewBag.Description = "本示例演示Ajax分页时如何处理Ajax事件。";
+}
+@model PagedList<Article>
+
+<div id="articles">
+    @Html.Partial("_AjaxEvents",Model)
+</div>
+
+@section scripts
+{
+    @{Html.RegisterMvcPagerScriptResource();}
+    <script type="text/javascript">
+        function handleFailure(xhr, status, error) {
+            alert('onfailure事件引发，返回的错误信息是：' + xhr.responseText + '，错误代码：' + xhr.status + '，状态代码：' + status + '，错误类型：' + error);
+        }
+
+        function handleSuccess(data, xhr, status) {
+            alert('onsuccess事件引发，返回的数据如下：' + data + '\r\n返回的 http请求代码：' + xhr.status + '，状态代码：' + status);
+        }
+    </script>
+}
+@section Description{
+Ajax事件有onbegin、onsuccess、onfailure和oncomplete。若在onbegin事件处理函数中返回false，则Ajax请求将被取消，后续的onsuccess、onfailure和oncomplete事件都不会被触发。
+ 点击第二页将在服务器端返回500错误，因此会引发Ajax的onfailure事件。
+}

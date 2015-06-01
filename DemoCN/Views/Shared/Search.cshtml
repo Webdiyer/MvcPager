@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "搜索结果分页";
+    ViewBag.Description = "该示例演示使用GET方法提交查询表单，将搜索条件附加到url中，因此实现分页过程中的搜索功能。";
+}
+@model PagedList<Article>
+@using (Html.BeginForm("Search", ViewContext.RouteData.GetRequiredString("Controller"), new RouteValueDictionary { { "id", "" } }, FormMethod.Get))
+{
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon">搜索关键字：</span>
+                    <input type="text" name="kword" value="@Request.QueryString["kword"]" class="form-control" placeholder="如：“吴起县” 或 “延安”">
+                    <span class="input-group-btn"><input type="submit" class="btn btn-primary" value="搜索(S)" accesskey="S" /></span>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@Html.Partial("_ArticleTable", Model)
+@Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetPagerItemTemplate("{0}&nbsp;"))
+@section Description{
+    <p class="text-danger">
+    注意：为了使每次点击搜索按钮时都跳回第一页，BeginForm扩展方法中第三个参数用new RouteValueDictionary{{"id",""}}将页索引路由值指定为空值，否则若当前为第五页，则点击搜索按钮重新搜索后当前页仍然为第五页。
+</p>
+}

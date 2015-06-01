@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Using page index box";
+    ViewBag.Description = "This sample demonstrates how to allow users to input or select page index from the page index box.";
+}
+@model PagedList<Order>
+<style type="text/css">
+    .pibarea {
+        float: left;
+        margin-left: 2em;
+    }
+
+    .pagerdiv {
+        width: 100%;
+        overflow: auto;
+    }
+</style>
+@Html.Partial("_DataTable", Model)
+<h6><strong>TextBox (auto submit after value changed):</strong></h6>
+<div class="pagerdiv">
+    @Html.Pager(Model).Options(o => o.SetId("pager1").SetPageIndexParameterName("id").SetPageIndexBoxId("pib1").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;"))
+    <div class="pibarea"><input type="text" id="pib1" style="width:50px" /></div>
+</div>
+<div class="pagerdiv">
+    <h6><strong>Select box (auto submit after selected item changed):</strong></h6>
+    @Html.Pager(Model).Options(o => o.SetId("pager2").SetPageIndexParameterName("id").SetPageIndexBoxId("pib2").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;"))
+    <div class="pibarea">
+        <select id="pib2"></select>
+    </div>
+</div>
+<div class="pagerdiv">
+    <h6><strong>TextBox with go to button:</strong></h6>
+    @Html.Pager(Model).Options(o => o.SetId("pager3").SetPageIndexParameterName("id").SetPageIndexBoxId("pib3").SetGoToButtonId("gtb1").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;"))
+    <div class="pibarea">
+        <input type="text" id="pib3" style="width:50px" /><button id="gtb1">Go</button>
+    </div>
+</div>
+<div class="pagerdiv">
+    <h6><strong>Select box with go to button:</strong></h6>
+    @Html.Pager(Model).Options(o => o.SetId("pager4").SetPageIndexParameterName("id").SetPageIndexBoxId("pib4").SetGoToButtonId("gtb2").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;"))
+    <div class="pibarea">
+        <select id="pib4"></select><button id="gtb2">Go</button>
+    </div>
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+@section Description{
+        Any text box or select box on the page can be specified as the page index box of MvcPager by setting the property value of PagerOptions.PageIndexBoxId to the ID of text box or select box, if page index box is a text box,
+        MvcPager jQuery plugin will enforce validation on this text box by limiting only digital numbers can be entered into it; if page index box is a select box, MvcPager jQuery plugin can automatically populate it with page indices for users to select.
+    
+    <p>If the property value of PagerOptions.GoToButton is specified, users will need to click this button to go to the specified page that user entered or selected from page index box, otherwise, MvcPager will automatically jump to that page after the value of the page index box is changed.</p>
+    
+}

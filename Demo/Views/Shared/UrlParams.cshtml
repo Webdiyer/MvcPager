@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Retain url parameters ";
+    ViewBag.Description = "This sample demonstrates how MvcPager can retain url parameters after paging.";
+}
+@model PagedList<Order>
+<div class="well well-sm">Current url parameters: Year=@Request.QueryString["year"], Author=@Request.QueryString["author"], City=@Request.QueryString["city"]</div>
+@Html.Partial("_DataTable", Model)
+@Html.Pager(Model,new PagerOptions{PageIndexParameterName = "id",PagerItemTemplate = "{0}&nbsp;"})
+
+
+
+@section Description{
+    MvcPager can retain url parameters after paging, please pay attention to url before and after paging in this demo.
+    <div class="text-danger">Note: Url parameter(s) with empty value will be ignored and discarded after paging!</div>
+}

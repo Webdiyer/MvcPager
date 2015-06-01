@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "应用CSS样式";
+    ViewBag.Description = "该示例演示如何为MvcPager应用样式。";
+}
+@model PagedList<string>
+<link rel="stylesheet" type="text/css" href="/Content/pagerstyles.css" />
+
+<h5>Bootstrap style:</h5>
+<div class="text-center">
+        @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", Id = "bootstrappager" })
+</div>
+
+<h5>Bootstrap with page index box:</h5>
+    <div class="row">
+        <div class="col-md-9">
+            @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id",NumericPagerItemCount = 5,ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", Id = "bootstrappager2", PageIndexBoxId = "pageIndexBox",GoToButtonId = "goToBtn"})
+        </div>
+        <div class="col-md-3">
+            <div class="input-group" style="margin:20px 0">
+                <select id="pageIndexBox" class="form-control input-sm" ></select>
+                <span class="input-group-btn"><button class="btn btn-primary btn-sm" id="goToBtn">跳转</button></span>
+            </div>
+        </div>
+    </div>
+<h5>Digg style:</h5>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", CurrentPagerItemTemplate = "<span class=\"current\">{0}</span>", DisabledPagerItemTemplate = "<span class=\"disabled\">{0}</span>", Id = "diggpager" })
+<h5>meneame style:</h5>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", CurrentPagerItemTemplate = "<span class=\"current\">{0}</span>", DisabledPagerItemTemplate = "<span class=\"disabled\">{0}</span>", Id = "menepager" })
+<h5>Flickr style:</h5>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", CurrentPagerItemTemplate = "<span class=\"current\">{0}</span>", DisabledPagerItemTemplate = "<span class=\"disabled\">{0}</span>", Id = "flickrpager" })
+<h5>Black style:</h5>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", CurrentPagerItemTemplate = "<span class=\"current\">{0}</span>", DisabledPagerItemTemplate = "<span class=\"disabled\">{0}</span>", Id = "blackpager" })
+<h5>Gray style:</h5>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", CurrentPagerItemTemplate = "<span class=\"current\">{0}</span>", DisabledPagerItemTemplate = "<span class=\"disabled\">{0}</span>", Id = "graypager" })
+<h5>badoo style:</h5>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", CurrentPagerItemTemplate = "<span class=\"current\">{0}</span>", DisabledPagerItemTemplate = "<span class=\"disabled\">{0}</span>", Id = "badoopager" })
+
+@section scripts{@{ Html.RegisterMvcPagerScriptResource();}}
+@section Description{
+应用样式时应尽量使用CSS的ID选择器，避免用class，因为ID选择器优先级高，应用的样式有高优先级，避免其它定义的样式影响到当前的样式。
+<div class="text-success">该示例使用的部分样式来自网上，感谢原作者的贡献。除bootstrap外其它分页样式定义均在示例项目中content目录下的pagerstyles.css文件中。</div>
+}

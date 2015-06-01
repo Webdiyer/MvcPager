@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Multiple AjaxPagers (partial loading)";
+    ViewBag.Description = "This sample demonstrates how to use multiple AjaxPagers on a single page using Ajax partial loading feature.";
+}
+@model Tuple<PagedList<Order>,PagedList<Order>>
+<div id="orders1">
+        @{Html.RenderPartial("_DataTable", Model.Item1);}
+    @Ajax.Pager(Model.Item1).Options(o => o.SetPagerItemTemplate("{0}&nbsp;")).AjaxOptions(a => a.SetUpdateTargetId("orders1").EnablePartialLoading())
+</div>
+<hr/>
+<div id="orders2">
+@{Html.RenderPartial("_DataTable",Model.Item2);}
+@Ajax.Pager(Model.Item2, new PagerOptions { PageIndexParameterName = "id", PagerItemTemplate = "{0}&nbsp;" }, new MvcAjaxOptions { UpdateTargetId = "orders2", EnablePartialLoading = true })
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}

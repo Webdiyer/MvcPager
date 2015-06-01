@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "AjaxForm search (Post)";
+    ViewBag.Description = "This sample demonstrates how to add paging functionality for Ajax search result within the AjaxForm that uses the POST http method.";
+}
+
+@model PagedList<Order>
+<fieldset><legend>Search Orders:</legend>
+@using (Ajax.BeginForm("AjaxSearchPost", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "orders", InsertionMode = InsertionMode.Replace }, new RouteValueDictionary { { "id", "searchForm" }, { "class", "form-inline well well-sm" } }))
+{
+    <span>Employee Name (Like):</span>
+    <input type="text" name="emp" placeholder="e.g., Janet,Michael" title="e.g, Janet,Michael" id="emp" style="width: 180px" class="form-control" />
+    <input type="submit" value="Search(S)" accesskey="S" class="btn btn-default" />
+}
+    </fieldset>
+<div id="orders">
+    @Html.Partial("_AjaxSearchPost",Model)
+</div>
+
+@section Scripts
+{
+    @{Html.RegisterMvcPagerScriptResource();}
+<script type="text/javascript" src="/scripts/jquery.unobtrusive-ajax.min.js"></script>}
+
+@section Description{
+<p>
+    To page for Ajax search result, sets the value of MvcAjaxOptions.DataFormId property to the ID of the form that contains search fields.
+    When form is submitted, MvcPager will save the serialized form data to a Javascript local variable, it passes this variable value to the server side every time page is changed, you can get the values of the search form fields from server side and return search result there,
+    there's no need to do anything in the client side.
+</p><p class="text-warning">The jquery.unobtrusive-ajax plugin is required in this sample because it uses Unobtrusive Ajax Form!</p>
+}

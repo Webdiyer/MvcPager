@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Numeric pager item format";
+    ViewBag.Description = "This sample demonstrates how to format the text of the numeric pager items.";
+}
+@model PagedList<string>
+<pre>PageNumberFormatString = "[{0}]"</pre>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", PageNumberFormatString = "[{0}]" })
+<hr />
+<pre>PageNumberFormatString = "[{0}]", CurrentPageNumberFormatString = "{0}"</pre>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", PageNumberFormatString = "[{0}]", CurrentPageNumberFormatString = "{0}" })
+<hr />
+<pre>PageNumberFormatString = "-{0}-"</pre>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", PageNumberFormatString = "-{0}-" })
+<hr />
+<pre>PageNumberFormatString = "-{0}-", CurrentPageNumberFormatString = "{0}"</pre>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", PageNumberFormatString = "-{0}-", CurrentPageNumberFormatString = "{0}" })
+
+@section Description{
+    PagerOptions.PageNumberFormatString property is used to format the text of the numeric pager items including the current page pager item, you can use PagerOptions.CurrentPageNumberFormatString to set the format string for the text of the current page pager item separately.
+    <div class="text-danger"><strong>Note: format strings should not contain any html code!</strong></div>
+}

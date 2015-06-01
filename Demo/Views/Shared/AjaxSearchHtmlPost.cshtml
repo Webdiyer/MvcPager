@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Ajax HtmlForm search (Post)";
+    ViewBag.Description = "This sample demonstrates how to add paging functionality for Ajax search result within the normal HtmlForm that uses the POST http method.";
+}
+
+@model PagedList<Order>
+
+<fieldset><legend>Search Orders:</legend>
+@using (Html.BeginForm("AjaxSearchHtmlPost", ViewContext.RouteData.GetRequiredString("controller"), new { id = "" }, FormMethod.Post, new { id = "searchForm", @class = "form-inline well well-sm" }))
+{
+    <span>Employee Name (Like):</span>
+    <input type="text" name="emp" placeholder="e.g., Janet,Michael" title="e.g, Janet,Michael" id="emp" style="width: 180px" class="form-control" />
+    <input type="submit" value="Search(S)" accesskey="S" class="btn btn-default" />
+}</fieldset>
+<div id="orders">
+    @Html.Partial("_AjaxSearchPost",Model)
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}

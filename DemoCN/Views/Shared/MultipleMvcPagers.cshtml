@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "多个MvcPager";
+    ViewBag.Description = "本示例演示在同一个页面上使用多个HtmlPager为不同的数据分页。";
+}
+@model CompositeArticles
+
+@{Html.RenderPartial("_ArticleTable", Model.ArticleList1);}
+@Html.Pager(Model.ArticleList1).Options(o => o.SetPagerItemTemplate("{0}&nbsp;"))
+<hr />
+@{Html.RenderPartial("_ArticleTable",Model.ArticleList2);}
+@Html.Pager(Model.ArticleList2, new PagerOptions { PageIndexParameterName = "id", RouteName = "MvcPager_Default", PagerItemTemplate = "{0}&nbsp;" })
+
+@section Description{
+    <span class="text-danger">注意：一个页面上有多个MvcPager时，必须确保每个MvcPager的PagerOptions.PageIndexParameterName属性值不同，否则一个MvcPager的分页事件，会引发所有PagerOptions.PageIndexParameterName属性值相同的MvcPager同时分页。</span>
+}

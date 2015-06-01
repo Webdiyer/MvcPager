@@ -1,0 +1,79 @@
+﻿@{ var ctrl = ViewContext.RouteData.GetRequiredString("controller");}
+<ul>
+    <li>
+        <strong>Url路由分页</strong>
+        <ul>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new{action="basic",id=""})" title="标准Url路由分页">&rsaquo; 标准Url路由分页</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "QueryString" })" title="Url参数分页">&rsaquo; Url参数分页</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "UrlParams", id = "", year = 2013, author = "Webdiyer", city = "延安" })" title="保持Url参数">&rsaquo; 保持Url参数</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "customrouting", id = "" })" title="自定义路由">&rsaquo; 自定义路由</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "Search", id = "" })" title="搜索结果分页">&rsaquo; 搜索结果分页</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "MultipleMvcPagers", id = "" })" title="多个MvcPager">&rsaquo; 多个MvcPager</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "FirstPageUrl", id = "5" })" title="首页Url SEO">&rsaquo; 首页Url SEO</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_PageSize", new { action = "PageSize", pagesize = 5, pageIndex = "" })" title="动态设置PageSize">&rsaquo; 动态设置PageSize</a></li>
+        </ul>
+    </li>
+    <li>
+        <strong>Ajax分页</strong>
+        <ul>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxPaging", id = "" })" title="标准Ajax分页">&rsaquo; 标准Ajax分页</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxEvents", id = "" })" title="Ajax事件">&rsaquo; Ajax事件</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "LoadByAjax", id = "" })" title="Ajax动态加载">&rsaquo; Ajax动态加载</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxInitData", id = "" })#id=3" title="Ajax初始化数据">&rsaquo; Ajax初始化数据</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxPartialLoading", id = "" })" title="Ajax局部加载分页">&rsaquo; Ajax局部加载分页</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxNoHistory", id = "" })" title="禁用浏览器历史记录支持">&rsaquo; 禁用浏览器历史记录支持</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxLoading", id = "" })" title="Ajax正在加载效果">&rsaquo; Ajax正在加载效果</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxPagers", id = "" })" title="多个AjaxPager">&rsaquo; 多个AjaxPager</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "MultipleAjaxPagers", id = "" })" title="多个AjaxPager(局部加载)">&rsaquo; 多个AjaxPager(局部加载)</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxDegradation", id = "" })" title="Ajax优雅降级">&rsaquo; Ajax优雅降级</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "CombinedMode", id = "" })" title="混合分页模式">&rsaquo; 混合分页模式</a></li>
+        </ul>
+    </li>
+    <li>
+        <strong>Ajax搜索分页</strong>
+        <ul>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxSearchPost", id = "" })" title="AjaxForm搜索（Post）">&rsaquo; AjaxForm搜索（Post）</a></li>
+            @*<li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxSearchPartialPost"})" title="AjaxForm局部加载搜索(Post)">&rsaquo; 局部加载搜索(Post)</a></li>*@
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxSearchGet", id = "" })" title="AjaxForm搜索（Get）">&rsaquo; AjaxForm搜索（Get）</a></li>
+            @*<li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxSearchPartialGet"})" title="AjaxForm局部加载搜索(Get)">&rsaquo; 局部加载搜索(Get)</a></li>*@
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxSearchHtmlPost", id = "" })" title="HtmlForm搜索（Post）">&rsaquo; HtmlForm搜索（Post）</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxSearchHtmlGet", id = "" })" title="HtmlForm搜索（Get）">&rsaquo; HtmlForm搜索（Get）</a></li>
+        </ul>
+    </li>
+    <li>
+        <strong>外观样式</strong>
+        <ul>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "ApplyCSS",id=""})" title="应用CSS样式">&rsaquo; 应用CSS样式</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "NumericPagerItemsFormat", id = "" })" title="格式化数值页索引">&rsaquo; 格式化数值页索引</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "PagerItemsTemplate", id = "" })" title="自定义分页按钮模板">&rsaquo; 自定义分页按钮模板</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "CustomInfo", id = "" })" title="显示分页信息">&rsaquo; 显示分页信息</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "NavButtonsPosition", id = "" })" title="导航按钮位置">&rsaquo; 导航按钮位置</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "PageIndexBox", id = "" })" title="输入或选择页索引">&rsaquo; 输入或选择页索引</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxPageIndexBox", id = "" })" title="输入或选择页索引(Ajax)">&rsaquo; 输入或选择页索引(Ajax)</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default",new{action="Multilingual",id=""})" title="多语言支持">&rsaquo; 多语言支持</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default",new{action="PageIndexError",id=""})" title="页索引错误处理">&rsaquo; 页索引错误处理</a></li>
+        </ul>
+    </li>
+    <li>
+        <strong>分页数据相关</strong>
+        <ul>
+            @if (ctrl.ToLower() != "nodbdemo")
+            {
+                <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "StoredProcedure", id = "" })" title="使用存储过程">&rsaquo; 使用存储过程</a></li>
+                <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "DataRows", id = "" })" title="DataRow集合分页">&rsaquo; DataRow集合分页</a></li>
+            }
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "ContentPaging", id = "" })" title="文章内容分页">&rsaquo; 文章内容分页</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "IPagedList", id = "" })" title="实现IPagedList接口">&rsaquo; 实现IPagedList接口</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "Delete", id = "" })" title="删除分页数据">&rsaquo; 删除分页数据</a></li>
+        </ul>
+    </li>
+    <li>
+        <strong>Javascrip API</strong>
+        <ul>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "JavascriptApiHtml", id = "" })" title="HtmlPager跳转">&rsaquo; HtmlPager跳转</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "JavascriptApiAjax", id = "" })" title="AjaxPager跳转">&rsaquo; AjaxPager跳转</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "CustomizeHtmlPager", id = "" })" title="自定义分页界面（Html）">&rsaquo; 自定义分页界面（Html）</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "CustomizeAjaxPager", id = "" })" title="自定义分页界面（Ajax）">&rsaquo; 自定义分页界面（Ajax）</a></li>
+        </ul>
+    </li>
+</ul>

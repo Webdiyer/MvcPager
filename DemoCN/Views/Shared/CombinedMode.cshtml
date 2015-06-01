@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "混合分页模式";
+    ViewBag.Description = "本示例演示同时使用Html Pager和Ajax Pager对同一数据进行分页。";
+}
+@model PagedList<Article>
+
+<div id="articles">
+ @Html.Partial("_ArticleTable", Model)
+<h5>标准Url分页：</h5>
+@Html.Pager(Model,new PagerOptions { PageIndexParameterName = "id", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>"})
+    <h5>Ajax局部加载分页：</h5>
+@Ajax.Pager(Model,new PagerOptions{PageIndexParameterName = "id",ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>"},new MvcAjaxOptions{EnablePartialLoading = true,UpdateTargetId="articles"})
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description{
+MvcPager 2.0版中新增的Ajax局部加载功能使得在标准Url分页模式与Ajax分页模式之间切换更简单容易，并可实现两种分页模式共存。本示例中第一个MvcPager为标准Url分页模式，第二个MvcPager使用Ajax分页模式，两种分页模式都可以实现为指定的内容进行分页且保持两个MvcPager同步。
+}

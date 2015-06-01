@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Ajax正在加载效果";
+    ViewBag.Description = "该示例演示如何通过设置MvcAjaxOptions的LoadingElementId属性和使用OnBegin及OnComplate等Ajax事件处理程序来实现Ajax加载数据时的特效。";
+}
+@model PagedList<Article>
+<div id="loadingDiv" style="display:none"><img src="/Images/loading.gif"/><h3>正在加载数据，请稍候...</h3></div>
+<div id="articles">
+    @Html.Partial("_AjaxLoading",Model)
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+@section Description
+{
+    在获取分页数据比较耗时的情况下（如调用外部Web Service、数据库数据量太大或缺少优化以及网络延迟等原因），Ajax分页时，可以添加进度条或正在加载动画来增进用户体验。
+}

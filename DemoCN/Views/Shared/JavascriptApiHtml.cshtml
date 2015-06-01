@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Javascript API操作HtmlPager";
+    ViewBag.Description = "本示例演示如何使用客户端Javascript API的goToPage方法来使HtmlPager跳转到指定页。";
+}
+@model PagedList<Article>
+    <div class="well well-sm">
+        <div class="input-group" style="width:35%">
+            <span class="input-group-addon">转到第</span>
+            <input type="text" id="pagebox" class="form-control input-sm" />
+            <span class="input-group-addon">页</span>
+            <span class="input-group-btn"><button class="btn btn-primary btn-sm" id="goBtn">跳转</button></span>
+        </div>
+    </div>
+<div id="errormsg"></div>
+    @{Html.RenderPartial("_ArticleTable", Model);}
+    <div class="text-center">
+        @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", Id = "htmlPager", FirstPageText = "<<", LastPageText = ">>", NextPageText = ">", PrevPageText = "<", ContainerTagName = "ul", CssClass = "pagination pagination-sm", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>" })
+    </div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}
+    <script type="text/javascript">
+        $(function() {
+            $("#goBtn").click(function () {
+                var pager = Webdiyer.MvcPagers.getById("htmlPager");
+                if (pager != null) {
+                    pager.goToPage($("#pagebox").val());
+                } else { alert("找不到指定的MvcPager！"); }
+            });
+        });
+    </script>
+}
+
+@section Description{
+使用Javascript API操作MvcPager时，必须用Html.RegisterMvcPagerScriptResource()注册MvcPager的客户端脚本库。
+<p>goToPage方法在跳转前会对传入的页索引参数进行有效性验证，如果传入的页索引不是有效的数值，则会显示PagerOptions.InvalidPageIndexErrorMessage属性中设置的错误信息，如果页索引小于0或大于总页数，则会显示PagerOptions.PageIndexOutOfRangeErrorMessage属性中设置的错误信息。可以在本示例中输入进行测试查看效果。</p>
+}

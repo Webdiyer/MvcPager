@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Ajax events";
+    ViewBag.Description = "This sample demonstrates how to handle Ajax events of the MvcPager in Ajax paging mode.";
+}
+@model PagedList<Order>
+
+<div id="orders">
+    @Html.Partial("_AjaxEvents",Model)
+</div>
+
+@section scripts
+{
+    @{Html.RegisterMvcPagerScriptResource();}
+    <script type="text/javascript">
+        function handleFailure(xhr, status, error) {
+            alert('onfailure event fired, error info:' + xhr.responseText + ', error code: ' + xhr.status + ', status code: ' + status + ', error type: ' + error);
+        }
+
+        function handleSuccess(data, xhr, status) {
+            alert('onsuccess event fired, data returned: ' + data + '\r\n http response code: ' + xhr.status + ', status code: ' + status);
+        }
+    </script>
+}

@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "自定义路由";
+    ViewBag.Description = "该示例演示如何为MvcPager应用自定义路由。";
+}
+
+@model PagedList<Article>
+@Html.Partial("_ArticleTable", Model)
+<h5>使用路由MvcPager_Pager1，Url格式：{controller}/{action}/page_{pageindex}</h5>
+    @Html.Pager(Model).Options(o => o.SetFirstPageRouteName("MvcPager_Default").SetRouteName("MvcPager_Pager1").SetPagerItemTemplate("{0}&nbsp;"))
+<hr/>
+<h5>使用路由MvcPager_Pager2，Url格式：{controller}/{action}/pageindex-{pageindex}</h5>
+@Html.Pager(Model).Options(o => o.SetFirstPageRouteName("MvcPager_Default").SetRouteName("MvcPager_Pager2").SetPagerItemTemplate("{0}&nbsp;"))
+<hr/>
+<h5>使用路由MvcPager_Pager3，Url格式：{controller}/{action}/p-{pageindex}</h5>
+@Html.Pager(Model).Options(o => o.SetRouteName("MvcPager_Pager3").SetFirstPageRouteName("MvcPager_Default").SetPagerItemTemplate("{0}&nbsp;"))
+
+
+@section Description{
+    本示例使用了三个MvcPager，分别使用三个不同的路由MvcPager_Pager1、MvcPager_Pager2和MvcPager_Pager3，因此每个MvcPager的分页Url链接也不相同，请分别点击三个MvcPager中的分页链接，注意查看浏览器地址栏中的Url变化。
+    <p class="text-danger">注：此示例中三个MvcPager均设置了PagerOptions.FirstPageRouteName属性以启用首页Url SEO，因此三个MvcPager生成的首页url完全相同。</p>
+}

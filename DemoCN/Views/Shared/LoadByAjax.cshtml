@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Ajax动态加载";
+    ViewBag.Description = "该示例演示如何在需要时通过Ajax方法动态加载MvcPager和分页数据。";
+}
+@model PagedList<Article>
+<button id="loadbtn">点此加载MvcPager和分页数据</button>
+<div id="articles">
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#loadbtn").click(function () {
+                $("#articles").load(location.href);
+                $(this).hide();
+            });
+        });
+    </script>
+}
+
+@section Description{
+    通过Ajax动态加载MvcPager时，需要在包含MvcPager的PartialView中用Ajax.LoadMvcPagerScript();方法动态加载MvcPager客户端脚本库，而不是在主页面用Html.RegisterMvcPagerScriptResource();方法来注册。
+}

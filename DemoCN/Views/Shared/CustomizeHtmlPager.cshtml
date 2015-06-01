@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Javascript API应用（HtmlPager）";
+    ViewBag.Description = "本示例演示如何隐藏MvcPager控件（HtmlPager），使用客户端Javascript API构建自定义的分页导航元素。";
+}
+@model PagedList<Article>
+           
+@Html.Partial("_ArticleTable")
+@Html.Pager(Model).Options(o=>o.SetPageIndexParameterName("id").HidePagerItems().SetPageIndexBoxId("pageIndexBox"))
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="btn-group" role="group" aria-label="Mvcpager group">
+                <div class="btn-toolbar" role="toolbar" aria-label="Pager items button groups">
+                    <div class="btn-group" role="group" aria-label="First prev group">
+                        <a id="firstbtn" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-fast-backward"></i></a>
+                        <a id="prevbtn" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-backward"></i></a>
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Numeric pager items group" id="btngroup">
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Last next group">
+                        <a id="nextbtn" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-forward"></i></a>
+                        <a id="lastbtn" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-fast-forward"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group pull-right">
+                <span class="input-group-addon">转到第</span>
+                <select id="pageIndexBox" class="form-control input-sm"></select>
+                <span class="input-group-addon">页</span>
+            </div>
+    </div>
+</div>
+    @section scripts
+    {
+        @{Html.RegisterMvcPagerScriptResource();}
+        <script type="text/javascript">
+            $(function () {
+                var pager = Webdiyer.MvcPagers[0];
+                if (pager != null) {
+                    var pageItems = 8;
+                    var startIndex = pager.currentPageIndex - (pageItems / 2);
+                    if (startIndex + pageItems > pager.pageCount)
+                        startIndex = pager.pageCount + 1 - pageItems;
+                    if (startIndex < 1)
+                        startIndex = 1;
+                    var endIndex = startIndex + pageItems - 1;
+                    if (endIndex > pager.pageCount)
+                        endIndex = pager.pageCount;
+                    if (startIndex > 1) {
+                        $("#btngroup").append('<button type="button" data-page="'+(startIndex-1)+'" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-option-horizontal"></i></button>');
+                    }
+                    for (var i = startIndex; i <= endIndex; i++) {
+                        if (i == pager.currentPageIndex) {
+                            $("#btngroup").append('<button type="button" class="btn btn-sm btn-primary">' + i + '</button>');
+                        } else {
+                            $("#btngroup").append('<button type="button" data-page="' + i + '" class="btn btn-sm btn-default">' + i + '</button>');
+                        }
+                    }
+                    if (endIndex < pager.pageCount) {
+                        $("#btngroup").append('<button type="button" data-page="' + (endIndex + 1) + '" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-option-horizontal"></i></button>');
+                    }
+                    $("#btngroup button[data-page]").click(function () {
+                        pager.goToPage($(this).data("page"));
+                    });
+                    if (pager.currentPageIndex <= 1) {
+                        $("#firstbtn, #prevbtn").addClass("disabled");
+                    } else {
+                        $("#firstbtn").click(function () { pager.goToPage(1); });
+                        $("#prevbtn").click(function () { pager.goToPage(pager.currentPageIndex - 1); });
+                    }
+                    if (pager.currentPageIndex == pager.pageCount) {
+                        $("#nextbtn, #lastbtn").addClass("disabled");
+                    } else {
+                        $("#nextbtn").click(function () { pager.goToPage(pager.currentPageIndex + 1); });
+                        $("#lastbtn").click(function () { pager.goToPage(pager.pageCount); });
+                    }
+                }
+            });
+        </script>
+    }
+@section Description
+{
+    当MvcPager自身的分页导航界面无法满足您的要求而您仍然需要使用MvcPager的分页功能时，可以将PagerOptions.HidePagerItems属性设为true来隐藏MvcPager分页导航元素（页索引输入或选择框以及跳转按钮不属于MvcPager界面的一部分，因此不受此属性影响），然后通过客户端Javascript API来构建您自己的分页导航元素。
+}

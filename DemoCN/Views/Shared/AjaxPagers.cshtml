@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "多个AjaxPager";
+    ViewBag.Description = "本示例演示同一个页面上使用多个MvcPager为不同的数据实现Ajax分页（使用Partial View）";
+}
+@model CompositeArticles
+<div id="articles">
+    @Html.Partial("_AjaxArticles1",Model.ArticleList1)
+</div>
+<hr />
+<div id="articles2">
+    @Html.Partial("_AjaxArticles2", Model.ArticleList2)
+</div>
+<hr />
+<div id="articles3">
+    @Html.Partial("_AjaxArticles3", Model.ArticleList3)
+</div>@section scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description
+{
+    同一页面上使用多个MvcPager为不同数据实现Ajax分页时，必须确保每个MvcPager的PagerOptions.PageIndexParameterName值不同，同时给每个MvcPager的路由中添加了一个用于区分不同请求的url参数，在后台通过Request.QueryString["参数名"]获取该参数值后返回对应的包含分页数据的PartialView。
+}
+

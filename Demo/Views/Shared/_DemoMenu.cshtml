@@ -1,0 +1,75 @@
+﻿@{ var ctrl = ViewContext.RouteData.GetRequiredString("controller");}
+<ul>
+    <li>
+        <strong>Url route paging</strong>
+        <ul>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new{action="basic",id=""})" title="Standard url route paging">&rsaquo; Standard url route paging</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "QueryString" })" title="Paging via url parameter">&rsaquo; Paging via url param</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "UrlParams", id = "", year = 2013, author = "Webdiyer", city = "Yanan" })" title="Retain url parameters">&rsaquo; Retain url parameters</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "customrouting", id = "" })" title="Using custom routes">&rsaquo; Using custom routes</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "Search", id = "" })" title="Search result paging">&rsaquo; Search result paging</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "MultipleMvcPagers", id = "" })" title="Multiple MvcPagers">&rsaquo; Multiple MvcPagers</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "FirstPageUrl", id = "5" })" title="First page url SEO">&rsaquo; First page url SEO</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_PageSize", new { action = "PageSize", pagesize = 5, pageIndex = "" })" title="Dynamic page size">&rsaquo; Dynamic page size</a></li>
+        </ul>
+    </li>
+    <li>
+        <strong>Ajax paging</strong>
+        <ul>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxPaging", id = "" })" title="Standard Ajax paging">&rsaquo; Standard Ajax paging</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxEvents", id = "" })" title="Ajax events">&rsaquo; Ajax events</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "LoadByAjax", id = "" })" title="Load by Ajax">&rsaquo; Load by Ajax</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxInitData", id = "" })#id=3" title="Data initialization">&rsaquo; Data initialization</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxPartialLoading", id = "" })" title="Partial loading">&rsaquo; Partial loading</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxNoHistory", id = "" })" title="Disable history support">&rsaquo; Disable history support</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxLoading", id = "" })" title="Loading effect">&rsaquo; Loading effect</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxPagers", id = "" })" title="Multiple AjaxPagers">&rsaquo; Multiple AjaxPagers</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "MultipleAjaxPagers", id = "" })" title="Multiple AjaxPagers(Partial loading)">&rsaquo; Multiple AjaxPagers(Partial loading)</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxDegradation", id = "" })" title="Ajax paging degradation">&rsaquo; Ajax paging degradation</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "CombinedMode", id = "" })" title="Combined mode">&rsaquo; Combined mode</a></li>
+        </ul>
+    </li>
+    <li>
+        <strong>Ajax search paging</strong>
+        <ul>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxSearchPost", id = "" })" title="AjaxForm Search (Post)">&rsaquo; AjaxForm Search (Post)</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxSearchGet", id = "" })" title="AjaxForm Search (Get)）">&rsaquo; AjaxForm Search (Get)</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxSearchHtmlPost", id = "" })" title="HtmlForm Search (Post)">&rsaquo; HtmlForm Search (Post)</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxSearchHtmlGet", id = "" })" title="HtmlForm Search (Get)">&rsaquo; HtmlForm Search (Get)</a></li>
+        </ul>
+    </li>
+    <li>
+        <strong>Appearance</strong>
+        <ul>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "ApplyCSS",id=""})" title="Apply css styles">&rsaquo; Apply css styles</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "NumericPagerItemsFormat", id = "" })" title="Numeric pager item format">&rsaquo; Numeric pager item format</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "PagerItemsTemplate", id = "" })" title="Pager items templates">&rsaquo; Pager items templates</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "CustomInfo", id = "" })" title="Display paging info">&rsaquo; Display paging info</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "NavButtonsPosition", id = "" })" title="Navigation buttons position">&rsaquo; Navigation buttons position</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "PageIndexBox", id = "" })" title="Using page index box">&rsaquo; Using page index box</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "AjaxPageIndexBox", id = "" })" title="Using page index box(Ajax)">&rsaquo; Using page index box(Ajax)</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default",new{action="PageIndexError",id=""})" title="Page index error handling">&rsaquo; Page index error handling</a></li>
+        </ul>
+    </li>
+    <li>
+        <strong>Paging data</strong>
+        <ul>
+            @if (ctrl.ToLower() != "xmldemo")
+            {
+                <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "StoredProcedure", id = "" })" title="Using stored procedure">&rsaquo; Using stored procedure</a></li>
+                <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "DataRows", id = "" })" title="DataRow collection paging">&rsaquo; DataRow collection paging</a></li>
+            }
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "IPagedList", id = "" })" title="Implementing IPagedList interface">&rsaquo; Implementing IPagedList interface</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "Delete", id = "" })" title="Deleting paged items">&rsaquo; Deleting paged items</a></li>
+        </ul>
+    </li>
+    <li>
+        <strong>Javascrip API</strong>
+        <ul>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "JavascriptApiHtml", id = "" })" title="Go to page(Html)">&rsaquo; Go to page(Html)</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "JavascriptApiAjax", id = "" })" title="Go to page(Ajax)">&rsaquo; Go to page(Ajax)</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "CustomizeHtmlPager", id = "" })" title="Create paging UI (Html)">&rsaquo; Create paging UI (Html)</a></li>
+            <li><a href="@Url.RouteUrl("MvcPager_Default", new { action = "CustomizeAjaxPager", id = "" })" title="Create paging UI (Ajax)">&rsaquo; Create paging UI (Ajax)</a></li>
+        </ul>
+    </li>
+</ul>

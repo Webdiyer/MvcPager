@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "多个AjaxPager(局部加载)";
+    ViewBag.Description = "本示例演示同一个页面上使用多个MvcPager为不同的数据实现Ajax分页（使用局部加载（Partial Loading）功能）。";
+}
+@model CompositeArticles
+<div id="articles1">
+        @{Html.RenderPartial("_ArticleTable", Model.ArticleList1);}
+    @Ajax.Pager(Model.ArticleList1).Options(o=>o.SetPagerItemTemplate("{0}&nbsp;")).AjaxOptions(a => a.SetUpdateTargetId("articles1").EnablePartialLoading())
+</div>
+<hr/>
+<div id="articles2">
+@{Html.RenderPartial("_ArticleTable",Model.ArticleList2);}
+@Ajax.Pager(Model.ArticleList2, new PagerOptions { PageIndexParameterName = "id",PagerItemTemplate = "{0}&nbsp;"}, new MvcAjaxOptions { UpdateTargetId = "articles2", EnablePartialLoading = true })
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description{
+使用局部加载（Partial Loading）功能的Ajax分页模式开发简单但效率较低，页面内容较多时不建议使用。
+}

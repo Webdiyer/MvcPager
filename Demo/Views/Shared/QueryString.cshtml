@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Paging via url parameter";
+    ViewBag.Description = "This sample demonstrates paging through standard url parameter.";
+}
+@model PagedList<Order>
+@Html.Partial("_DataTable", Model)
+@Html.Pager(Model).Options(o => o.SetPagerItemTemplate("{0}&nbsp;"))
+
+@section Description{
+    If the property value of PagerOptions.PageIndexParameterName does not exist in the current route, MvcPager will append page index parameter as a query string parameter to url.
+}

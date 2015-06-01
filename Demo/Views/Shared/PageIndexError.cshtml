@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Page index error handling";
+    ViewBag.Description = "This sample demonstrates how to handle page index error in the client side.";
+}
+@model PagedList<string>
+
+<style type="text/css">
+    .pibarea {
+        float: left;
+        margin-left: 2em;
+    }
+
+    .pagerdiv {
+        width: 100%;
+        overflow: auto;
+    }
+</style>
+<div class="pagerdiv">
+    <h6><strong>Default (PagerOptions.OnPageIndexError property is not set):</strong></h6>
+    @Html.Pager(Model).Options(o => o.SetId("pager3").SetPageIndexParameterName("id").SetPageIndexBoxId("pib1").SetGoToButtonId("gtb1").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;"))
+    <div class="pibarea">
+        <input type="text" id="pib1" style="width:58px" /><button id="gtb1">Go</button>
+    </div>
+</div>
+<hr/>
+<div class="pagerdiv">
+    <h6><strong>Calling Javascript built-in function:</strong></h6>
+    <pre>PagerOptions.OnPageIndexError="alert('Error type: '+errType+', error message: '+errMsg)"</pre>
+    @Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetPageIndexBoxId("pib2").SetGoToButtonId("gtb2").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;").SetOnPageIndexError("alert('Error type: '+errType+', error message: '+errMsg)"))
+    <div class="pibarea">
+        <input type="text" id="pib2" style="width:58px" /><button id="gtb2">Go</button>
+    </div>
+</div>
+
+<hr />
+<div class="pagerdiv">
+    <h6><strong>Calling custom Javascript function, show error message using Bootstrap Modal:</strong></h6>
+    <pre>
+    PagerOptions.OnPageIndexError="handleError"
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    function handleError(etype, eMsg) {
+        $(&quot;#errMsg&quot;).html(&quot;Current page index is: &quot; + this.currentPageIndex + &quot;, page count is: &quot; + this.pageCount + &quot;&lt;br/&gt;error type is: &quot; + etype + &quot;, error message is: &quot; + eMsg);
+        $(&#39;#msgModal&#39;).modal();
+    }
+    &lt;/script&gt;
+</pre>
+    @Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetPageIndexBoxId("pib3").SetGoToButtonId("gtb3").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;").SetOnPageIndexError("handleError"))
+    <div class="pibarea">
+        <input type="text" id="pib3" style="width:58px" /><button id="gtb3">Go</button>
+    </div>
+</div>
+<div class="modal fade" id="msgModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Error!</h4>
+            </div>
+            <div class="modal-body text-danger" id="errMsg">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}
+    <script type="text/javascript">
+        function handleError(etype,eMsg) {
+            $("#errMsg").html("Current page index: "+this.currentPageIndex+", page count: "+this.pageCount+"<br/>error type: "+etype+", error message:"+eMsg);
+            $('#msgModal').modal();
+        }
+    </script>
+}
+
+
+@section Description{
+        <strong>Please clear the text in the text box bellow, or enter a number less than 1 or greater than 6(page count), then click the go button to see it in action:</strong>
+    }

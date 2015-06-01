@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "标准Ajax分页";
+    ViewBag.Description = "该示例演示如何使用MvcPager最基本的Ajax分页模式。";
+}
+@model PagedList<Article>
+<div id="articles">
+    @Html.Partial("_ArticleList",Model)
+</div>
+@section scripts
+{
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+@section Description{
+    使用AjaxHelper的Pager扩展方法来实现Ajax分页，使用Ajax分页模式时，必须至少指定MvcAjaxOptions的UpdateTargetId属性，该属性值即是分页后要通过Ajax来更新的 DOM 元素的 ID。
+    <p>Ajax.Pager()方法返回AjaxPager对象，您可以通过Ajax.Pager()方法的重载来传递PagerOptions和MvcAjaxOptions参数，也可以通过新的AjaxPager的Options()和AjaxOptions()方法来设置参数值。</p>
+}

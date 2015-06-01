@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Dynamic page size";
+    ViewBag.Description = "This sample demonstrates how to set page size dynamically via route value or url parameter";
+}
+@model PagedList<Order>
+<div class="well well-sm"><a href="@Url.RouteUrl("MvcPager_PageSize", new { PageSize = 5 })" class="btn btn-primary">PageSize=5</a>&nbsp;<a href="@Url.RouteUrl("MvcPager_PageSize", new { PageSize = 10 })" class="btn btn-primary">PageSize = 10</a>&nbsp;<a href="@Url.RouteUrl("MvcPager_PageSize", new { PageSize = 15 })" class="btn btn-primary">PageSize = 15</a></div>
+ 
+@Html.Partial("_DataTable", Model)
+@Html.Pager(Model, new PagerOptions { RouteName = "MvcPager_PageSize", PagerItemTemplate = "{0}&nbsp;" })

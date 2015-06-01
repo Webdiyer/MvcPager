@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Ajax优雅降级";
+    ViewBag.Description = "本示例演示MvcPager在不支持Javascript或Javascript出错或被禁用的客户端浏览器中优雅降级为标准Url路由分页的功能。";
+}
+
+@model PagedList<Article>
+<div id="articles">
+    @Html.Partial("_Degradation",Model)
+</div>
+
+@section Description{
+    本示例中虽然使用了Ajax分页模式，但因为未使用Html.RegisterMvcPagerScriptResource扩展方法注册MvcPager的客户端jQuery插件，所以Ajax分页功能无法正常运行，分页模式优雅降级为标准Url路由分页。
+}

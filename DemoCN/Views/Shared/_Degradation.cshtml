@@ -1,0 +1,4 @@
+﻿@model PagedList<Article>
+
+@Html.Partial("_ArticleTable", Model)
+@Ajax.Pager(Model).Options(o=>o.SetPageIndexParameterName("id").SetPagerItemTemplate("{0}&nbsp;")).AjaxOptions(a=>a.SetUpdateTargetId("articles"))

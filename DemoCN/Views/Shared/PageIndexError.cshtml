@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "页索引错误处理";
+    ViewBag.Description = "本示例演示如何自定义页索引错误处理。";
+}
+@model PagedList<string>
+
+<style type="text/css">
+    .pibarea {
+        float: left;
+        margin-left: 2em;
+    }
+
+    .pagerdiv {
+        width: 100%;
+        overflow: auto;
+    }
+</style>
+<div class="pagerdiv">
+    <h6><strong>默认模式（未设置PagerOptions.OnPageIndexError属性）：</strong></h6>
+    @Html.Pager(Model).Options(o => o.SetId("pager3").SetPageIndexParameterName("id").SetPageIndexBoxId("pib1").SetGoToButtonId("gtb1").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;"))
+    <div class="pibarea">
+        <input type="text" id="pib1" style="width:58px" /><button id="gtb1">跳转</button>
+    </div>
+</div>
+<hr/>
+<div class="pagerdiv">
+    <h6><strong>调用Javascript内置函数：</strong></h6>
+    <pre>PagerOptions.OnPageIndexError="alert('错误类型：'+errType+'，错误信息：'+errMsg)"</pre>
+    @Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetPageIndexBoxId("pib2").SetGoToButtonId("gtb2").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;").SetOnPageIndexError("alert('错误类型：'+errType+'，错误信息：'+errMsg)"))
+    <div class="pibarea">
+        <input type="text" id="pib2" style="width:58px" /><button id="gtb2">跳转</button>
+    </div>
+</div>
+
+<hr />
+<div class="pagerdiv">
+    <h6><strong>调用自定义函数，弹出Bootstrap Modal显示错误信息：</strong></h6>
+    <pre>
+    PagerOptions.OnPageIndexError="handleError"
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    function handleError(etype, eMsg) {
+        $(&quot;#errMsg&quot;).html(&quot;当前页索引：&quot; + this.currentPageIndex + &quot;，总页数：&quot; + this.pageCount + &quot;&lt;br/&gt;错误类型：&quot; + etype + &quot;，错误信息：&quot; + eMsg);
+        $(&#39;#msgModal&#39;).modal();
+    }
+    &lt;/script&gt;
+</pre>
+    @Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetPageIndexBoxId("pib3").SetGoToButtonId("gtb3").AddHtmlAttribute("style", "float:left").SetPagerItemTemplate("{0}&nbsp;").SetOnPageIndexError("handleError"))
+    <div class="pibarea">
+        <input type="text" id="pib3" style="width:58px" /><button id="gtb3">跳转</button>
+    </div>
+</div>
+<div class="modal fade" id="msgModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">出错啦！</h4>
+            </div>
+            <div class="modal-body text-danger" id="errMsg">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}
+    <script type="text/javascript">
+        function handleError(etype,eMsg) {
+            $("#errMsg").html("当前页索引："+this.currentPageIndex+"，总页数："+this.pageCount+"<br/>错误类型："+etype+"，错误信息："+eMsg);
+            $('#msgModal').modal();
+        }
+    </script>
+}
+
+
+@section Description{
+        <strong>请在下面示例的页索引输入框中输入小于1或大于6的数，或清空页索引输入框后点击跳转按钮查看效果：</strong>
+    }

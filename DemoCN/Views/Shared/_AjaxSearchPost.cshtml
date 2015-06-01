@@ -1,0 +1,5 @@
+﻿@model PagedList<Article>
+ @Html.Partial("_ArticleTable", Model)
+<div><div style="float:left;width:50%">共 @Model.TotalPageCount 页 @Model.TotalItemCount 条记录，当前为第 @Model.CurrentPageIndex 页</div>
+@Ajax.Pager(Model,new PagerOptions{PageIndexParameterName = "id",HtmlAttributes = new Dictionary<string, object>{{"style","float:right"}},PagerItemTemplate = "&nbsp;{0}"},new MvcAjaxOptions{UpdateTargetId="articles",HttpMethod="Post",DataFormId = "searchForm"})
+</div>

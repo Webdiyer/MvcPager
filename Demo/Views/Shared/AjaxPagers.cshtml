@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Multiple AjaxPagers";
+    ViewBag.Description = "This sample demonstrates how to use multiple MvcPagers to page for different data in Ajax paging mode.";
+}
+@model Tuple<PagedList<Order>,PagedList<Order>,PagedList<Order>>
+<div id="orders">
+    @Html.Partial("_AjaxData1", Model.Item1)
+</div>
+<hr />
+<div id="orders2">
+    @Html.Partial("_AjaxData2", Model.Item2)
+</div>
+<hr />
+<div id="orders3">
+    @Html.Partial("_AjaxData3", Model.Item3)
+</div>
+@section scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description
+{
+    For multiple MvcPagers to work correctly on a single page, you need to make sure that property value of PagerOptions.PageIndexParameterName for each MvcPager is unique,
+    at the same time, in order to know which MvcPager triggered the current http request at the server side, a unique parameter is added to the route value collection for each MvcPager,
+    we get this parameter value from the server side by using Request.QueryString["{parameterName}"] and then return corresponding data to the client.
+}

@@ -1,0 +1,9 @@
+﻿@{
+	ViewBag.Title = "Using stored procedure";
+	ViewBag.Description = "This sample demonstrates how to use SQL Server stored procedure to retrieve data for paging.";
+}
+@model PagedList<Order>
+@Html.Partial("_DataTable")
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", PagerItemTemplate = "{0}&nbsp;" })
+
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}

@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Search result paging";
+    ViewBag.Description = "This sample uses GET method to submit search form and page through search result using MvcPager.";
+}
+@model PagedList<Order>
+@using (Html.BeginForm("Search", ViewContext.RouteData.GetRequiredString("Controller"), new RouteValueDictionary { { "id", "" } }, FormMethod.Get))
+{
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon">Keyword:</span>
+                    <input type="text" name="kword" value="@Request.QueryString["kword"]" class="form-control" placeholder="e.g, e.g., Janet or Michael">
+                    <span class="input-group-btn"><input type="submit" class="btn btn-primary" value="Search(S)" accesskey="S" /></span>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@Html.Partial("_DataTable", Model)
+@Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetPagerItemTemplate("{0}&nbsp;"))

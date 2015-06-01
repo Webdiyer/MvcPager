@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Data initialization";
+    ViewBag.Description = "This sample demonstrates how MvcPager can get page index from url hash value and jump to specified page automatically in Ajax paging mode.";
+}
+@model PagedList<Order>
+
+<div id="orders">
+@Html.Partial("_OrderList",Model)
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description
+{
+    The hash value of url in this page contains page index parameter(#id=3), MvcPager will jump to page 3 and load data automatically when page is loaded first time.
+}

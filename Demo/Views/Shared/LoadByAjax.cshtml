@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Load by Ajax";
+    ViewBag.Description = "This sample demonstrates how to load MvcPager dynamically via Ajax call.";
+}
+@model PagedList<Order>
+<button id="loadbtn">Click here to load MvcPager and data</button>
+<div id="orders">
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#loadbtn").click(function () {
+                $("#orders").load(location.href);
+                $(this).hide();
+            });
+        });
+    </script>
+}
+
+@section Description{
+    When loading MvcPager via Ajax call, you need to load and initialize MvcPager jQuery plugin dynamically by using Ajax.LoadMvcPagerScript() method.
+}

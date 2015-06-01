@@ -1,0 +1,14 @@
+﻿@model PagedList<Article>
+   @{ Html.RenderPartial("_ArticleTable"); }
+<div class="row">
+    <div class="col-xs-8">
+        @Ajax.Pager(Model, new PagerOptions {FirstPageText="<<",LastPageText = ">>",NextPageText = ">",PrevPageText = "<",PageIndexParameterName = "page", NumericPagerItemCount = 5, ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", PageIndexBoxId = "pageIndexBox3" }).Options(o => o.AddRouteValue("target", "articles3")).AjaxOptions(a => a.SetUpdateTargetId("articles3"))
+    </div>
+    <div class="col-xs-4">
+        <div class="input-group" style="margin:20px 0">
+            <span class="input-group-addon">转到第</span>
+            <select id="pageIndexBox3" class="form-control input-sm"></select>
+            <span class="input-group-addon">页</span>
+        </div>
+    </div>
+</div>

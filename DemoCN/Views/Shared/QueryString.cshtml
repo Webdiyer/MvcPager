@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Url参数分页";
+    ViewBag.Description = "该示例演示MvcPager如何使用Url参数进行分页。";
+}
+@model PagedList<Article>
+@Html.Partial("_ArticleTable", Model)
+@Html.Pager(Model).Options(o=>o.SetPagerItemTemplate("{0}&nbsp;"))
+
+@section Description{
+    当指定的路由参数中不存在PagerOptions.PageIndexParameterName（默认值为pageIndex）属性值为名称的参数时，MvcPager会将分页参数通过url参数的方式进行传递以实现分页。
+}

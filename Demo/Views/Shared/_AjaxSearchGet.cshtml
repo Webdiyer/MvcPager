@@ -1,0 +1,6 @@
+﻿@model PagedList<Order>
+
+@Html.Partial("_DataTable", Model)
+<div><div style="float:left;width:35%">Page @Model.CurrentPageIndex of @Model.TotalPageCount, @Model.TotalItemCount items</div>
+@Ajax.Pager(Model).Options(o => o.SetPageIndexParameterName("id").AddHtmlAttribute("style", "float:right").SetPagerItemTemplate("&nbsp;{0}")).AjaxOptions(a => a.SetUpdateTargetId("orders").SetDataFormId("searchForm"))
+</div>

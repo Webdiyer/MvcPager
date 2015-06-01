@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "用路由参数控制PageSize";
+    ViewBag.Description = "该示例演示如何通过Url参数来控制每页显示的记录数，请点击按钮查看效果，同时注意Url中的参数变化。";
+}
+@model PagedList<Article>
+<div class="well well-sm"><a href="@Url.RouteUrl("MvcPager_PageSize", new { PageSize = 5 })" class="btn btn-primary">每页显示五条数据</a>&nbsp;<a href="@Url.RouteUrl("MvcPager_PageSize", new { PageSize = 10 })" class="btn btn-primary">每页显示十条数据</a>&nbsp;<a href="@Url.RouteUrl("MvcPager_PageSize", new { PageSize = 15 })" class="btn btn-primary">每页显示十五条数据</a></div>
+ 
+@Html.Partial("_ArticleTable", Model)
+@Html.Pager(Model, new PagerOptions { RouteName = "MvcPager_PageSize", PagerItemTemplate = "{0}&nbsp;" })

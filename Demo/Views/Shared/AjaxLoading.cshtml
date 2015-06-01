@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Ajax loading effect";
+    ViewBag.Description = "This sample demonstrates how to add loading effect for loading large data or performing time consuming operation in Ajax paging mode.";
+}
+@model PagedList<Order>
+<div id="loadingDiv" style="display:none"><img src="/Images/loading.gif"/><h3>Loading, please wait...</h3></div>
+<div id="orders">
+    @Html.Partial("_AjaxLoading",Model)
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}

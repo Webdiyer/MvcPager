@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Standard Ajax paging";
+    ViewBag.Description = "This sample demonstrates the asynchronous paging functionality of the MvcPager.";
+}
+@model PagedList<Order>
+<div id="orders">
+    @Html.Partial("_OrderList",Model)
+</div>
+@section scripts
+{
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+@section Description{
+    AjaxHelper.Pager method returns an AjaxPager object, you can pass PagerOptions and MvcAjaxOptions parameters directly, or use Options and AjaxOptions methods.}

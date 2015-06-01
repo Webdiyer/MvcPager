@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Display paging information";
+    ViewBag.Description = "This sample demonstrates how to display paging information like page count, current page index and total item count.";
+}
+@model PagedList<Order>
+@Html.Partial("_DataTable", Model)
+<div><div style="float:left;width:50%">Page @Model.CurrentPageIndex of @Model.TotalPageCount, @Model.TotalItemCount items</div>
+    @Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetPagerItemTemplate("&nbsp;{0}").AddHtmlAttribute("style", "float:right"))</div>
+
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}

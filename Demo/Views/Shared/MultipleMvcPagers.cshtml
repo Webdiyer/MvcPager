@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Multiple MvcPagers";
+    ViewBag.Description = "This sample demonstrates using multiple MvcPagers on a single page.";
+}
+@model Tuple<PagedList<Order>,PagedList<Order>>
+
+@{Html.RenderPartial("_DataTable", Model.Item1);}
+@Html.Pager(Model.Item1).Options(o => o.SetPagerItemTemplate("{0}&nbsp;"))
+<hr />
+@{Html.RenderPartial("_DataTable",Model.Item2);}
+@Html.Pager(Model.Item2, new PagerOptions { PageIndexParameterName = "id", RouteName = "MvcPager_Default",PagerItemTemplate = "{0}&nbsp;"})
+
+@section Description{
+    <span class="text-danger">Note: when multiple MvcPagers are used on a single page, the property value of PagerOptions.PageIndexParameterName for each MvcPager that page for the different data must be unique, otherwise the current page index of all MvcPagers will be the same after paging.</span>
+}

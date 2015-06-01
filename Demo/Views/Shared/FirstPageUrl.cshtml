@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "First page url SEO";
+    ViewBag.Description = "This sample demonstrates MvcPager's SEO functionality for the first page url.";
+}
+
+@model PagedList<Order>
+@Html.Partial("_DataTable", Model)
+<h6><strong>First page url SEO is not enabled (default):</strong></h6>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", RouteName = "MvcPager_SEO", PagerItemTemplate = "{0}&nbsp;" })
+<h6><strong>First page url SEO is enabled (FirstPageRouteName = "MvcPager_Default"):</strong></h6>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", RouteName = "MvcPager_SEO", FirstPageRouteName = "MvcPager_Default", PagerItemTemplate = "{0}&nbsp;" })
+@section Description{
+    Note the differences of the first page url of the two MvcPagers bellow.
+}

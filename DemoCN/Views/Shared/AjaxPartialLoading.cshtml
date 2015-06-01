@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Ajax局部加载";
+    ViewBag.Description = "本示例演示MvcPager 2.0中新增的Ajax局部加载功能。";
+}
+
+@model PagedList<Article>
+<div id="articles">
+@Html.Partial("_ArticleTable", Model)
+    <div style="width:100%;overflow:auto;">
+        <div style="float:right">跳转到第<select id="pib"></select>页</div>
+        @Ajax.Pager(Model).Options(o => o.SetId("mypager").SetPageIndexParameterName("id").SetPageIndexBoxId("pib").SetPagerItemTemplate("{0}&nbsp;")).AjaxOptions(a => a.SetUpdateTargetId("articles").EnablePartialLoading())
+    </div>
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description{
+    MvcPager 2.0以前版本在使用Ajax分页功能时，要加载的分页数据必须位于单独的用户控件（ascx文件）或PartialView中，
+    在Ajax请求时只加载此用户控件或PartialView中的内容，MvcPager 2.0版以后的Ajax局部加载功能可以无需使用用户控件或PartialView，Ajax请求获取当前页面后只更新UpdateTargetId属性值对应部分的内容。
+    <div class="text-danger">Ajax局部加载分页功能使用简单方便，甚至只需要改动MvcPager的设置即可实现普通的Url跳转分页与Ajax分页切换的效果，但这种分页方法每次都需要从服务器端重新生成并下载整个页面，对于内容较多、生成时比较耗费服务器资源的页面，建议使用用户控件或PartialView的方法在服务器端生成和下载只需要更新的内容，不建议使用局部加载分页方式。</div>
+}

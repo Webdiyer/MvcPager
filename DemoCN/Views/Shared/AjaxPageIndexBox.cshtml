@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "输入或选择页索引(Ajax)";
+    ViewBag.Description = "该示例演示MvcPager在Ajax分页模式下使用页索引输入或选择框，本示例中的页索引选择框与MvcPager都在PartialView中，分页后下拉框中的页索引会重新填充并绑定事件。";
+}
+@model PagedList<Article>
+
+<div id="articles">
+    @Html.Partial("_AjaxPageIndexBox", Model)
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+
+@section Description{
+    <div class="text-danger">注意：Ajax分页模式下，一个PartialView中只能有一个MvcPager可以使用页索引输入或选择功能，若超过一个，则其它的页索引输入或选择框将无法正常运行！</div>
+}

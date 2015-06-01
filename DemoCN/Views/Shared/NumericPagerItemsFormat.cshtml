@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "格式化数值页索引";
+    ViewBag.Description = "该示例演示如何格式化MvcPager的数值页索引超链接按钮文本。";
+}
+@model PagedList<string>
+<pre>PageNumberFormatString = "[{0}]"</pre>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", PageNumberFormatString = "[{0}]" })
+<hr />
+<pre>PageNumberFormatString = "[{0}]", CurrentPageNumberFormatString = "{0}"</pre>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", PageNumberFormatString = "[{0}]", CurrentPageNumberFormatString = "{0}" })
+<hr />
+<pre>PageNumberFormatString = "-{0}-"</pre>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", PageNumberFormatString = "-{0}-" })
+<hr />
+<pre>PageNumberFormatString = "-{0}-", CurrentPageNumberFormatString = "{0}"</pre>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", PageNumberFormatString = "-{0}-", CurrentPageNumberFormatString = "{0}" })
+
+@section Description{
+    数值页索引超链接按钮文本格式化字符串可以通过PagerOptions的PageNumberFormatString来设置，当前页数值按钮文本格式化字符串可以通过PagerOptions的CurrentPageNumberFormatString来设置。
+    <div class="text-danger">请注意，格式化字符串值不应包含html代码，若出现html内容将会被编码显示。</div>
+}

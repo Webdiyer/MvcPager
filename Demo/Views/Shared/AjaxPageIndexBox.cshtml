@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Using page index box(Ajax)";
+    ViewBag.Description = "This sample demonstrates how to allow users to input or select page index from the page index box in Ajax paging mode.";
+}
+@model PagedList<Order>
+
+<div id="orders">
+    @Html.Partial("_AjaxPageIndexBox", Model)
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}

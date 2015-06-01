@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Create custom pager UI (AjaxPager)";
+    ViewBag.Description = "This sample demonstrates how to create custom pager UI using Javascript API.";
+}
+@model PagedList<Order>
+
+<div id="orders">
+    @Html.Partial("_AjaxPagerHidden",Model)
+</div>
+
+<div class="row">
+    <div class="col-xs-8">
+        <div class="btn-group" role="group" aria-label="Mvcpager group">
+            <div class="btn-toolbar" role="toolbar" aria-label="Pager items button groups">
+                <div class="btn-group" role="group" aria-label="First prev group">
+                    <a id="firstbtn" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-fast-backward"></i></a>
+                    <a id="prevbtn" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-backward"></i></a>
+                </div>
+                <div class="btn-group" role="group" aria-label="Numeric pager items group" id="btngroup">
+                </div>
+                <div class="btn-group" role="group" aria-label="Last next group">
+                    <a id="nextbtn" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-forward"></i></a>
+                    <a id="lastbtn" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-fast-forward"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="input-group pull-right">
+            <span class="input-group-addon">Go to page</span>
+            <select id="pageIndexBox" class="form-control input-sm"></select>
+        </div>
+    </div>
+</div>
+@section scripts
+    {
+    @{Html.RegisterMvcPagerScriptResource();}
+    <script type="text/javascript">
+        function bindPagerItems() {
+            var pager = Webdiyer.MvcPagers[0];
+            if (pager != null) {
+                var pageItems = 6;
+                var startIndex = pager.currentPageIndex - (pageItems / 2);
+                if (startIndex + pageItems > pager.pageCount)
+                    startIndex = pager.pageCount + 1 - pageItems;
+                if (startIndex < 1)
+                    startIndex = 1;
+                var endIndex = startIndex + pageItems - 1;
+                if (endIndex > pager.pageCount)
+                    endIndex = pager.pageCount;
+                $("#btngroup").empty();
+                if (startIndex > 1) {
+                    $("#btngroup").append('<button type="button" data-page="' + (startIndex - 1) + '" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-option-horizontal"></i></button>');
+                }
+                for (var i = startIndex; i <= endIndex; i++) {
+                    if (i == pager.currentPageIndex) {
+                        $("#btngroup").append('<button type="button" class="btn btn-sm btn-primary">' + i + '</button>');
+                    } else {
+                        $("#btngroup").append('<button type="button" data-page="' + i + '" class="btn btn-sm btn-default">' + i + '</button>');
+                    }
+                }
+                if (endIndex < pager.pageCount) {
+                    $("#btngroup").append('<button type="button" data-page="' + (endIndex + 1) + '" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-option-horizontal"></i></button>');
+                }
+                $("#btngroup button[data-page]").click(function () {
+                    pager.goToPage($(this).data("page"));
+                });
+                if (pager.currentPageIndex <= 1) {
+                    $("#firstbtn, #prevbtn").addClass("disabled");
+                } else {
+                    $("#firstbtn, #prevbtn").removeClass("disabled");
+                    $("#firstbtn").click(function () { pager.goToPage(1); });
+                    $("#prevbtn").click(function () { pager.goToPage(pager.currentPageIndex - 1); });
+                }
+                if (pager.currentPageIndex == pager.pageCount) {
+                    $("#nextbtn, #lastbtn").addClass("disabled");
+                } else {
+                    $("#nextbtn, #lastbtn").removeClass("disabled");
+                    $("#nextbtn").click(function () { pager.goToPage(pager.currentPageIndex + 1); });
+                    $("#lastbtn").click(function () { pager.goToPage(pager.pageCount); });
+                }
+            }
+        }
+        $(function () {
+            bindPagerItems();
+        });
+    </script>
+}
+
+@section Description
+{
+    You can hide MvcPager completely by setting property vlaue of PagerOptions.HidePagerItems to true and create your own pager UI using MvcPager Javascript API.
+    <p class="text-danger">The jQuery library (version 1.7 or higher) and MvcPager jQuery plugin is required before using Javascript API;</p>
+    }

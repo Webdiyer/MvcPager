@@ -1,0 +1,246 @@
+﻿/*************************************
+ * TITLE: Sinorca Screen Stylesheet  *
+ * URI  : sinorca/sinorca-screen.css *
+ * MODIF: 2003-Apr-30 19:31 +0800    *
+ *************************************/
+
+
+/* ##### Common Styles ##### */
+
+body {
+  color: black;
+  font-family: verdana, helvetica, arial, sans-serif,宋体;
+    font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+html > body {
+  font-size: 12px;
+}
+a{ text-decoration: none;}
+acronym, .titleTip {
+  border-bottom: 1px dotted rgb(153,153,153);
+  cursor: help;
+  margin: 0;
+  padding: 0 0 0.4px 0;
+}
+
+.doNotDisplay {
+  display: none;
+}
+
+.smallCaps {
+  font-size: 110%;
+  font-variant: small-caps;
+}
+
+
+/* ##### Header ##### */
+
+.superHeader {
+  color: white;
+  background-color: rgb(100,135,220);
+  height: 2em;
+}
+
+.superHeader a {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+  margin: 0;
+  padding: 0 5px;
+}
+
+.superHeader a:hover {
+  text-decoration: underline;
+}
+
+.superHeader .left {
+  position: absolute;
+  left: 1.5mm;
+  top: 0.75ex;
+}
+
+.superHeader .right {
+  position: absolute;
+  right: 1.5mm;
+  top: 0.75ex;
+}
+
+.midHeader {
+  color: rgb(39,78,144);
+  background-color: rgb(140,170,230);
+}
+
+.headerTitle {
+  font-size: 337%;
+  font-weight: normal;
+  margin: 0 0 0 4mm;
+  padding: 0.25ex 0;
+}
+
+.subHeader {
+  color: white;
+  background-color: rgb(0,51,153);
+  margin: 0;
+  padding: 1ex 1ex 1ex 1.5mm;
+}
+
+.subHeader a {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0;
+  padding: 0 0.75ex 0 0.5ex;
+}  
+
+.subHeader a:hover {
+  text-decoration: underline;
+}
+
+.superHeader .highlight, .subHeader .highlight {
+  color: rgb(253,160,91);
+  background-color: transparent;
+}
+.container {
+  max-width: none !important;
+  width: 970px;
+}
+dt,dd,li,.table th,.table td,.dropdown-menu > li > a,.close,.nav-header,.nav-tabs > li > a,.pagination ul > li > a,.pagination ul > li > span {line-height: 24px;}
+a[disabled],a[disabled]:link,a[disabled]:active,a[disabled]:visited,a[disabled]:hover,a[disabled]:focus{color:#999 !important;text-decoration:none !important;}
+h1{ font-size: 26px;}
+h2{ font-size: 22px;}
+h3{font-size:20px}
+h4{font-size:18px}
+h5{font-size:16px}
+h6{font-size:14px}
+
+h1 small {font-size: 22px;}
+h2 small {font-size: 18px;}
+h3 small {font-size: 16px;}
+h4 small {font-size: 14px;}
+dt{margin-top:12px}
+.nowrap{white-space:nowrap;}
+
+legend{font-size:18px;font-weight:bold;}
+.panel-body ul{list-style:none;font-size:9pt;padding-left:0px}
+.panel-body ul.list{ padding-left: 2em;list-style:circle}
+.panel-body ul li.header{font-weight:bold;}
+.panel-body ul li ul{padding-left:2em;}
+.panel-title>a { display: block;font-weight: bold;}
+.nav-header{ font-size: 16px;color: #000;}
+.panel-title a{ color: #2a6496;}
+.nav-tabs {margin-bottom: 10px;}
+.page-header{ margin: 10px;}
+
+/* ##### Footer ##### */
+
+#footer {
+  color: white;
+  background-color: rgb(100,135,220);
+  margin: 20px 0 0 0;
+  padding: 1em 2.5mm 2.5ex 2.5mm;
+  clear: both;
+  line-height: 1.45em;
+    text-align: center;
+}
+
+#footer a {
+  color: white;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+#footer a:hover {
+  text-decoration: none;
+}
+p, ul
+{
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+.mainContent{ text-indent: 2em;margin: 12px 0px;font-size: 14px;line-height: 1.8em;}
+
+.center{ width: 100%;text-align: center;}
+.itemList{line-height:1.6em}
+.content{line-height:1.8em;text-indent: 2em;}
+.content li{ text-indent: 0;}
+.description{ border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px;
+    background-repeat: no-repeat;
+    background-position: 10px center;-moz-border-radius:.5em;
+-webkit-border-radius:.5em;
+border-radius:.5em;color: #00529B;
+    background-color: #BDE5F8;}
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+#header
+{
+    position: relative;
+    margin-bottom: 0px;
+    color: #000;
+    padding: 0;
+}
+
+#header h1
+{
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 0 0 0 1em;
+    color: #fff;
+    border: none;
+    line-height: 2em;
+    font-size: 32px !important;
+}
+
+
+
+/* MISC  
+----------------------------------------------------------*/
+.clear
+{
+    clear: both;
+}
+
+.error
+{
+    color:Red;
+}
+
+#menucontainer
+{
+    margin-top:40px;
+}
+
+div#title
+{
+    display:block;
+    float:left;
+    text-align:left;
+}
+
+
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+#collapseDemo{ overflow-x: auto;}
+#collapseDemo li{ white-space: nowrap;}
