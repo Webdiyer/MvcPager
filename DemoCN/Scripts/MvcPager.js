@@ -1,8 +1,17 @@
-﻿/*
- MvcPager for ASP.NET MVC
- Copyright:2009-2015 Webdiyer(http://en.webdiyer.com) 陕西省延安市吴起县 杨涛<Webdiyer> (http://www.webdiyer.com)
- Source code released under Ms-PL license
- */
+﻿/* MvcPager source code
+This file is part of MvcPager.
+Copyright 2009-2015 Webdiyer(http://en.webdiyer.com)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
 'use strict';
 var Webdiyer = Webdiyer || {};
 Webdiyer.MvcPagers = [];
@@ -100,6 +109,7 @@ Webdiyer.MvcPager.prototype = {
                             context.currentPageIndex = 1;
                             if (context.enableHistorySupport) {
                                 context.__setPageIndex(context.pageIndexName, -1); //prevent reloading triggered by hashchange event
+                                context.allowReload = true;
                             } else {
                                 context.__ajax(1, { type: context.httpMethod, data: [] });
                             }
@@ -119,7 +129,7 @@ Webdiyer.MvcPager.prototype = {
                                 context.__ajax(1, { type: context.httpMethod, data: [] });
                             }
                             context.currentPageIndex = 1;
-                        }
+                        } context.allowReload = true;
                         event.preventDefault();
                     }
                 });

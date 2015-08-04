@@ -109,6 +109,7 @@ Webdiyer.MvcPager.prototype = {
                             context.currentPageIndex = 1;
                             if (context.enableHistorySupport) {
                                 context.__setPageIndex(context.pageIndexName, -1); //prevent reloading triggered by hashchange event
+                                context.allowReload = true;
                             } else {
                                 context.__ajax(1, { type: context.httpMethod, data: [] });
                             }
@@ -128,7 +129,7 @@ Webdiyer.MvcPager.prototype = {
                                 context.__ajax(1, { type: context.httpMethod, data: [] });
                             }
                             context.currentPageIndex = 1;
-                        }
+                        } context.allowReload = true;
                         event.preventDefault();
                     }
                 });

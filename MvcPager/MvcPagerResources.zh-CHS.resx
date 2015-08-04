@@ -121,7 +121,7 @@
     <value>ContainerTagName不能为null或空字符串</value>
   </data>
   <data name="CopyrightText" xml:space="preserve">
-    <value>&lt;!--MvcPager v3.0 for ASP.NET MVC 4.0+ © 2009-2015 Webdiyer (http://www.webdiyer.com)--&gt;</value>
+    <value>&lt;!--MvcPager v3.0.1 for ASP.NET MVC 4.0+ © 2009-2015 Webdiyer (http://www.webdiyer.com)--&gt;</value>
   </data>
   <data name="FirstPageText" xml:space="preserve">
     <value>首页</value>

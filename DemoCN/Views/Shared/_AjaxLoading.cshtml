@@ -1,4 +1,4 @@
 ﻿@model PagedList<Article>
 
 @Html.Partial("_ArticleTable", Model)
-@Ajax.Pager(Model,new PagerOptions{PageIndexParameterName = "id"},new MvcAjaxOptions{UpdateTargetId = "articles",LoadingElementId = "loadingDiv",OnBegin="$('#articles').fadeOut('slow')",OnComplete="$('#articles').fadeIn('slow')"})
+@Ajax.Pager(Model,new PagerOptions{PageIndexParameterName = "id",PagerItemTemplate = "{0}&nbsp;"},new MvcAjaxOptions{UpdateTargetId = "articles",LoadingElementId = "loadingDiv",OnBegin="$('#articles').fadeOut('slow')",OnComplete="$('#articles').fadeIn('slow')"})

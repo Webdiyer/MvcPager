@@ -121,7 +121,7 @@
     <value>Container tag name cannot be null or empty</value>
   </data>
   <data name="CopyrightText" xml:space="preserve">
-    <value>&lt;!--MvcPager v3.0 for ASP.NET MVC 4.0+ © 2009-2015 Webdiyer (http://en.webdiyer.com)--&gt;</value>
+    <value>&lt;!--MvcPager v3.0.1 for ASP.NET MVC 4.0+ © 2009-2015 Webdiyer (http://en.webdiyer.com)--&gt;</value>
   </data>
   <data name="FirstPageText" xml:space="preserve">
     <value>First</value>
