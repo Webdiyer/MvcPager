@@ -102,6 +102,7 @@ Webdiyer.MvcPager.prototype = {
             { this.__ajax(hashIndex, { type: this.httpMethod, data: [] }); }
             if (typeof this.dataFormId !== "undefined") {
                 var isAjaxForm = $(context.dataFormId).data("ajax") || false;
+                context.searchCriteria = $(context.dataFormId).serializeArray();
                 $(context.dataFormId).submit(function (event) {
                     context.searchCriteria = $(context.dataFormId).serializeArray();
                     if (isAjaxForm) {
