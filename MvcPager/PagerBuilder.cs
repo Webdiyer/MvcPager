@@ -205,7 +205,7 @@ namespace Webdiyer.WebControls.Mvc
             if (pageIndex == 0)
             {
                 //Check if constraint is applied to page index parameter in route definition 
-                if (route != null && route.Constraints.ContainsKey(_pagerOptions.PageIndexParameterName))
+                if (route != null &&route.Constraints!=null&& route.Constraints.ContainsKey(_pagerOptions.PageIndexParameterName))
                 {
                     //Remove constraint applied to page index parameter in route definition temporarily in order to generate paging url format string, otherwise it maybe failed because page index in paging url format is a string value
                     constraintValue = route.Constraints[_pagerOptions.PageIndexParameterName];

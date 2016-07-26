@@ -13,7 +13,7 @@
 <div id="errormsg"></div>
     @{Html.RenderPartial("_DataTable", Model);}
     <div class="text-center">
-        @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", Id = "htmlPager", FirstPageText = "<<", LastPageText = ">>", NextPageText = ">", PrevPageText = "<", ContainerTagName = "ul", CssClass = "pagination pagination-sm",CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>" })
+        @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", Id = "htmlPager", FirstPageText = "<<", LastPageText = ">>", NextPageText = ">", PrevPageText = "<", ContainerTagName = "ul", CssClass = "pagination pagination-sm", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"javascript:void(0);\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>" })
     </div>
 @section Scripts{@{Html.RegisterMvcPagerScriptResource();}
     <script type="text/javascript">

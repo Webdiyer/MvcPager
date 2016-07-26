@@ -2,7 +2,7 @@
    @{ Html.RenderPartial("_ArticleTable"); }
 <div class="row">
     <div class="col-xs-8">
-        @Ajax.Pager(Model, new PagerOptions { FirstPageText = "<<", LastPageText = ">>", NextPageText = ">", PrevPageText = "<", ContainerTagName = "ul", NumericPagerItemCount = 5, CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", PageIndexBoxId = "pageIndexBox2", GoToButtonId = "goToBtn2" }).Options(o => o.AddRouteValue("target", "articles2")).AjaxOptions(a => a.SetUpdateTargetId("articles2"))
+        @Ajax.Pager(Model, new PagerOptions { FirstPageText = "<<", LastPageText = ">>", NextPageText = ">", PrevPageText = "<", ContainerTagName = "ul", NumericPagerItemCount = 5, CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"javascript:void(0);\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", PageIndexBoxId = "pageIndexBox2", GoToButtonId = "goToBtn2" }).Options(o => o.AddRouteValue("target", "articles2")).AjaxOptions(a => a.SetUpdateTargetId("articles2"))
     </div>
     <div class="col-xs-4">
         <div class="input-group" style="margin:20px 0">

@@ -252,7 +252,7 @@
     <Content Include="Views\Shared\CustomizeHtmlPager.cshtml" />
     <Content Include="Views\Shared\_AjaxPagerHidden.cshtml" />
     <Content Include="Views\Shared\JavascriptApiHtml.cshtml" />
-    <Content Include="Scripts\MvcPager.js" />
+    <None Include="Scripts\MvcPager.js" />
     <Content Include="Views\Shared\Multilingual.cshtml" />
     <Content Include="Views\Shared\PageIndexError.cshtml" />
   </ItemGroup>

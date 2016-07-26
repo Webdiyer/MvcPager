@@ -9,7 +9,7 @@
 <div class="center">来源：@Model.Source &nbsp;&nbsp;作者：@Model.Author &nbsp;&nbsp; 发布日期：@Model.PubDate</div>
 <div class="content">@Html.Raw(Model.Content)</div>
 <div class="text-center">
-    @Html.Pager(Model).Options(o => o.SetContainerTagName("ul").SetCssClass("pagination").SetCurrentPagerItemTemplate("<li class=\"active\"><a href=\"#\">{0}</a></li>").SetDisabledPagerItemTemplate("<li class=\"disabled\"><a>{0}</a></li>").SetPagerItemTemplate("<li>{0}</li>").SetPageIndexParameterName("id").SetRouteName("MvcPager_Default"))
+    @Html.Pager(Model).Options(o => o.SetContainerTagName("ul").SetCssClass("pagination").SetCurrentPagerItemTemplate("<li class=\"active\"><a href=\"javascript:void(0);\">{0}</a></li>").SetDisabledPagerItemTemplate("<li class=\"disabled\"><a>{0}</a></li>").SetPagerItemTemplate("<li>{0}</li>").SetPageIndexParameterName("id").SetRouteName("MvcPager_Default"))
 </div>
 
 @section Description{

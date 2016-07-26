@@ -20,7 +20,7 @@
         当前页索引为：@Model.CurrentPageIndex
     </div>
 }
-@Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetFirstPageRouteName("MvcPager_Default").SetContainerTagName("ul").SetCssClass("pagination").SetCurrentPagerItemTemplate("<li class=\"active\"><a href=\"#\">{0}</a></li>").SetDisabledPagerItemTemplate("<li class=\"disabled\"><a>{0}</a></li>").SetPagerItemTemplate("<li>{0}</li>"))
+@Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetFirstPageRouteName("MvcPager_Default").SetContainerTagName("ul").SetCssClass("pagination").SetCurrentPagerItemTemplate("<li class=\"active\"><a href=\"javascript:void(0);\">{0}</a></li>").SetDisabledPagerItemTemplate("<li class=\"disabled\"><a>{0}</a></li>").SetPagerItemTemplate("<li>{0}</li>"))
 @section Description{
     <p class="text-primary">操作说明：请跳转到最后一页，选中最后一页上所有项的复选框，然后点击“删除选中项”按钮，此时最后一页的所有数据都会被删除，虽然url中的当前页索引未改变，但Model中PagedList对象的CurrentPageIndex已自动变为最后一页的页索引2，同时显示的数据也是最后一页的数据，不会出现空数据或页索引超出范围的错误。</p>
 }

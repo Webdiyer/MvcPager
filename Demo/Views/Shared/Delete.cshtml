@@ -20,7 +20,7 @@
         Current page index is: @Model.CurrentPageIndex
     </div>
 }
-@Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetFirstPageRouteName("MvcPager_Default").SetContainerTagName("ul").SetCssClass("pagination").SetCurrentPagerItemTemplate("<li class=\"active\"><a href=\"#\">{0}</a></li>").SetDisabledPagerItemTemplate("<li class=\"disabled\"><a>{0}</a></li>").SetPagerItemTemplate("<li>{0}</li>"))
+@Html.Pager(Model).Options(o => o.SetPageIndexParameterName("id").SetFirstPageRouteName("MvcPager_Default").SetContainerTagName("ul").SetCssClass("pagination").SetCurrentPagerItemTemplate("<li class=\"active\"><a href=\"javascript:void(0);\">{0}</a></li>").SetDisabledPagerItemTemplate("<li class=\"disabled\"><a>{0}</a></li>").SetPagerItemTemplate("<li>{0}</li>"))
 @section Description{
     <p class="text-primary">Go to the last page and select all items, then click "Delete Selected" button, after all items on the last page are deleted, the current page index and total page count of the underlying IPageList object have been changed to 2 though page index parameter in url is still 3.</p>
 }
