@@ -55,6 +55,9 @@ namespace Webdiyer.WebControls.Mvc
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="RouteName"]/*'/>
         public string RouteName { get; set; }
 
+        /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="OverwriteUrlFormat"]/*'/>
+        public string OverwriteUrlFormat { get; set; }
+
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="RouteValues"]/*'/>
         public RouteValueDictionary RouteValues { get; set; }
 
@@ -82,20 +85,20 @@ namespace Webdiyer.WebControls.Mvc
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="GoToButtonId"]/*'/>
         public string GoToButtonId { get; set; }
-        
+
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="MaximumPageIndexItems"]/*'/>
         public int MaximumPageIndexItems { get; set; }
-        
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="PageNumberFormatString"]/*'/>
         public string PageNumberFormatString { get; set; }
-       
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="CurrentPageNumberFormatString"]/*'/>
         public string CurrentPageNumberFormatString { get; set; }
 
         private string _containerTagName;
-        
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="ContainerTagName"]/*'/>
         public string ContainerTagName
@@ -146,53 +149,53 @@ namespace Webdiyer.WebControls.Mvc
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="ShowPrevNext"]'/>
         public bool ShowPrevNext { get; set; }
-        
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="PrevPageText"]/*'/>
         public string PrevPageText { get; set; }
-       
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="NextPageText"]/*'/>
         public string NextPageText { get; set; }
-        
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="ShowNumericPagerItems"]'/>
         public bool ShowNumericPagerItems { get; set; }
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="ShowFirstLast"]'/>
         public bool ShowFirstLast { get; set; }
-        
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="FirstPageText"]/*'/>
         public string FirstPageText { get; set; }
-        
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="LastPageText"]/*'/>
         public string LastPageText { get; set; }
-        
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="ShowMorePagerItems"]/*'/>
         public bool ShowMorePagerItems { get; set; }
-        
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="MorePageText"]/*'/>
         public string MorePageText { get; set; }
-        
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="Id"]/*'/>
         public string Id { get; set; }
-        
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="HorizontalAlign"]/*'/>
         public string HorizontalAlign { get; set; }
-      
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="CssClass"]/*'/>
         public string CssClass { get; set; }
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="ShowDisabledPagerItems"]/*'/>
         public bool ShowDisabledPagerItems { get; set; }
-        
+
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="MaximumPageNumber"]/*'/>
         public int MaximumPageNumber { get; set; }

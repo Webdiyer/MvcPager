@@ -35,7 +35,7 @@ namespace Webdiyer.WebControls.Mvc
         private readonly bool _ajaxPagingEnabled;
         private readonly MvcAjaxOptions _ajaxOptions;
         private readonly string _copyrightText = "\r\n" + MvcPagerResources.CopyrightText + "\r\n";
-        
+
 
         //html pager builder
         internal PagerBuilder(HtmlHelper htmlHelper, int totalPageCount, int pageIndex, PagerOptions pagerOptions)
@@ -99,7 +99,7 @@ namespace Webdiyer.WebControls.Mvc
             if (_endPageIndex > _totalPageCount)
                 _endPageIndex = _totalPageCount;
         }
-        
+
 
         private void AddPrevious(ICollection<PagerItem> results)
         {
@@ -195,16 +195,17 @@ namespace Webdiyer.WebControls.Mvc
                 }
             }
             var pageValue = viewContext.RouteData.Values[_pagerOptions.PageIndexParameterName];
-            string routeName =_pagerOptions.RouteName;
+            string routeName = _pagerOptions.RouteName;
+            string overwriteUrlFormat = _pagerOptions.OverwriteUrlFormat;
 
             object constraintValue = null;
             //Get route name for MvcPager, use current route if route name is not specified
             RouteCollection routeCollection = _html == null ? (_ajax==null?RouteTable.Routes:_ajax.RouteCollection) : _html.RouteCollection;
-            var route = routeCollection[routeName] as Route ?? viewContext.RouteData.Route as Route; 
+            var route = routeCollection[routeName] as Route ?? viewContext.RouteData.Route as Route;
             //Generate url format string when pageIndex is 0
             if (pageIndex == 0)
             {
-                //Check if constraint is applied to page index parameter in route definition 
+                //Check if constraint is applied to page index parameter in route definition
                 if (route != null &&route.Constraints!=null&& route.Constraints.ContainsKey(_pagerOptions.PageIndexParameterName))
                 {
                     //Remove constraint applied to page index parameter in route definition temporarily in order to generate paging url format string, otherwise it maybe failed because page index in paging url format is a string value
@@ -250,8 +251,10 @@ namespace Webdiyer.WebControls.Mvc
             var routes = _ajax == null ? (_html==null?RouteTable.Routes:_html.RouteCollection) : _ajax.RouteCollection;
 
             string url;
-            if (!string.IsNullOrEmpty(routeName))
-                url = UrlHelper.GenerateUrl(routeName,_pagerOptions.ActionName, _pagerOptions.ControllerName, routeValues, routes,
+            if (!string.IsNullOrEmpty(overwriteUrlFormat))
+                url = string.Format(overwriteUrlFormat, pageIndex);
+            else if (!string.IsNullOrEmpty(routeName))
+                url = UrlHelper.GenerateUrl(routeName, _pagerOptions.ActionName, _pagerOptions.ControllerName, routeValues, routes,
                     viewContext.RequestContext, false);
             else
                 url = UrlHelper.GenerateUrl(null, _pagerOptions.ActionName, _pagerOptions.ControllerName, routeValues, routes,
@@ -276,7 +279,7 @@ namespace Webdiyer.WebControls.Mvc
                 {
                     return string.Format("{0}<div data-ajax=\"true\" data-ajax-update=\"{1}\" data-invalidpageerrmsg=\"{2}\" data-outrangeerrmsg=\"{3}\" data-pagerid=\"Webdiyer.MvcPager\" style=\"color:red;font-weight:bold\">{3}</div>{0}",
                                              _copyrightText, EscapeIdSelector(_ajaxOptions.UpdateTargetId), _pagerOptions.InvalidPageIndexErrorMessage, _pagerOptions.PageIndexOutOfRangeErrorMessage);
-                    
+
                 }
                 return string.Format("{0}<div data-invalidpageerrmsg=\"{1}\" data-outrangeerrmsg=\"{2}\" data-pagerid=\"Webdiyer.MvcPager\" style=\"color:red;font-weight:bold\">{2}</div>{0}",
                                          _copyrightText,_pagerOptions.InvalidPageIndexErrorMessage, _pagerOptions.PageIndexOutOfRangeErrorMessage);
@@ -551,7 +554,7 @@ namespace Webdiyer.WebControls.Mvc
             }
             return MvcHtmlString.Create(navStr);
         }
-                
+
         private void AddQueryStringToRouteValues(RouteValueDictionary routeValues,ViewContext viewContext)
         {
             if(routeValues==null)

@@ -4,7 +4,7 @@
     <summary>
       Returns an HTML container element with data attributes that contains a list of hyperlinks and text for providing paging functionality to the giver data.
     </summary>
-  </Class> 
+  </Class>
   <Class name="AjaxPager">
     <summary>
       Returns an HTML container element with Ajax data attributes that contains a list of hyperlinks and text for providing paging functionality to the giver data.
@@ -34,7 +34,7 @@
     <summary>
       Represents a PagerOptions builder that is used to create the PagerOptions object.
     </summary>
-  </Class>  
+  </Class>
   <Class name="ScriptResourceExtensions">
     <summary>
       This class contains two extension methods: HtmlHelper.RegisterMvcPagerScriptResource method is used to register the MvcPager jQuery plugin, and AjaxHelper.LoadMvcPagerScript method is used to dynamically load the MvcPager jQuery plugin, two methods can not be used at the same time.
@@ -138,7 +138,7 @@
       </summary>
       <param name="builder">
         <summary>
-          
+
         </summary>
       </param>
     </Method>
@@ -179,6 +179,11 @@
           Gets or sets the name of the route that is used to generate paging urls.
         </summary>
       </Property>
+    <Property name="OverwriteUrlFormat">
+      <summary>
+        Gets or sets the overwrite URL format used by MvcPager, instead of routes. Use {0} to insert the page number.
+      </summary>
+    </Property>
       <Property name="RouteValues">
         <summary>
           Gets or sets the object that contains the parameters for the route used by MvcPager.
@@ -503,7 +508,7 @@ Gets or sets the maximum page number limitation, default value is 0, which means
     <param name="html">此方法扩展的 HtmlHelper 实例</param>
   </Method>
   </ScriptResourceExtensions>
-  
+
   <PagedList>
   <Constructor name="PagedList1">
     <summary>
