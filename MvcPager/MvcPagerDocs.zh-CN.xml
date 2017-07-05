@@ -248,6 +248,11 @@
         包含数字页、当前页及上、下、前、后分页元素的html模板
       </summary>
     </Property>
+    <Property name="PagerItemHtmlAttributes">
+      <summary>
+        要应用到分页a元素上的Html属性
+      </summary>
+    </Property>
     <Property name="OnPageIndexError">
       <summary>
         页索引出错时要调用的Javascript函数
@@ -819,6 +824,17 @@
 </summary>
 <param name="template">
 </param>
+</Method>
+<Method name="AddPagerItemHtmlAttributes">
+  <summary>
+    向 PagerOptions 的 PagerItemHtmlAttributes 属性添加项。
+  </summary>
+  <param name="key">
+    添加项的名称
+  </param>
+  <param name="value">
+    添加项的值
+  </param>
 </Method>
 <Method name="SetPrevPageText">
 <summary>设置 PagerOptions 的 PrevPageText 属性

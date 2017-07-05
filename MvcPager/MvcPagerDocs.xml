@@ -254,6 +254,11 @@ Gets or sets the format string for the current page number.
 Gets or sets the html template to be applied to all pager items.
       </summary>
     </Property>
+    <Property name="PagerItemHtmlAttributes">
+      <summary>
+        Gets or sets the object that contains the HTML attributes to set for all paging link element.
+      </summary>
+    </Property>
     <Property name="OnPageIndexError">
       <summary>
         Gets or sets the Javascript function to call when page index errors occured.
@@ -880,6 +885,15 @@ Gets or sets the maximum page number limitation, default value is 0, which means
       Sets the PagerItemTemplate property of PagerOptions with a given value.
     </summary>
     <param name="template">
+    </param>
+  </Method>
+  <Method name="AddPagerItemHtmlAttributes">
+    <summary>
+      Adds an item to PagerItemHtmlAttributes property of PagerOptions
+    </summary>
+    <param name="key">The name of the html attribute to add.
+    </param>
+    <param name="value">The value of the html attribute to add.
     </param>
   </Method>
   <Method name="SetPrevPageText">
