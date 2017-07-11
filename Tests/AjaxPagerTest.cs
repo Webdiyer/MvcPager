@@ -438,6 +438,21 @@ namespace MvcPager.Tests
             StringAssert.Contains(html.ToHtmlString(), "<span class=\"current\">2</span>");
         }
 
+
+        [TestMethod]
+        public void AddPagerItemHtmlAttributes_ShouldGenerateCorrectAttribute()
+        {
+            _testList.CurrentPageIndex = 2;
+            IHtmlString html = _ajaxHelper.Pager(_testList)
+                .Options(o =>
+                    o.SetPagerItemTemplate("{0}")
+                        .AddPagerItemHtmlAttributes("class", "paginator")
+                        .AddPagerItemHtmlAttributes("style", "margin-right:5px;"));
+            StringAssert.Contains(html.ToHtmlString(), " class=\"paginator\"");
+            StringAssert.Contains(html.ToHtmlString(), " style=\"margin-right:5px;\"");
+        }
+
+
         [TestMethod]
         public void CurrentPageNumberFormatString_PagerItemTemplate_ShouldGenerateCorrectHtml()
         {

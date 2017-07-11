@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -662,6 +661,19 @@ namespace MvcPager.Tests
                                                                "<span class=\"current\">{0}</span>"
                                                        });
             StringAssert.Contains(html.ToHtmlString(),"<span class=\"current\">2</span>");
+        }
+
+        [TestMethod]
+        public void AddPagerItemHtmlAttributes_ShouldGenerateCorrectAttribute()
+        {
+            _htmlHelper = TestHelper.GetHtmlHelper();
+            IHtmlString html = _htmlHelper.Pager(_testList)
+                .Options(o =>
+                    o.SetPagerItemTemplate("{0}")
+                        .AddPagerItemHtmlAttributes("class", "paginator")
+                        .AddPagerItemHtmlAttributes("style", "margin-right:5px;"));
+            StringAssert.Contains(html.ToHtmlString(), " class=\"paginator\"");
+            StringAssert.Contains(html.ToHtmlString(), " style=\"margin-right:5px;\"");
         }
 
         [TestMethod]
