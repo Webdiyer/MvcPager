@@ -13,13 +13,13 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
-using System.Web.Routing;
 using System.Web.Mvc;
-using System.Text;
-using System.Collections.Generic;
+using System.Web.Routing;
 
 namespace Webdiyer.WebControls.Mvc
 {
@@ -468,13 +468,22 @@ namespace Webdiyer.WebControls.Mvc
             attrs.Add("data-invalidpageerrmsg", _pagerOptions.InvalidPageIndexErrorMessage);
         }
 
+        private TagBuilder GenerateAnchor(string href, string text)
+        {
+            var tag = new TagBuilder("a") { InnerHtml = text };
+            tag.MergeAttribute("href", href);
+
+            tag.MergeAttributes(_pagerOptions.PagerItemHtmlAttributes, true);
+
+            return tag;
+        }
+
         private string GenerateAjaxAnchor(PagerItem item)
         {
             string url = GenerateUrl(item.PageIndex);
             if (string.IsNullOrWhiteSpace(url))
                 return HttpUtility.HtmlEncode(item.Text);
-            var tag = new TagBuilder("a") {InnerHtml = item.Text};
-            tag.MergeAttribute("href", url);
+            var tag = GenerateAnchor(url, item.Text);
             tag.MergeAttribute("data-pageindex", item.PageIndex.ToString(CultureInfo.InvariantCulture));
             return tag.ToString(TagRenderMode.Normal);
         }
@@ -485,10 +494,13 @@ namespace Webdiyer.WebControls.Mvc
             string url = GenerateUrl(item.PageIndex);
             if (item.Disabled) //first,last,next or previous page
                 return CreateWrappedPagerElement(item, item.Text);
-            return CreateWrappedPagerElement(item,
-                                             string.IsNullOrEmpty(url)
-                                                 ? HttpUtility.HtmlEncode(item.Text)
-                                                 : String.Format("<a href=\"{0}\">{1}</a>", url, item.Text));
+            var el = HttpUtility.HtmlEncode(item.Text);
+            if (!string.IsNullOrEmpty(url))
+            {
+                var tag = GenerateAnchor(url, item.Text);
+                el = tag.ToString(TagRenderMode.Normal);
+            }
+            return CreateWrappedPagerElement(item, el);
         }
 
         private IHtmlString GenerateAjaxPagerElement(PagerItem item)

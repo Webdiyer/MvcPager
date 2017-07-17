@@ -10,8 +10,8 @@ namespace MvcPager.Tests
     public static class TestHelper
     {
         internal const string AppPathModifier = "/$(SESSION)";
-        internal const string CopyrightTextCn = "\r\n<!--MvcPager v3.0 for ASP.NET MVC 4.0+ © 2009-2015 Webdiyer (http://www.webdiyer.com)-->\r\n";
-        internal const string CopyrightText = "\r\n<!--MvcPager v3.0 for ASP.NET MVC 4.0+ © 2009-2015 Webdiyer (http://en.webdiyer.com)-->\r\n";
+        internal const string CopyrightTextCn = "\r\n<!--MvcPager v3.0.1 for ASP.NET MVC 4.0+ © 2009-2015 Webdiyer (http://www.webdiyer.com)-->\r\n";
+        internal const string CopyrightText = "\r\n<!--MvcPager v3.0.1 for ASP.NET MVC 4.0+ © 2009-2015 Webdiyer (http://en.webdiyer.com)-->\r\n";
         internal const string InvalidPageIndexErrorMessage = "Page index is invalid";
         internal const string PageIndexOutOfRangeErrorMessage = "Page index is out of range";
         internal const string InvalidPageIndexErrorMessageCn = "页索引无效";

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -491,7 +490,7 @@ namespace MvcPager.Tests
         public void HtmlPagerWithAllParameters_ShouldGenerateCorrectHtml()
         {
             const string rootLink = AppPathModifier + "/MyController/MyAction";
-            const string linkFormat = "<a href=\"" + rootLink + "/{0}?city=Wuqi&nick=Webdiyer\">{1}</a>";
+            const string linkFormat = "<a href=\"" + rootLink + "/{0}?city=Wuqi&amp;nick=Webdiyer\">{1}</a>";
             _htmlHelper = TestHelper.GetHtmlHelper();
             IHtmlString html = _htmlHelper.Pager(88, 10, 1,
                                                    new PagerOptions
@@ -534,7 +533,7 @@ namespace MvcPager.Tests
         public void SetAllParameters_ShouldGenerateCorrectHtml()
         {
             const string rootLink = AppPathModifier + "/MyController/MyAction";
-            const string linkFormat = "<a href=\"" + rootLink + "/{0}?city=Wuqi&nick=Webdiyer\">{1}</a>";
+            const string linkFormat = "<a href=\"" + rootLink + "/{0}?city=Wuqi&amp;nick=Webdiyer\">{1}</a>";
             _htmlHelper = TestHelper.GetHtmlHelper();
             IHtmlString html = _htmlHelper.Pager(88, 10, 1).Options(o=>o.SetActionName("MyAction").SetControllerName("MyController").
                                                        SetPageIndexParameterName("id").
@@ -662,6 +661,19 @@ namespace MvcPager.Tests
                                                                "<span class=\"current\">{0}</span>"
                                                        });
             StringAssert.Contains(html.ToHtmlString(),"<span class=\"current\">2</span>");
+        }
+
+        [TestMethod]
+        public void AddPagerItemHtmlAttributes_ShouldGenerateCorrectAttribute()
+        {
+            _htmlHelper = TestHelper.GetHtmlHelper();
+            IHtmlString html = _htmlHelper.Pager(_testList)
+                .Options(o =>
+                    o.SetPagerItemTemplate("{0}")
+                        .AddPagerItemHtmlAttributes("class", "paginator")
+                        .AddPagerItemHtmlAttributes("style", "margin-right:5px;"));
+            StringAssert.Contains(html.ToHtmlString(), " class=\"paginator\"");
+            StringAssert.Contains(html.ToHtmlString(), " style=\"margin-right:5px;\"");
         }
 
         [TestMethod]

@@ -119,6 +119,8 @@ namespace Webdiyer.WebControls.Mvc
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="PagerItemTemplate"]/*'/>
         public string PagerItemTemplate { get; set; }
 
+        /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="PagerItemHtmlAttributes"]/*'/>
+        public IDictionary<string, object> PagerItemHtmlAttributes { get; set; }
 
         /// <include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptions/Property[@name="NumericPagerItemTemplate"]/*'/>
         public string NumericPagerItemTemplate { get; set; }

@@ -169,6 +169,17 @@ namespace Webdiyer.WebControls.Mvc
             return this;
         }
 
+        ///<include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptionsBuilder/Method[@name="AddPagerItemHtmlAttributes"]/*'/>
+        public PagerOptionsBuilder AddPagerItemHtmlAttributes(string key, object value)
+        {
+            if (_pagerOptions.PagerItemHtmlAttributes == null)
+            {
+                _pagerOptions.PagerItemHtmlAttributes = new Dictionary<string, object>();
+            }
+            _pagerOptions.PagerItemHtmlAttributes[key] = value;
+            return this;
+        }
+
         ///<include file='MvcPagerDocs.xml' path='MvcPagerDocs/PagerOptionsBuilder/Method[@name="SetNumericPagerItemTemplate"]/*'/>
         public PagerOptionsBuilder SetNumericPagerItemTemplate(string template)
         {
