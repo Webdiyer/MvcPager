@@ -490,7 +490,7 @@ namespace MvcPager.Tests
         public void HtmlPagerWithAllParameters_ShouldGenerateCorrectHtml()
         {
             const string rootLink = AppPathModifier + "/MyController/MyAction";
-            const string linkFormat = "<a href=\"" + rootLink + "/{0}?city=Wuqi&nick=Webdiyer\">{1}</a>";
+            const string linkFormat = "<a href=\"" + rootLink + "/{0}?city=Wuqi&amp;nick=Webdiyer\">{1}</a>";
             _htmlHelper = TestHelper.GetHtmlHelper();
             IHtmlString html = _htmlHelper.Pager(88, 10, 1,
                                                    new PagerOptions
@@ -533,7 +533,7 @@ namespace MvcPager.Tests
         public void SetAllParameters_ShouldGenerateCorrectHtml()
         {
             const string rootLink = AppPathModifier + "/MyController/MyAction";
-            const string linkFormat = "<a href=\"" + rootLink + "/{0}?city=Wuqi&nick=Webdiyer\">{1}</a>";
+            const string linkFormat = "<a href=\"" + rootLink + "/{0}?city=Wuqi&amp;nick=Webdiyer\">{1}</a>";
             _htmlHelper = TestHelper.GetHtmlHelper();
             IHtmlString html = _htmlHelper.Pager(88, 10, 1).Options(o=>o.SetActionName("MyAction").SetControllerName("MyController").
                                                        SetPageIndexParameterName("id").
