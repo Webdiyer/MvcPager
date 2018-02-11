@@ -353,6 +353,12 @@ Webdiyer.MvcPager.prototype = {
                 options.type = "POST";
                 options.data.push({ name: "X-HTTP-Method-Override", value: method });
             }
+            //2017-09-11 Remove search fields that exist in url parameters
+            var newUrl = options.url;
+            if (options.type.toUpperCase() === "GET") {
+                newUrl = context.__removeSearchParams(newUrl, options.data);
+            }
+            options.url = newUrl;
             $.ajax(options);
             Webdiyer.__ajaxPages[context.pageIndexName] = index;
         }
@@ -381,6 +387,26 @@ Webdiyer.MvcPager.prototype = {
             return Function.constructor.apply(null, argNames); //onSuccess="alert('hello');return false;"
         } catch (e) {
             alert("Error:\r\n" + code + "\r\n is not a valid callback function");
+        }
+    },
+    __removeSearchParams: function (url, data) {
+        var urlparts = url.split('?');
+        if (urlparts.length >= 2) {
+            var search = urlparts[1];
+            for (var j = 0; j < data.length; j++) {
+                var prefix = (encodeURIComponent(data[j].name) + '=').toLowerCase();
+                var pars = search.split(/[&;]/g);
+                for (var i = pars.length; i-- > 0;) {
+                    if (pars[i].toLowerCase().lastIndexOf(prefix, 0) !== -1) {
+                        pars.splice(i, 1);
+                    }
+                }
+                search = pars.join('&');
+                url = urlparts[0] + (pars.length > 0 ? '?' + search : "");
+            }
+            return url;
+        } else {
+            return url;
         }
     },
     __validateInput: function (e) {
